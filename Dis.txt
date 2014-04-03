@@ -4293,7 +4293,7 @@ Project Name :DebugCSL
 02892        5508        MOV             D,#8H
 02894        323ee1      MOVW            BC,#0E13EH
 02897        30c402      MOVW            AX,#2C4H
-0289a        fcb3e500    CALL            !!0E5B3H
+0289a        fcb3e500    CALL            sub_EEPROM_ReadString_e5b3
 0289e        343ee1      MOVW            DE,#0E13EH
 028a1        5006        MOV             X,#6H
 028a3        ef01        BR              $28A6H
@@ -4347,7 +4347,7 @@ Project Name :DebugCSL
 028ee        5508        MOV             D,#8H
 028f0        323ee1      MOVW            BC,#0E13EH
 028f3        30d402      MOVW            AX,#2D4H
-028f6        fcb3e500    CALL            !!0E5B3H
+028f6        fcb3e500    CALL            sub_EEPROM_ReadString_e5b3
 028fa        343ee1      MOVW            DE,#0E13EH
 028fd        f0          CLRB            X
 028fe        ef01        BR              $2901H
@@ -4671,7 +4671,7 @@ Project Name :DebugCSL
 02b74        5520        MOV             D,#20H
 02b76        327ee1      MOVW            BC,#0E17EH
 02b79        309000      MOVW            AX,#90H
-02b7c        fcb3e500    CALL            !!0E5B3H
+02b7c        fcb3e500    CALL            sub_EEPROM_ReadString_e5b3
 02b80        cf9ee1ff    MOV             !0E19EH,#0FFH
 02b84        30ca08      MOVW            AX,#8CAH
 02b87        bfc8f5      MOVW            !0F5C8H,AX
@@ -4725,7 +4725,7 @@ Project Name :DebugCSL
 02c0f        5520        MOV             D,#20H
 02c11        323ee1      MOVW            BC,#0E13EH
 02c14        309000      MOVW            AX,#90H
-02c17        fcb3e500    CALL            !!0E5B3H
+02c17        fcb3e500    CALL            sub_EEPROM_ReadString_e5b3
 02c1b        308403      MOVW            AX,#384H
 02c1e        bfc6f5      MOVW            !0F5C6H,AX
 02c21        cf1bf630    MOV             !0F61BH,#30H
@@ -6388,7 +6388,7 @@ Project Name :DebugCSL
 03cc5        551c        MOV             D,#1CH
 03cc7        323ee1      MOVW            BC,#0E13EH
 03cca        309000      MOVW            AX,#90H
-03ccd        fcb3e500    CALL            !!0E5B3H
+03ccd        fcb3e500    CALL            sub_EEPROM_ReadString_e5b3
 03cd1        cf21f61a    MOV             !0F621H,#1AH
 03cd5        4023f601    CMP             !0F623H,#1H
 03cd9        61e8        SKZ             
@@ -6562,7 +6562,7 @@ Project Name :DebugCSL
 03e80        5510        MOV             D,#10H
 03e82        323ee1      MOVW            BC,#0E13EH
 03e85        308c07      MOVW            AX,#78CH
-03e88        fcb3e500    CALL            !!0E5B3H
+03e88        fcb3e500    CALL            sub_EEPROM_ReadString_e5b3
 03e8c        307000      MOVW            AX,#70H
 03e8f        bfc6f5      MOVW            !0F5C6H,AX
 03e92        cf21f637    MOV             !0F621H,#37H
@@ -7926,7 +7926,7 @@ Project Name :DebugCSL
 04c90        5510        MOV             D,#10H
 04c92        323ee1      MOVW            BC,#0E13EH
 04c95        30fc01      MOVW            AX,#1FCH
-04c98        fcb3e500    CALL            !!0E5B3H
+04c98        fcb3e500    CALL            sub_EEPROM_ReadString_e5b3
 04c9c        323ee1      MOVW            BC,#0E13EH
 04c9f        5103        MOV             A,#3H
 04ca1        fc9de200    CALL            !!0E29DH
@@ -8098,7 +8098,7 @@ Project Name :DebugCSL
 04e31        5510        MOV             D,#10H
 04e33        323ee1      MOVW            BC,#0E13EH
 04e36        30c000      MOVW            AX,#0C0H
-04e39        fcb3e500    CALL            !!0E5B3H
+04e39        fcb3e500    CALL            sub_EEPROM_ReadString_e5b3
 04e3d        f0          CLRB            X
 04e3e        ef01        BR              $4E41H
 04e40        80          INC             X
@@ -8219,7 +8219,7 @@ Project Name :DebugCSL
 04f49        e5d1f6      ONEB            !0F6D1H
 04f4c        da20        MOVW            BC,0FFE20H
 04f4e        a800        MOVW            AX,[SP+0H]
-04f50        fcb3e500    CALL            !!0E5B3H
+04f50        fcb3e500    CALL            sub_EEPROM_ReadString_e5b3
 04f54        16          MOVW            HL,AX
 04f55        f1          CLRB            A
 04f56        9b          MOV             [HL],A
@@ -8241,7 +8241,7 @@ Project Name :DebugCSL
 04f75        5510        MOV             D,#10H
 04f77        323ee1      MOVW            BC,#0E13EH
 04f7a        30c000      MOVW            AX,#0C0H
-04f7d        fcb3e500    CALL            !!0E5B3H
+04f7d        fcb3e500    CALL            sub_EEPROM_ReadString_e5b3
 04f81        f0          CLRB            X
 04f82        ef01        BR              $4F85H
 04f84        80          INC             X
@@ -8282,7 +8282,7 @@ Project Name :DebugCSL
 04fc8        5520        MOV             D,#20H
 04fca        da20        MOVW            BC,0FFE20H
 04fcc        a800        MOVW            AX,[SP+0H]
-04fce        fcb3e500    CALL            !!0E5B3H
+04fce        fcb3e500    CALL            sub_EEPROM_ReadString_e5b3
 04fd2        16          MOVW            HL,AX
 04fd3        f1          CLRB            A
 04fd4        9b          MOV             [HL],A
@@ -8350,7 +8350,7 @@ Project Name :DebugCSL
 05064        5510        MOV             D,#10H
 05066        323ee1      MOVW            BC,#0E13EH
 05069        a800        MOVW            AX,[SP+0H]
-0506b        fcb3e500    CALL            !!0E5B3H
+0506b        fcb3e500    CALL            sub_EEPROM_ReadString_e5b3
 0506f        1002        ADDW            SP,#2H
 05071        c4          POP             DE
 05072        c2          POP             BC
@@ -8374,7 +8374,7 @@ Project Name :DebugCSL
 05095        5506        MOV             D,#6H
 05097        327ee1      MOVW            BC,#0E17EH
 0509a        17          MOVW            AX,HL
-0509b        fcb3e500    CALL            !!0E5B3H
+0509b        fcb3e500    CALL            sub_EEPROM_ReadString_e5b3
 0509f        c4          POP             DE
 050a0        c2          POP             BC
 050a1        d7          RET             
@@ -9102,7 +9102,7 @@ Project Name :DebugCSL
 057c1        5103        MOV             A,#3H
 057c3        fcb2e100    CALL            !!0E1B2H
 057c7        302203      MOVW            AX,#322H
-057ca        fc63e500    CALL            sub_EEPROM_ReadDecAsHex_e563
+057ca        fc63e500    CALL            sub_EEPROM_ReadByteDecAsHex_e563
 057ce        70          MOV             X,A
 057cf        f1          CLRB            A
 057d0        32c201      MOVW            BC,#1C2H
@@ -9745,7 +9745,7 @@ Project Name :DebugCSL
 05e49        bfaaf5      MOVW            !0F5AAH,AX
 05e4c        cfdaf643    MOV             !0F6DAH,#43H
 05e50        302a03      MOVW            AX,#32AH
-05e53        fc63e500    CALL            sub_EEPROM_ReadDecAsHex_e563
+05e53        fc63e500    CALL            sub_EEPROM_ReadByteDecAsHex_e563
 05e57        9fd9f6      MOV             !0F6D9H,A
 05e5a        d5d9f6      CMP0            !0F6D9H
 05e5d        61f8        SKNZ            
@@ -9756,7 +9756,7 @@ Project Name :DebugCSL
 05e6c        61c8        SKC             
 05e6e        cfd9f602    MOV             !0F6D9H,#2H
 05e72        302903      MOVW            AX,#329H
-05e75        fc63e500    CALL            sub_EEPROM_ReadDecAsHex_e563
+05e75        fc63e500    CALL            sub_EEPROM_ReadByteDecAsHex_e563
 05e79        9fd3f6      MOV             !0F6D3H,A
 05e7c        d5cff6      CMP0            !0F6CFH
 05e7f        dd15        BZ              $5E96H
@@ -10074,7 +10074,7 @@ Project Name :DebugCSL
 061ee        cfdef61e    MOV             !0F6DEH,#1EH
 061f2        eea600      BR              $!629BH
 061f5        302503      MOVW            AX,#325H
-061f8        fc63e500    CALL            sub_EEPROM_ReadDecAsHex_e563
+061f8        fc63e500    CALL            sub_EEPROM_ReadByteDecAsHex_e563
 061fc        70          MOV             X,A
 061fd        f1          CLRB            A
 061fe        32c201      MOVW            BC,#1C2H
@@ -11294,7 +11294,7 @@ Project Name :DebugCSL
 06dfc        5504        MOV             D,#4H
 06dfe        dbf8ff      MOVW            BC,SP
 06e01        30a603      MOVW            AX,#3A6H
-06e04        fcb3e500    CALL            !!0E5B3H
+06e04        fcb3e500    CALL            sub_EEPROM_ReadString_e5b3
 06e08        5322        MOV             B,#22H
 06e0a        e1          ONEB            A
 06e0b        fcb2e100    CALL            !!0E1B2H
@@ -11350,7 +11350,7 @@ Project Name :DebugCSL
 06e6d        5504        MOV             D,#4H
 06e6f        dbf8ff      MOVW            BC,SP
 06e72        30aa03      MOVW            AX,#3AAH
-06e75        fcb3e500    CALL            !!0E5B3H
+06e75        fcb3e500    CALL            sub_EEPROM_ReadString_e5b3
 06e79        ef8d        BR              $6E08H
 06e7b        530d        MOV             B,#0DH
 06e7d        e1          ONEB            A
@@ -12556,7 +12556,7 @@ Project Name :DebugCSL
 07afe        5508        MOV             D,#8H
 07b00        323ee1      MOVW            BC,#0E13EH
 07b03        306201      MOVW            AX,#162H
-07b06        fcb3e500    CALL            !!0E5B3H
+07b06        fcb3e500    CALL            sub_EEPROM_ReadString_e5b3
 07b0a        5508        MOV             D,#8H
 07b0c        323ee1      MOVW            BC,#0E13EH
 07b0f        30dc02      MOVW            AX,#2DCH
@@ -12833,7 +12833,7 @@ Project Name :DebugCSL
 07e0d        5520        MOV             D,#20H
 07e0f        323ee1      MOVW            BC,#0E13EH
 07e12        30d000      MOVW            AX,#0D0H
-07e15        fcb3e500    CALL            !!0E5B3H
+07e15        fcb3e500    CALL            sub_EEPROM_ReadString_e5b3
 07e19        d53ee1      CMP0            !0E13EH
 07e1c        dd0d        BZ              $7E2BH
 07e1e        302d00      MOVW            AX,#2DH
@@ -13338,7 +13338,7 @@ Project Name :DebugCSL
 082e3        e5d1f6      ONEB            !0F6D1H
 082e6        323ee1      MOVW            BC,#0E13EH
 082e9        a800        MOVW            AX,[SP+0H]
-082eb        fcb3e500    CALL            !!0E5B3H
+082eb        fcb3e500    CALL            sub_EEPROM_ReadString_e5b3
 082ef        1002        ADDW            SP,#2H
 082f1        c4          POP             DE
 082f2        c2          POP             BC
@@ -13403,7 +13403,7 @@ Project Name :DebugCSL
 0837a        5510        MOV             D,#10H
 0837c        323ee1      MOVW            BC,#0E13EH
 0837f        a800        MOVW            AX,[SP+0H]
-08381        fcb3e500    CALL            !!0E5B3H
+08381        fcb3e500    CALL            sub_EEPROM_ReadString_e5b3
 08385        1002        ADDW            SP,#2H
 08387        c4          POP             DE
 08388        c2          POP             BC
@@ -13436,7 +13436,7 @@ Project Name :DebugCSL
 083c0        5506        MOV             D,#6H
 083c2        327ee1      MOVW            BC,#0E17EH
 083c5        17          MOVW            AX,HL
-083c6        fcb3e500    CALL            !!0E5B3H
+083c6        fcb3e500    CALL            sub_EEPROM_ReadString_e5b3
 083ca        a800        MOVW            AX,[SP+0H]
 083cc        fc288000    CALL            !!8028H
 083d0        1002        ADDW            SP,#2H
@@ -13508,7 +13508,7 @@ Project Name :DebugCSL
 0846a        fcb2e100    CALL            !!0E1B2H
 0846e        f57af6      CLRB            !0F67AH
 08471        302003      MOVW            AX,#320H
-08474        fc63e500    CALL            sub_EEPROM_ReadDecAsHex_e563
+08474        fc63e500    CALL            sub_EEPROM_ReadByteDecAsHex_e563
 08478        70          MOV             X,A
 08479        f1          CLRB            A
 0847a        32c201      MOVW            BC,#1C2H
@@ -14228,7 +14228,7 @@ Project Name :DebugCSL
 08b82        61f8        SKNZ            
 08b84        fc888000    CALL            !!8088H
 08b88        302303      MOVW            AX,#323H
-08b8b        fc63e500    CALL            sub_EEPROM_ReadDecAsHex_e563
+08b8b        fc63e500    CALL            sub_EEPROM_ReadByteDecAsHex_e563
 08b8f        70          MOV             X,A
 08b90        f1          CLRB            A
 08b91        bf4ae0      MOVW            !0E04AH,AX
@@ -14236,7 +14236,7 @@ Project Name :DebugCSL
 08b95        424ae0      CMPW            AX,!0E04AH
 08b98        df0c        BNZ             $8BA6H
 08b9a        302003      MOVW            AX,#320H
-08b9d        fc63e500    CALL            sub_EEPROM_ReadDecAsHex_e563
+08b9d        fc63e500    CALL            sub_EEPROM_ReadByteDecAsHex_e563
 08ba1        70          MOV             X,A
 08ba2        f1          CLRB            A
 08ba3        bf4ae0      MOVW            !0E04AH,AX
@@ -15134,23 +15134,23 @@ Project Name :DebugCSL
 09486        bfaaf5      MOVW            !0F5AAH,AX
 09489        f564f6      CLRB            !0F664H
 0948c        303503      MOVW            AX,#335H
-0948f        fc63e500    CALL            sub_EEPROM_ReadDecAsHex_e563
+0948f        fc63e500    CALL            sub_EEPROM_ReadByteDecAsHex_e563
 09493        9f65f6      MOV             !0F665H,A
 09496        302d03      MOVW            AX,#32DH
-09499        fc63e500    CALL            sub_EEPROM_ReadDecAsHex_e563
+09499        fc63e500    CALL            sub_EEPROM_ReadByteDecAsHex_e563
 0949d        9f6af6      MOV             !0F66AH,A
 094a0        d565f6      CMP0            !0F665H
 094a3        df06        BNZ             $94ABH
 094a5        8f6af6      MOV             A,!0F66AH
 094a8        9f65f6      MOV             !0F665H,A
 094ab        302b03      MOVW            AX,#32BH
-094ae        fc63e500    CALL            sub_EEPROM_ReadDecAsHex_e563
+094ae        fc63e500    CALL            sub_EEPROM_ReadByteDecAsHex_e563
 094b2        9f66f6      MOV             !0F666H,A
 094b5        d566f6      CMP0            !0F666H
 094b8        61f8        SKNZ            
 094ba        cf66f603    MOV             !0F666H,#3H
 094be        302803      MOVW            AX,#328H
-094c1        fc63e500    CALL            sub_EEPROM_ReadDecAsHex_e563
+094c1        fc63e500    CALL            sub_EEPROM_ReadByteDecAsHex_e563
 094c5        9f63f6      MOV             !0F663H,A
 094c8        8f65f6      MOV             A,!0F665H
 094cb        72          MOV             C,A
@@ -15269,7 +15269,7 @@ Project Name :DebugCSL
 095f8        5510        MOV             D,#10H
 095fa        323ee1      MOVW            BC,#0E13EH
 095fd        30b000      MOVW            AX,#0B0H
-09600        fcb3e500    CALL            !!0E5B3H
+09600        fcb3e500    CALL            sub_EEPROM_ReadString_e5b3
 09604        d53ee1      CMP0            !0E13EH
 09607        df07        BNZ             $9610H
 09609        cf60f60d    MOV             !0F660H,#0DH
@@ -15283,7 +15283,7 @@ Project Name :DebugCSL
 09621        5510        MOV             D,#10H
 09623        323ee1      MOVW            BC,#0E13EH
 09626        30be03      MOVW            AX,#3BEH
-09629        fcb3e500    CALL            !!0E5B3H
+09629        fcb3e500    CALL            sub_EEPROM_ReadString_e5b3
 0962d        d53ee1      CMP0            !0E13EH
 09630        ddd7        BZ              $9609H
 09632        f582f6      CLRB            !0F682H
@@ -15368,7 +15368,7 @@ Project Name :DebugCSL
 09702        cf60f60c    MOV             !0F660H,#0CH
 09706        ee4902      BR              $!9952H
 09709        302003      MOVW            AX,#320H
-0970c        fc63e500    CALL            sub_EEPROM_ReadDecAsHex_e563
+0970c        fc63e500    CALL            sub_EEPROM_ReadByteDecAsHex_e563
 09710        70          MOV             X,A
 09711        f1          CLRB            A
 09712        32c201      MOVW            BC,#1C2H
@@ -15568,7 +15568,7 @@ Project Name :DebugCSL
 0990c        dd35        BZ              $9943H
 0990e        f45a        CLRB            0FFE5AH
 09910        302403      MOVW            AX,#324H
-09913        fc63e500    CALL            sub_EEPROM_ReadDecAsHex_e563
+09913        fc63e500    CALL            sub_EEPROM_ReadByteDecAsHex_e563
 09917        70          MOV             X,A
 09918        f1          CLRB            A
 09919        32c201      MOVW            BC,#1C2H
@@ -17444,7 +17444,7 @@ Project Name :DebugCSL
 0ac1b        c3          PUSH            BC
 0ac1c        c5          PUSH            DE
 0ac1d        301e03      MOVW            AX,#31EH
-0ac20        fc77e500    CALL            !!0E577H
+0ac20        fc77e500    CALL            sub_EEPROM_ReadDecAsHex_e577
 0ac24        bfd8e0      MOVW            !0E0D8H,AX
 0ac27        f7          CLRW            BC
 0ac28        43          CMPW            AX,BC
@@ -17452,18 +17452,18 @@ Project Name :DebugCSL
 0ac2b        e6          ONEW            AX
 0ac2c        bfd8e0      MOVW            !0E0D8H,AX
 0ac2f        302f03      MOVW            AX,#32FH
-0ac32        fc63e500    CALL            sub_EEPROM_ReadDecAsHex_e563
+0ac32        fc63e500    CALL            sub_EEPROM_ReadByteDecAsHex_e563
 0ac36        9f26f7      MOV             !0F726H,A
 0ac39        31043c04    BF              0FFE3CH.0H,$0AC41H
 0ac3d        cf26f703    MOV             !0F726H,#3H
 0ac41        302e03      MOVW            AX,#32EH
-0ac44        fc63e500    CALL            sub_EEPROM_ReadDecAsHex_e563
+0ac44        fc63e500    CALL            sub_EEPROM_ReadByteDecAsHex_e563
 0ac48        9f27f7      MOV             !0F727H,A
 0ac4b        31043c04    BF              0FFE3CH.0H,$0AC53H
 0ac4f        cf27f70f    MOV             !0F727H,#0FH
 0ac53        cf2df730    MOV             !0F72DH,#30H
 0ac57        30fa02      MOVW            AX,#2FAH
-0ac5a        fc63e500    CALL            sub_EEPROM_ReadDecAsHex_e563
+0ac5a        fc63e500    CALL            sub_EEPROM_ReadByteDecAsHex_e563
 0ac5e        70          MOV             X,A
 0ac5f        f1          CLRB            A
 0ac60        a1          INCW            AX
@@ -17483,7 +17483,7 @@ Project Name :DebugCSL
 0ac85        cf2bf720    MOV             !0F72BH,#20H
 0ac89        cf2cf720    MOV             !0F72CH,#20H
 0ac8d        302103      MOVW            AX,#321H
-0ac90        fc63e500    CALL            sub_EEPROM_ReadDecAsHex_e563
+0ac90        fc63e500    CALL            sub_EEPROM_ReadByteDecAsHex_e563
 0ac94        70          MOV             X,A
 0ac95        f1          CLRB            A
 0ac96        32c201      MOVW            BC,#1C2H
@@ -17496,7 +17496,7 @@ Project Name :DebugCSL
 0acab        300300      MOVW            AX,#3H
 0acae        bfe2e0      MOVW            !0E0E2H,AX
 0acb1        303603      MOVW            AX,#336H
-0acb4        fc63e500    CALL            sub_EEPROM_ReadDecAsHex_e563
+0acb4        fc63e500    CALL            sub_EEPROM_ReadByteDecAsHex_e563
 0acb8        9f25f7      MOV             !0F725H,A
 0acbb        8f25f7      MOV             A,!0F725H
 0acbe        91          DEC             A
@@ -17505,10 +17505,10 @@ Project Name :DebugCSL
 0acc3        cf25f704    MOV             !0F725H,#4H
 0acc7        fcfdab00    CALL            !!0ABFDH
 0accb        301a03      MOVW            AX,#31AH
-0acce        fc63e500    CALL            sub_EEPROM_ReadDecAsHex_e563
+0acce        fc63e500    CALL            sub_EEPROM_ReadByteDecAsHex_e563
 0acd2        9f28f7      MOV             !0F728H,A
 0acd5        301c03      MOVW            AX,#31CH
-0acd8        fc63e500    CALL            sub_EEPROM_ReadDecAsHex_e563
+0acd8        fc63e500    CALL            sub_EEPROM_ReadByteDecAsHex_e563
 0acdc        9f29f7      MOV             !0F729H,A
 0acdf        712201      SET1            P1.2H
 0ace2        303403      MOVW            AX,#334H
@@ -21492,7 +21492,7 @@ Project Name :DebugCSL
 0d036        63          MOV             A,B
 0d037        9f39f6      MOV             !0F639H,A
 0d03a        300f03      MOVW            AX,#30FH
-0d03d        fc63e500    CALL            sub_EEPROM_ReadDecAsHex_e563
+0d03d        fc63e500    CALL            sub_EEPROM_ReadByteDecAsHex_e563
 0d041        6143        CMP             B,A
 0d043        dc64        BC              $0D0A9H
 0d045        f539f6      CLRB            !0F639H
@@ -22247,12 +22247,12 @@ Project Name :DebugCSL
 0d60e        5508        MOV             D,#8H
 0d610        da20        MOVW            BC,0FFE20H
 0d612        30cc02      MOVW            AX,#2CCH
-0d615        fcb3e500    CALL            !!0E5B3H
+0d615        fcb3e500    CALL            sub_EEPROM_ReadString_e5b3
 0d619        ef49        BR              $0D664H
 0d61b        5508        MOV             D,#8H
 0d61d        da20        MOVW            BC,0FFE20H
 0d61f        30bc02      MOVW            AX,#2BCH
-0d622        fcb3e500    CALL            !!0E5B3H
+0d622        fcb3e500    CALL            sub_EEPROM_ReadString_e5b3
 0d626        ef3c        BR              $0D664H
 0d628        4c02        CMP             A,#2H
 0d62a        df07        BNZ             $0D633H
@@ -22274,12 +22274,12 @@ Project Name :DebugCSL
 0d64c        5508        MOV             D,#8H
 0d64e        da20        MOVW            BC,0FFE20H
 0d650        30c402      MOVW            AX,#2C4H
-0d653        fcb3e500    CALL            !!0E5B3H
+0d653        fcb3e500    CALL            sub_EEPROM_ReadString_e5b3
 0d657        ef0b        BR              $0D664H
 0d659        5508        MOV             D,#8H
 0d65b        da20        MOVW            BC,0FFE20H
 0d65d        30b402      MOVW            AX,#2B4H
-0d660        fcb3e500    CALL            !!0E5B3H
+0d660        fcb3e500    CALL            sub_EEPROM_ReadString_e5b3
 0d664        f3          CLRB            B
 0d665        ef01        BR              $0D668H
 0d667        83          INC             B
@@ -24208,7 +24208,7 @@ Project Name :DebugCSL
 
 // Reads a byte from EEPROM as DEC converts to HEX
 // i.e. 0x34 -> 0x22 (34)
-:sub_EEPROM_ReadDecAsHex_e563
+:sub_EEPROM_ReadByteDecAsHex_e563
 	0e563        c3          PUSH            BC
 	0e564        fc41e500    CALL            sub_EEPROM_ReadByte_e541
 	0e568        73          MOV             B,A
@@ -24223,40 +24223,48 @@ Project Name :DebugCSL
 	0e575        c2          POP             BC
 	0e576        d7          RET    
 
-0e577        c3          PUSH            BC
-0e578        c5          PUSH            DE
-0e579        fcf0e300    CALL            sub_EEPROM_Read_e3f0
-0e57d        8f46e0      MOV             A,!0E046H
-0e580        f0          CLRB            X
-0e581        5c0f        AND             A,#0FH
-0e583        08          XCH             A,X
-0e584        16          MOVW            HL,AX
-0e585        8f46e0      MOV             A,!0E046H
-0e588        314a        SHR             A,4H
-0e58a        70          MOV             X,A
-0e58b        f1          CLRB            A
-0e58c        320a00      MOVW            BC,#0AH
-0e58f        fd1602      CALL            !216H
-0e592        07          ADDW            AX,HL
-0e593        14          MOVW            DE,AX
-0e594        8f47e0      MOV             A,!0E047H
-0e597        f0          CLRB            X
-0e598        5c0f        AND             A,#0FH
-0e59a        08          XCH             A,X
-0e59b        5264        MOV             C,#64H
-0e59d        fd1602      CALL            !216H
-0e5a0        16          MOVW            HL,AX
-0e5a1        8f47e0      MOV             A,!0E047H
-0e5a4        314a        SHR             A,4H
-0e5a6        70          MOV             X,A
-0e5a7        f1          CLRB            A
-0e5a8        32e803      MOVW            BC,#3E8H
-0e5ab        fd1602      CALL            !216H
-0e5ae        07          ADDW            AX,HL
-0e5af        05          ADDW            AX,DE
-0e5b0        c4          POP             DE
-0e5b1        c2          POP             BC
-0e5b2        d7          RET             
+// Reads two bytes from EEPROM, converts 0x9378 -> 0x24A2
+// Address in AX, returns in AX
+:sub_EEPROM_ReadDecAsHex_e577
+	0e577        c3          PUSH            BC
+	0e578        c5          PUSH            DE
+	0e579        fcf0e300    CALL            sub_EEPROM_Read_e3f0
+	0e57d        8f46e0      MOV             A,!0E046H
+	0e580        f0          CLRB            X
+	0e581        5c0f        AND             A,#0FH
+	0e583        08          XCH             A,X
+	0e584        16          MOVW            HL,AX
+	0e585        8f46e0      MOV             A,!0E046H
+	0e588        314a        SHR             A,4H
+	0e58a        70          MOV             X,A
+	0e58b        f1          CLRB            A
+	0e58c        320a00      MOVW            BC,#0AH
+	0e58f        fd1602      CALL            !216H
+	0e592        07          ADDW            AX,HL
+	0e593        14          MOVW            DE,AX
+	0e594        8f47e0      MOV             A,!0E047H
+	0e597        f0          CLRB            X
+	0e598        5c0f        AND             A,#0FH
+	0e59a        08          XCH             A,X
+	0e59b        5264        MOV             C,#64H
+	0e59d        fd1602      CALL            !216H
+	0e5a0        16          MOVW            HL,AX
+	0e5a1        8f47e0      MOV             A,!0E047H
+	0e5a4        314a        SHR             A,4H
+	0e5a6        70          MOV             X,A
+	0e5a7        f1          CLRB            A
+	0e5a8        32e803      MOVW            BC,#3E8H
+	0e5ab        fd1602      CALL            !216H
+	0e5ae        07          ADDW            AX,HL
+	0e5af        05          ADDW            AX,DE
+	0e5b0        c4          POP             DE
+	0e5b1        c2          POP             BC
+	0e5b2        d7          RET           
+
+// AX is address
+// BC is destination memory address
+// D is length
+:sub_EEPROM_ReadString_e5b3
 0e5b3        fdc404      CALL            !4C4H
 0e5b6        04bd20      ADDW            AX,#20BDH
 0e5b9        13          MOVW            AX,BC
@@ -24292,10 +24300,13 @@ Project Name :DebugCSL
 0e5f3        efe5        BR              $0E5DAH
 0e5f5        ad22        MOVW            AX,0FFE22H
 0e5f7        fd0b05      CALL            !50BH
-0e5fa        04d7fd      ADDW            AX,#0FDD7H
-0e5fd        c4          POP             DE
-0e5fe        0404bd      ADDW            AX,#0BD04H
-0e601        2013        SUBW            SP,#13H
+0e5fa        04d7
+//0e5fa        04d7fd      ADDW            AX,#0FDD7H
+
+		
+0e5fc        fdc404      CALL            !4C4H
+0e5ff        04bd20      ADDW            AX,#20BDH
+0e602        13       	 MOVW            AX,BC
 0e603        bd22        MOVW            0FFE22H,AX
 0e605        ef2e        BR              $0E635H
 0e607        ad20        MOVW            AX,0FFE20H
@@ -24802,7 +24813,7 @@ Project Name :DebugCSL
 0e9bb        9f03f7      MOV             !0F703H,A
 0e9be        f537f7      CLRB            !0F737H
 0e9c1        300200      MOVW            AX,#2H
-0e9c4        fc63e500    CALL            sub_EEPROM_ReadDecAsHex_e563
+0e9c4        fc63e500    CALL            sub_EEPROM_ReadByteDecAsHex_e563
 0e9c8        9f2af7      MOV             !0F72AH,A
 0e9cb        30f002      MOVW            AX,#2F0H
 0e9ce        fc5be500    CALL            sub_EEPROM_ReadReturnReg_e55b
@@ -24831,7 +24842,7 @@ Project Name :DebugCSL
 0ea13        aff4df      MOVW            AX,!0DFF4H
 0ea16        bff2df      MOVW            !0DFF2H,AX
 0ea19        300803      MOVW            AX,#308H
-0ea1c        fc63e500    CALL            sub_EEPROM_ReadDecAsHex_e563
+0ea1c        fc63e500    CALL            sub_EEPROM_ReadByteDecAsHex_e563
 0ea20        9f2ff6      MOV             !0F62FH,A
 0ea23        305603      MOVW            AX,#356H
 0ea26        fc5be500    CALL            sub_EEPROM_ReadReturnReg_e55b
@@ -24947,7 +24958,7 @@ Project Name :DebugCSL
 0eb4a        bfacf5      MOVW            !0F5ACH,AX
 0eb4d        fc95e800    CALL            !!0E895H
 0eb51        301004      MOVW            AX,#410H
-0eb54        fc63e500    CALL            sub_EEPROM_ReadDecAsHex_e563
+0eb54        fc63e500    CALL            sub_EEPROM_ReadByteDecAsHex_e563
 0eb58        73          MOV             B,A
 0eb59        d3          CMP0            B
 0eb5a        dd08        BZ              $0EB64H
@@ -24956,7 +24967,7 @@ Project Name :DebugCSL
 0eb60        f1          CLRB            A
 0eb61        1804e0      MOV             0E004H[B],A
 0eb64        300004      MOVW            AX,#400H
-0eb67        fc63e500    CALL            sub_EEPROM_ReadDecAsHex_e563
+0eb67        fc63e500    CALL            sub_EEPROM_ReadByteDecAsHex_e563
 0eb6b        73          MOV             B,A
 0eb6c        d3          CMP0            B
 0eb6d        dd08        BZ              $0EB77H
@@ -24965,7 +24976,7 @@ Project Name :DebugCSL
 0eb73        f1          CLRB            A
 0eb74        1804e0      MOV             0E004H[B],A
 0eb77        300804      MOVW            AX,#408H
-0eb7a        fc63e500    CALL            sub_EEPROM_ReadDecAsHex_e563
+0eb7a        fc63e500    CALL            sub_EEPROM_ReadByteDecAsHex_e563
 0eb7e        73          MOV             B,A
 0eb7f        d3          CMP0            B
 0eb80        dd08        BZ              $0EB8AH
@@ -24974,7 +24985,7 @@ Project Name :DebugCSL
 0eb86        f1          CLRB            A
 0eb87        1804e0      MOV             0E004H[B],A
 0eb8a        301804      MOVW            AX,#418H
-0eb8d        fc63e500    CALL            sub_EEPROM_ReadDecAsHex_e563
+0eb8d        fc63e500    CALL            sub_EEPROM_ReadByteDecAsHex_e563
 0eb91        73          MOV             B,A
 0eb92        d3          CMP0            B
 0eb93        dd08        BZ              $0EB9DH
@@ -24983,7 +24994,7 @@ Project Name :DebugCSL
 0eb99        f1          CLRB            A
 0eb9a        1804e0      MOV             0E004H[B],A
 0eb9d        300703      MOVW            AX,#307H
-0eba0        fc63e500    CALL            sub_EEPROM_ReadDecAsHex_e563
+0eba0        fc63e500    CALL            sub_EEPROM_ReadByteDecAsHex_e563
 0eba4        73          MOV             B,A
 0eba5        d3          CMP0            B
 0eba6        dd08        BZ              $0EBB0H
@@ -24992,7 +25003,7 @@ Project Name :DebugCSL
 0ebac        f1          CLRB            A
 0ebad        1804e0      MOV             0E004H[B],A
 0ebb0        309a03      MOVW            AX,#39AH
-0ebb3        fc63e500    CALL            sub_EEPROM_ReadDecAsHex_e563
+0ebb3        fc63e500    CALL            sub_EEPROM_ReadByteDecAsHex_e563
 0ebb7        73          MOV             B,A
 0ebb8        d3          CMP0            B
 0ebb9        dd08        BZ              $0EBC3H
@@ -25001,7 +25012,7 @@ Project Name :DebugCSL
 0ebbf        f1          CLRB            A
 0ebc0        1804e0      MOV             0E004H[B],A
 0ebc3        300803      MOVW            AX,#308H
-0ebc6        fc63e500    CALL            sub_EEPROM_ReadDecAsHex_e563
+0ebc6        fc63e500    CALL            sub_EEPROM_ReadByteDecAsHex_e563
 0ebca        73          MOV             B,A
 0ebcb        d3          CMP0            B
 0ebcc        dd08        BZ              $0EBD6H
@@ -25112,10 +25123,10 @@ Project Name :DebugCSL
 0ecf6        fc41e500    CALL            sub_EEPROM_ReadByte_e541
 0ecfa        9f9ff6      MOV             !0F69FH,A
 0ecfd        302c03      MOVW            AX,#32CH
-0ed00        fc63e500    CALL            sub_EEPROM_ReadDecAsHex_e563
+0ed00        fc63e500    CALL            sub_EEPROM_ReadByteDecAsHex_e563
 0ed04        9f87f7      MOV             !0F787H,A
 0ed07        303203      MOVW            AX,#332H
-0ed0a        fc63e500    CALL            sub_EEPROM_ReadDecAsHex_e563
+0ed0a        fc63e500    CALL            sub_EEPROM_ReadByteDecAsHex_e563
 0ed0e        9f9df6      MOV             !0F69DH,A
 0ed11        308007      MOVW            AX,#780H
 0ed14        fc41e500    CALL            sub_EEPROM_ReadByte_e541
@@ -25340,7 +25351,7 @@ Project Name :DebugCSL
 0ef5a        df22        BNZ             $0EF7EH
 0ef5c        e5a8f6      ONEB            !0F6A8H
 0ef5f        30fe03      MOVW            AX,#3FEH
-0ef62        fc77e500    CALL            !!0E577H
+0ef62        fc77e500    CALL            sub_EEPROM_ReadDecAsHex_e577
 0ef66        a1          INCW            AX
 0ef67        bff4f5      MOVW            !0F5F4H,AX
 0ef6a        aff4f5      MOVW            AX,!0F5F4H
@@ -25412,7 +25423,7 @@ Project Name :DebugCSL
 0f01b        df1e        BNZ             $0F03BH
 0f01d        e5a8f6      ONEB            !0F6A8H
 0f020        30fe03      MOVW            AX,#3FEH
-0f023        fc77e500    CALL            !!0E577H
+0f023        fc77e500    CALL            sub_EEPROM_ReadDecAsHex_e577
 0f027        a1          INCW            AX
 0f028        bff2f5      MOVW            !0F5F2H,AX
 0f02b        aff2f5      MOVW            AX,!0F5F2H
@@ -25507,7 +25518,7 @@ Project Name :DebugCSL
 0f116        31623a3a    BT              0FFE3AH.6H,$0F154H
 0f11a        71623a      SET1            0FFE3AH.6H
 0f11d        300804      MOVW            AX,#408H
-0f120        fc63e500    CALL            sub_EEPROM_ReadDecAsHex_e563
+0f120        fc63e500    CALL            sub_EEPROM_ReadByteDecAsHex_e563
 0f124        fc23d100    CALL            !!0D123H
 0f128        3605e1      MOVW            HL,#0E105H
 0f12b        318526      BF              [HL].0H,$0F154H
@@ -25518,7 +25529,7 @@ Project Name :DebugCSL
 0f136        31643a1a    BF              0FFE3AH.6H,$0F154H
 0f13a        71633a      CLR1            0FFE3AH.6H
 0f13d        300804      MOVW            AX,#408H
-0f140        fc63e500    CALL            sub_EEPROM_ReadDecAsHex_e563
+0f140        fc63e500    CALL            sub_EEPROM_ReadByteDecAsHex_e563
 0f144        fc3cd100    CALL            !!0D13CH
 0f148        3605e1      MOVW            HL,#0E105H
 0f14b        318506      BF              [HL].0H,$0F154H
@@ -25535,7 +25546,7 @@ Project Name :DebugCSL
 0f168        f6          CLRW            AX
 0f169        bfecf5      MOVW            !0F5ECH,AX
 0f16c        5104        MOV             A,#4H
-0f16e        fc63e500    CALL            sub_EEPROM_ReadDecAsHex_e563
+0f16e        fc63e500    CALL            sub_EEPROM_ReadByteDecAsHex_e563
 0f172        fc23d100    CALL            !!0D123H
 0f176        3605e1      MOVW            HL,#0E105H
 0f179        31f506      BF              [HL].7H,$0F182H
@@ -25552,7 +25563,7 @@ Project Name :DebugCSL
 0f198        f6          CLRW            AX
 0f199        bfecf5      MOVW            !0F5ECH,AX
 0f19c        309a03      MOVW            AX,#39AH
-0f19f        fc63e500    CALL            sub_EEPROM_ReadDecAsHex_e563
+0f19f        fc63e500    CALL            sub_EEPROM_ReadByteDecAsHex_e563
 0f1a3        fc23d100    CALL            !!0D123H
 0f1a7        f592f7      CLRB            !0F792H
 0f1aa        f59ef7      CLRB            !0F79EH
@@ -25568,7 +25579,7 @@ Project Name :DebugCSL
 0f1c6        f6          CLRW            AX
 0f1c7        bfecf5      MOVW            !0F5ECH,AX
 0f1ca        5104        MOV             A,#4H
-0f1cc        fc63e500    CALL            sub_EEPROM_ReadDecAsHex_e563
+0f1cc        fc63e500    CALL            sub_EEPROM_ReadByteDecAsHex_e563
 0f1d0        fc3cd100    CALL            !!0D13CH
 0f1d4        3605e1      MOVW            HL,#0E105H
 0f1d7        31f5a8      BF              [HL].7H,$0F182H
@@ -25582,7 +25593,7 @@ Project Name :DebugCSL
 0f1ec        f6          CLRW            AX
 0f1ed        bfecf5      MOVW            !0F5ECH,AX
 0f1f0        309a03      MOVW            AX,#39AH
-0f1f3        fc63e500    CALL            sub_EEPROM_ReadDecAsHex_e563
+0f1f3        fc63e500    CALL            sub_EEPROM_ReadByteDecAsHex_e563
 0f1f7        fc3cd100    CALL            !!0D13CH
 0f1fb        c2          POP             BC
 0f1fc        d7          RET             
@@ -27442,7 +27453,7 @@ Project Name :DebugCSL
 10447        f6          CLRW            AX
 10448        bfecf5      MOVW            !0F5ECH,AX
 1044b        301004      MOVW            AX,#410H
-1044e        fc63e500    CALL            sub_EEPROM_ReadDecAsHex_e563
+1044e        fc63e500    CALL            sub_EEPROM_ReadByteDecAsHex_e563
 10452        fc23d100    CALL            !!0D123H
 10456        3605e1      MOVW            HL,#0E105H
 10459        31e506      BF              [HL].6H,$10462H
@@ -27459,7 +27470,7 @@ Project Name :DebugCSL
 10476        f6          CLRW            AX
 10477        bfecf5      MOVW            !0F5ECH,AX
 1047a        301004      MOVW            AX,#410H
-1047d        fc63e500    CALL            sub_EEPROM_ReadDecAsHex_e563
+1047d        fc63e500    CALL            sub_EEPROM_ReadByteDecAsHex_e563
 10481        fc3cd100    CALL            !!0D13CH
 10485        3605e1      MOVW            HL,#0E105H
 10488        31e506      BF              [HL].6H,$10491H
@@ -27561,7 +27572,7 @@ Project Name :DebugCSL
 1057d        f6          CLRW            AX
 1057e        bfecf5      MOVW            !0F5ECH,AX
 10581        301804      MOVW            AX,#418H
-10584        fc63e500    CALL            sub_EEPROM_ReadDecAsHex_e563
+10584        fc63e500    CALL            sub_EEPROM_ReadByteDecAsHex_e563
 10588        fc23d100    CALL            !!0D123H
 1058c        3605e1      MOVW            HL,#0E105H
 1058f        319506      BF              [HL].1H,$10598H
@@ -27579,7 +27590,7 @@ Project Name :DebugCSL
 105ac        f6          CLRW            AX
 105ad        bfecf5      MOVW            !0F5ECH,AX
 105b0        301804      MOVW            AX,#418H
-105b3        fc63e500    CALL            sub_EEPROM_ReadDecAsHex_e563
+105b3        fc63e500    CALL            sub_EEPROM_ReadByteDecAsHex_e563
 105b7        fc3cd100    CALL            !!0D13CH
 105bb        3605e1      MOVW            HL,#0E105H
 105be        3195d7      BF              [HL].1H,$10598H
@@ -28595,7 +28606,7 @@ Project Name :DebugCSL
 10f4d        5520        MOV             D,#20H
 10f4f        323ee1      MOVW            BC,#0E13EH
 10f52        305000      MOVW            AX,#50H
-10f55        fcb3e500    CALL            !!0E5B3H
+10f55        fcb3e500    CALL            sub_EEPROM_ReadString_e5b3
 10f59        5121        MOV             A,#21H
 10f5b        fceab800    CALL            !!0B8EAH
 10f5f        5125        MOV             A,#25H
@@ -28787,13 +28798,13 @@ Project Name :DebugCSL
 1111b        5520        MOV             D,#20H
 1111d        327ee1      MOVW            BC,#0E17EH
 11120        301001      MOVW            AX,#110H
-11123        fcb3e500    CALL            !!0E5B3H
+11123        fcb3e500    CALL            sub_EEPROM_ReadString_e5b3
 11127        ef10        BR              $11139H
 11129        cf4ef703    MOV             !0F74EH,#3H
 1112d        5520        MOV             D,#20H
 1112f        327ee1      MOVW            BC,#0E17EH
 11132        30f000      MOVW            AX,#0F0H
-11135        fcb3e500    CALL            !!0E5B3H
+11135        fcb3e500    CALL            sub_EEPROM_ReadString_e5b3
 11139        f471        CLRB            0FFE71H
 1113b        30ec1e      MOVW            AX,#1EECH
 1113e        fc22e300    CALL            !!0E322H
@@ -29183,7 +29194,7 @@ Project Name :DebugCSL
 114c7        f45a        CLRB            0FFE5AH
 114c9        714239      SET1            0FFE39H.4H
 114cc        302803      MOVW            AX,#328H
-114cf        fc63e500    CALL            sub_EEPROM_ReadDecAsHex_e563
+114cf        fc63e500    CALL            sub_EEPROM_ReadByteDecAsHex_e563
 114d3        9f54f7      MOV             !0F754H,A
 114d6        cf60f61c    MOV             !0F660H,#1CH
 114da        cf52f72e    MOV             !0F752H,#2EH
@@ -29214,7 +29225,7 @@ Project Name :DebugCSL
 1151e        4f54f7      CMP             A,!0F754H
 11521        dc2e        BC              $11551H
 11523        300703      MOVW            AX,#307H
-11526        fc63e500    CALL            sub_EEPROM_ReadDecAsHex_e563
+11526        fc63e500    CALL            sub_EEPROM_ReadByteDecAsHex_e563
 1152a        fc23d100    CALL            !!0D123H
 1152e        8f4ef7      MOV             A,!0F74EH
 11531        fc02d100    CALL            !!0D102H
@@ -32928,7 +32939,7 @@ Project Name :DebugCSL
 136ee        c5          PUSH            DE
 136ef        5508        MOV             D,#8H
 136f1        327ee1      MOVW            BC,#0E17EH
-136f4        fcb3e500    CALL            !!0E5B3H
+136f4        fcb3e500    CALL            sub_EEPROM_ReadString_e5b3
 136f8        367ee1      MOVW            HL,#0E17EH
 136fb        e3          ONEB            B
 136fc        f0          CLRB            X
@@ -37251,7 +37262,7 @@ f288f        04bd20      ADDW            AX,#20BDH
 f2892        5508        MOV             D,#8H
 f2894        323ee1      MOVW            BC,#0E13EH
 f2897        30c402      MOVW            AX,#2C4H
-f289a        fcb3e500    CALL            !!0E5B3H
+f289a        fcb3e500    CALL            sub_EEPROM_ReadString_e5b3
 f289e        343ee1      MOVW            DE,#0E13EH
 f28a1        5006        MOV             X,#6H
 f28a3        ef01        BR              $0F28A6H
@@ -37305,7 +37316,7 @@ f28eb        04bd20      ADDW            AX,#20BDH
 f28ee        5508        MOV             D,#8H
 f28f0        323ee1      MOVW            BC,#0E13EH
 f28f3        30d402      MOVW            AX,#2D4H
-f28f6        fcb3e500    CALL            !!0E5B3H
+f28f6        fcb3e500    CALL            sub_EEPROM_ReadString_e5b3
 f28fa        343ee1      MOVW            DE,#0E13EH
 f28fd        f0          CLRB            X
 f28fe        ef01        BR              $0F2901H
@@ -37629,7 +37640,7 @@ f2b72        e450        ONEB            0FFE50H
 f2b74        5520        MOV             D,#20H
 f2b76        327ee1      MOVW            BC,#0E17EH
 f2b79        309000      MOVW            AX,#90H
-f2b7c        fcb3e500    CALL            !!0E5B3H
+f2b7c        fcb3e500    CALL            sub_EEPROM_ReadString_e5b3
 f2b80        cf9ee1ff    MOV             !0E19EH,#0FFH
 f2b84        30ca08      MOVW            AX,#8CAH
 f2b87        bfc8f5      MOVW            !0F5C8H,AX
@@ -37683,7 +37694,7 @@ f2c0b        fceab800    CALL            !!0B8EAH
 f2c0f        5520        MOV             D,#20H
 f2c11        323ee1      MOVW            BC,#0E13EH
 f2c14        309000      MOVW            AX,#90H
-f2c17        fcb3e500    CALL            !!0E5B3H
+f2c17        fcb3e500    CALL            sub_EEPROM_ReadString_e5b3
 f2c1b        308403      MOVW            AX,#384H
 f2c1e        bfc6f5      MOVW            !0F5C6H,AX
 f2c21        cf1bf630    MOV             !0F61BH,#30H
@@ -39346,7 +39357,7 @@ f3cc3        ef0c        BR              $0F3CD1H
 f3cc5        551c        MOV             D,#1CH
 f3cc7        323ee1      MOVW            BC,#0E13EH
 f3cca        309000      MOVW            AX,#90H
-f3ccd        fcb3e500    CALL            !!0E5B3H
+f3ccd        fcb3e500    CALL            sub_EEPROM_ReadString_e5b3
 f3cd1        cf21f61a    MOV             !0F621H,#1AH
 f3cd5        4023f601    CMP             !0F623H,#1H
 f3cd9        61e8        SKZ             
@@ -39520,7 +39531,7 @@ f3e7c        fceab800    CALL            !!0B8EAH
 f3e80        5510        MOV             D,#10H
 f3e82        323ee1      MOVW            BC,#0E13EH
 f3e85        308c07      MOVW            AX,#78CH
-f3e88        fcb3e500    CALL            !!0E5B3H
+f3e88        fcb3e500    CALL            sub_EEPROM_ReadString_e5b3
 f3e8c        307000      MOVW            AX,#70H
 f3e8f        bfc6f5      MOVW            !0F5C6H,AX
 f3e92        cf21f637    MOV             !0F621H,#37H
@@ -40884,7 +40895,7 @@ f4c8c        fcd1e100    CALL            !!0E1D1H
 f4c90        5510        MOV             D,#10H
 f4c92        323ee1      MOVW            BC,#0E13EH
 f4c95        30fc01      MOVW            AX,#1FCH
-f4c98        fcb3e500    CALL            !!0E5B3H
+f4c98        fcb3e500    CALL            sub_EEPROM_ReadString_e5b3
 f4c9c        323ee1      MOVW            BC,#0E13EH
 f4c9f        5103        MOV             A,#3H
 f4ca1        fc9de200    CALL            !!0E29DH
@@ -41056,7 +41067,7 @@ f4e2f        df29        BNZ             $0F4E5AH
 f4e31        5510        MOV             D,#10H
 f4e33        323ee1      MOVW            BC,#0E13EH
 f4e36        30c000      MOVW            AX,#0C0H
-f4e39        fcb3e500    CALL            !!0E5B3H
+f4e39        fcb3e500    CALL            sub_EEPROM_ReadString_e5b3
 f4e3d        f0          CLRB            X
 f4e3e        ef01        BR              $0F4E41H
 f4e40        80          INC             X
@@ -41177,7 +41188,7 @@ f4f46        f5e9f6      CLRB            !0F6E9H
 f4f49        e5d1f6      ONEB            !0F6D1H
 f4f4c        da20        MOVW            BC,0FFE20H
 f4f4e        a800        MOVW            AX,[SP+0H]
-f4f50        fcb3e500    CALL            !!0E5B3H
+f4f50        fcb3e500    CALL            sub_EEPROM_ReadString_e5b3
 f4f54        16          MOVW            HL,AX
 f4f55        f1          CLRB            A
 f4f56        9b          MOV             [HL],A
@@ -41199,7 +41210,7 @@ f4f71        c9203ee1    MOVW            0FFE20H,#0E13EH
 f4f75        5510        MOV             D,#10H
 f4f77        323ee1      MOVW            BC,#0E13EH
 f4f7a        30c000      MOVW            AX,#0C0H
-f4f7d        fcb3e500    CALL            !!0E5B3H
+f4f7d        fcb3e500    CALL            sub_EEPROM_ReadString_e5b3
 f4f81        f0          CLRB            X
 f4f82        ef01        BR              $0F4F85H
 f4f84        80          INC             X
@@ -41240,7 +41251,7 @@ f4fc5        e5d1f6      ONEB            !0F6D1H
 f4fc8        5520        MOV             D,#20H
 f4fca        da20        MOVW            BC,0FFE20H
 f4fcc        a800        MOVW            AX,[SP+0H]
-f4fce        fcb3e500    CALL            !!0E5B3H
+f4fce        fcb3e500    CALL            sub_EEPROM_ReadString_e5b3
 f4fd2        16          MOVW            HL,AX
 f4fd3        f1          CLRB            A
 f4fd4        9b          MOV             [HL],A
@@ -41308,7 +41319,7 @@ f5061        f5e9f6      CLRB            !0F6E9H
 f5064        5510        MOV             D,#10H
 f5066        323ee1      MOVW            BC,#0E13EH
 f5069        a800        MOVW            AX,[SP+0H]
-f506b        fcb3e500    CALL            !!0E5B3H
+f506b        fcb3e500    CALL            sub_EEPROM_ReadString_e5b3
 f506f        1002        ADDW            SP,#2H
 f5071        c4          POP             DE
 f5072        c2          POP             BC
@@ -41332,7 +41343,7 @@ f5092        363a02      MOVW            HL,#23AH
 f5095        5506        MOV             D,#6H
 f5097        327ee1      MOVW            BC,#0E17EH
 f509a        17          MOVW            AX,HL
-f509b        fcb3e500    CALL            !!0E5B3H
+f509b        fcb3e500    CALL            sub_EEPROM_ReadString_e5b3
 f509f        c4          POP             DE
 f50a0        c2          POP             BC
 f50a1        d7          RET             
@@ -42060,7 +42071,7 @@ f57bf        530d        MOV             B,#0DH
 f57c1        5103        MOV             A,#3H
 f57c3        fcb2e100    CALL            !!0E1B2H
 f57c7        302203      MOVW            AX,#322H
-f57ca        fc63e500    CALL            sub_EEPROM_ReadDecAsHex_e563
+f57ca        fc63e500    CALL            sub_EEPROM_ReadByteDecAsHex_e563
 f57ce        70          MOV             X,A
 f57cf        f1          CLRB            A
 f57d0        32c201      MOVW            BC,#1C2H
@@ -42703,7 +42714,7 @@ f5e46        30c1c5      MOVW            AX,#0C5C1H
 f5e49        bfaaf5      MOVW            !0F5AAH,AX
 f5e4c        cfdaf643    MOV             !0F6DAH,#43H
 f5e50        302a03      MOVW            AX,#32AH
-f5e53        fc63e500    CALL            sub_EEPROM_ReadDecAsHex_e563
+f5e53        fc63e500    CALL            sub_EEPROM_ReadByteDecAsHex_e563
 f5e57        9fd9f6      MOV             !0F6D9H,A
 f5e5a        d5d9f6      CMP0            !0F6D9H
 f5e5d        61f8        SKNZ            
@@ -42714,7 +42725,7 @@ f5e6a        4c03        CMP             A,#3H
 f5e6c        61c8        SKC             
 f5e6e        cfd9f602    MOV             !0F6D9H,#2H
 f5e72        302903      MOVW            AX,#329H
-f5e75        fc63e500    CALL            sub_EEPROM_ReadDecAsHex_e563
+f5e75        fc63e500    CALL            sub_EEPROM_ReadByteDecAsHex_e563
 f5e79        9fd3f6      MOV             !0F6D3H,A
 f5e7c        d5cff6      CMP0            !0F6CFH
 f5e7f        dd15        BZ              $0F5E96H
@@ -43032,7 +43043,7 @@ f61ea        fcafd000    CALL            !!0D0AFH
 f61ee        cfdef61e    MOV             !0F6DEH,#1EH
 f61f2        eea600      BR              $!0F629BH
 f61f5        302503      MOVW            AX,#325H
-f61f8        fc63e500    CALL            sub_EEPROM_ReadDecAsHex_e563
+f61f8        fc63e500    CALL            sub_EEPROM_ReadByteDecAsHex_e563
 f61fc        70          MOV             X,A
 f61fd        f1          CLRB            A
 f61fe        32c201      MOVW            BC,#1C2H
@@ -44252,7 +44263,7 @@ f6dfa        ef5e        BR              $0F6E5AH
 f6dfc        5504        MOV             D,#4H
 f6dfe        dbf8ff      MOVW            BC,SP
 f6e01        30a603      MOVW            AX,#3A6H
-f6e04        fcb3e500    CALL            !!0E5B3H
+f6e04        fcb3e500    CALL            sub_EEPROM_ReadString_e5b3
 f6e08        5322        MOV             B,#22H
 f6e0a        e1          ONEB            A
 f6e0b        fcb2e100    CALL            !!0E1B2H
@@ -44308,7 +44319,7 @@ f6e69        fcb2e100    CALL            !!0E1B2H
 f6e6d        5504        MOV             D,#4H
 f6e6f        dbf8ff      MOVW            BC,SP
 f6e72        30aa03      MOVW            AX,#3AAH
-f6e75        fcb3e500    CALL            !!0E5B3H
+f6e75        fcb3e500    CALL            sub_EEPROM_ReadString_e5b3
 f6e79        ef8d        BR              $0F6E08H
 f6e7b        530d        MOV             B,#0DH
 f6e7d        e1          ONEB            A
@@ -45514,7 +45525,7 @@ f7afc        dd20        BZ              $0F7B1EH
 f7afe        5508        MOV             D,#8H
 f7b00        323ee1      MOVW            BC,#0E13EH
 f7b03        306201      MOVW            AX,#162H
-f7b06        fcb3e500    CALL            !!0E5B3H
+f7b06        fcb3e500    CALL            sub_EEPROM_ReadString_e5b3
 f7b0a        5508        MOV             D,#8H
 f7b0c        323ee1      MOVW            BC,#0E13EH
 f7b0f        30dc02      MOVW            AX,#2DCH
@@ -45791,7 +45802,7 @@ f7e0b        dd28        BZ              $0F7E35H
 f7e0d        5520        MOV             D,#20H
 f7e0f        323ee1      MOVW            BC,#0E13EH
 f7e12        30d000      MOVW            AX,#0D0H
-f7e15        fcb3e500    CALL            !!0E5B3H
+f7e15        fcb3e500    CALL            sub_EEPROM_ReadString_e5b3
 f7e19        d53ee1      CMP0            !0E13EH
 f7e1c        dd0d        BZ              $0F7E2BH
 f7e1e        302d00      MOVW            AX,#2DH
@@ -46296,7 +46307,7 @@ f82e0        f576f6      CLRB            !0F676H
 f82e3        e5d1f6      ONEB            !0F6D1H
 f82e6        323ee1      MOVW            BC,#0E13EH
 f82e9        a800        MOVW            AX,[SP+0H]
-f82eb        fcb3e500    CALL            !!0E5B3H
+f82eb        fcb3e500    CALL            sub_EEPROM_ReadString_e5b3
 f82ef        1002        ADDW            SP,#2H
 f82f1        c4          POP             DE
 f82f2        c2          POP             BC
@@ -46361,7 +46372,7 @@ f8377        f576f6      CLRB            !0F676H
 f837a        5510        MOV             D,#10H
 f837c        323ee1      MOVW            BC,#0E13EH
 f837f        a800        MOVW            AX,[SP+0H]
-f8381        fcb3e500    CALL            !!0E5B3H
+f8381        fcb3e500    CALL            sub_EEPROM_ReadString_e5b3
 f8385        1002        ADDW            SP,#2H
 f8387        c4          POP             DE
 f8388        c2          POP             BC
@@ -46394,7 +46405,7 @@ f83be        b800        MOVW            [SP+0H],AX
 f83c0        5506        MOV             D,#6H
 f83c2        327ee1      MOVW            BC,#0E17EH
 f83c5        17          MOVW            AX,HL
-f83c6        fcb3e500    CALL            !!0E5B3H
+f83c6        fcb3e500    CALL            sub_EEPROM_ReadString_e5b3
 f83ca        a800        MOVW            AX,[SP+0H]
 f83cc        fc288000    CALL            !!8028H
 f83d0        1002        ADDW            SP,#2H
@@ -46466,7 +46477,7 @@ f8469        e1          ONEB            A
 f846a        fcb2e100    CALL            !!0E1B2H
 f846e        f57af6      CLRB            !0F67AH
 f8471        302003      MOVW            AX,#320H
-f8474        fc63e500    CALL            sub_EEPROM_ReadDecAsHex_e563
+f8474        fc63e500    CALL            sub_EEPROM_ReadByteDecAsHex_e563
 f8478        70          MOV             X,A
 f8479        f1          CLRB            A
 f847a        32c201      MOVW            BC,#1C2H
@@ -47186,7 +47197,7 @@ f8b7f        d57ef6      CMP0            !0F67EH
 f8b82        61f8        SKNZ            
 f8b84        fc888000    CALL            !!8088H
 f8b88        302303      MOVW            AX,#323H
-f8b8b        fc63e500    CALL            sub_EEPROM_ReadDecAsHex_e563
+f8b8b        fc63e500    CALL            sub_EEPROM_ReadByteDecAsHex_e563
 f8b8f        70          MOV             X,A
 f8b90        f1          CLRB            A
 f8b91        bf4ae0      MOVW            !0E04AH,AX
@@ -47194,7 +47205,7 @@ f8b94        f6          CLRW            AX
 f8b95        424ae0      CMPW            AX,!0E04AH
 f8b98        df0c        BNZ             $0F8BA6H
 f8b9a        302003      MOVW            AX,#320H
-f8b9d        fc63e500    CALL            sub_EEPROM_ReadDecAsHex_e563
+f8b9d        fc63e500    CALL            sub_EEPROM_ReadByteDecAsHex_e563
 f8ba1        70          MOV             X,A
 f8ba2        f1          CLRB            A
 f8ba3        bf4ae0      MOVW            !0E04AH,AX
@@ -48092,23 +48103,23 @@ f9483        30c1c5      MOVW            AX,#0C5C1H
 f9486        bfaaf5      MOVW            !0F5AAH,AX
 f9489        f564f6      CLRB            !0F664H
 f948c        303503      MOVW            AX,#335H
-f948f        fc63e500    CALL            sub_EEPROM_ReadDecAsHex_e563
+f948f        fc63e500    CALL            sub_EEPROM_ReadByteDecAsHex_e563
 f9493        9f65f6      MOV             !0F665H,A
 f9496        302d03      MOVW            AX,#32DH
-f9499        fc63e500    CALL            sub_EEPROM_ReadDecAsHex_e563
+f9499        fc63e500    CALL            sub_EEPROM_ReadByteDecAsHex_e563
 f949d        9f6af6      MOV             !0F66AH,A
 f94a0        d565f6      CMP0            !0F665H
 f94a3        df06        BNZ             $0F94ABH
 f94a5        8f6af6      MOV             A,!0F66AH
 f94a8        9f65f6      MOV             !0F665H,A
 f94ab        302b03      MOVW            AX,#32BH
-f94ae        fc63e500    CALL            sub_EEPROM_ReadDecAsHex_e563
+f94ae        fc63e500    CALL            sub_EEPROM_ReadByteDecAsHex_e563
 f94b2        9f66f6      MOV             !0F666H,A
 f94b5        d566f6      CMP0            !0F666H
 f94b8        61f8        SKNZ            
 f94ba        cf66f603    MOV             !0F666H,#3H
 f94be        302803      MOVW            AX,#328H
-f94c1        fc63e500    CALL            sub_EEPROM_ReadDecAsHex_e563
+f94c1        fc63e500    CALL            sub_EEPROM_ReadByteDecAsHex_e563
 f94c5        9f63f6      MOV             !0F663H,A
 f94c8        8f65f6      MOV             A,!0F665H
 f94cb        72          MOV             C,A
@@ -48227,7 +48238,7 @@ f95f6        df20        BNZ             $0F9618H
 f95f8        5510        MOV             D,#10H
 f95fa        323ee1      MOVW            BC,#0E13EH
 f95fd        30b000      MOVW            AX,#0B0H
-f9600        fcb3e500    CALL            !!0E5B3H
+f9600        fcb3e500    CALL            sub_EEPROM_ReadString_e5b3
 f9604        d53ee1      CMP0            !0E13EH
 f9607        df07        BNZ             $0F9610H
 f9609        cf60f60d    MOV             !0F660H,#0DH
@@ -48241,7 +48252,7 @@ f961f        dd1c        BZ              $0F963DH
 f9621        5510        MOV             D,#10H
 f9623        323ee1      MOVW            BC,#0E13EH
 f9626        30be03      MOVW            AX,#3BEH
-f9629        fcb3e500    CALL            !!0E5B3H
+f9629        fcb3e500    CALL            sub_EEPROM_ReadString_e5b3
 f962d        d53ee1      CMP0            !0E13EH
 f9630        ddd7        BZ              $0F9609H
 f9632        f582f6      CLRB            !0F682H
@@ -48326,7 +48337,7 @@ f96ff        f5def6      CLRB            !0F6DEH
 f9702        cf60f60c    MOV             !0F660H,#0CH
 f9706        ee4902      BR              $!0F9952H
 f9709        302003      MOVW            AX,#320H
-f970c        fc63e500    CALL            sub_EEPROM_ReadDecAsHex_e563
+f970c        fc63e500    CALL            sub_EEPROM_ReadByteDecAsHex_e563
 f9710        70          MOV             X,A
 f9711        f1          CLRB            A
 f9712        32c201      MOVW            BC,#1C2H
@@ -48526,7 +48537,7 @@ f9909        d570f6      CMP0            !0F670H
 f990c        dd35        BZ              $0F9943H
 f990e        f45a        CLRB            0FFE5AH
 f9910        302403      MOVW            AX,#324H
-f9913        fc63e500    CALL            sub_EEPROM_ReadDecAsHex_e563
+f9913        fc63e500    CALL            sub_EEPROM_ReadByteDecAsHex_e563
 f9917        70          MOV             X,A
 f9918        f1          CLRB            A
 f9919        32c201      MOVW            BC,#1C2H
@@ -50402,7 +50413,7 @@ fac1a        d7          RET
 fac1b        c3          PUSH            BC
 fac1c        c5          PUSH            DE
 fac1d        301e03      MOVW            AX,#31EH
-fac20        fc77e500    CALL            !!0E577H
+fac20        fc77e500    CALL            sub_EEPROM_ReadDecAsHex_e577
 fac24        bfd8e0      MOVW            !0E0D8H,AX
 fac27        f7          CLRW            BC
 fac28        43          CMPW            AX,BC
@@ -50410,18 +50421,18 @@ fac29        df04        BNZ             $0FAC2FH
 fac2b        e6          ONEW            AX
 fac2c        bfd8e0      MOVW            !0E0D8H,AX
 fac2f        302f03      MOVW            AX,#32FH
-fac32        fc63e500    CALL            sub_EEPROM_ReadDecAsHex_e563
+fac32        fc63e500    CALL            sub_EEPROM_ReadByteDecAsHex_e563
 fac36        9f26f7      MOV             !0F726H,A
 fac39        31043c04    BF              0FFE3CH.0H,$0FAC41H
 fac3d        cf26f703    MOV             !0F726H,#3H
 fac41        302e03      MOVW            AX,#32EH
-fac44        fc63e500    CALL            sub_EEPROM_ReadDecAsHex_e563
+fac44        fc63e500    CALL            sub_EEPROM_ReadByteDecAsHex_e563
 fac48        9f27f7      MOV             !0F727H,A
 fac4b        31043c04    BF              0FFE3CH.0H,$0FAC53H
 fac4f        cf27f70f    MOV             !0F727H,#0FH
 fac53        cf2df730    MOV             !0F72DH,#30H
 fac57        30fa02      MOVW            AX,#2FAH
-fac5a        fc63e500    CALL            sub_EEPROM_ReadDecAsHex_e563
+fac5a        fc63e500    CALL            sub_EEPROM_ReadByteDecAsHex_e563
 fac5e        70          MOV             X,A
 fac5f        f1          CLRB            A
 fac60        a1          INCW            AX
@@ -50441,7 +50452,7 @@ fac82        9f31f7      MOV             !0F731H,A
 fac85        cf2bf720    MOV             !0F72BH,#20H
 fac89        cf2cf720    MOV             !0F72CH,#20H
 fac8d        302103      MOVW            AX,#321H
-fac90        fc63e500    CALL            sub_EEPROM_ReadDecAsHex_e563
+fac90        fc63e500    CALL            sub_EEPROM_ReadByteDecAsHex_e563
 fac94        70          MOV             X,A
 fac95        f1          CLRB            A
 fac96        32c201      MOVW            BC,#1C2H
@@ -50454,7 +50465,7 @@ faca8        bfe0e0      MOVW            !0E0E0H,AX
 facab        300300      MOVW            AX,#3H
 facae        bfe2e0      MOVW            !0E0E2H,AX
 facb1        303603      MOVW            AX,#336H
-facb4        fc63e500    CALL            sub_EEPROM_ReadDecAsHex_e563
+facb4        fc63e500    CALL            sub_EEPROM_ReadByteDecAsHex_e563
 facb8        9f25f7      MOV             !0F725H,A
 facbb        8f25f7      MOV             A,!0F725H
 facbe        91          DEC             A
@@ -50463,10 +50474,10 @@ facc1        61c8        SKC
 facc3        cf25f704    MOV             !0F725H,#4H
 facc7        fcfdab00    CALL            !!0ABFDH
 faccb        301a03      MOVW            AX,#31AH
-facce        fc63e500    CALL            sub_EEPROM_ReadDecAsHex_e563
+facce        fc63e500    CALL            sub_EEPROM_ReadByteDecAsHex_e563
 facd2        9f28f7      MOV             !0F728H,A
 facd5        301c03      MOVW            AX,#31CH
-facd8        fc63e500    CALL            sub_EEPROM_ReadDecAsHex_e563
+facd8        fc63e500    CALL            sub_EEPROM_ReadByteDecAsHex_e563
 facdc        9f29f7      MOV             !0F729H,A
 facdf        712201      SET1            P1.2H
 face2        303403      MOVW            AX,#334H
@@ -54448,7 +54459,7 @@ fd035        83          INC             B
 fd036        63          MOV             A,B
 fd037        9f39f6      MOV             !0F639H,A
 fd03a        300f03      MOVW            AX,#30FH
-fd03d        fc63e500    CALL            sub_EEPROM_ReadDecAsHex_e563
+fd03d        fc63e500    CALL            sub_EEPROM_ReadByteDecAsHex_e563
 fd041        6143        CMP             B,A
 fd043        dc64        BC              $0FD0A9H
 fd045        f539f6      CLRB            !0F639H
@@ -55203,12 +55214,12 @@ fd60c        de0d        BNC             $0FD61BH
 fd60e        5508        MOV             D,#8H
 fd610        da20        MOVW            BC,0FFE20H
 fd612        30cc02      MOVW            AX,#2CCH
-fd615        fcb3e500    CALL            !!0E5B3H
+fd615        fcb3e500    CALL            sub_EEPROM_ReadString_e5b3
 fd619        ef49        BR              $0FD664H
 fd61b        5508        MOV             D,#8H
 fd61d        da20        MOVW            BC,0FFE20H
 fd61f        30bc02      MOVW            AX,#2BCH
-fd622        fcb3e500    CALL            !!0E5B3H
+fd622        fcb3e500    CALL            sub_EEPROM_ReadString_e5b3
 fd626        ef3c        BR              $0FD664H
 fd628        4c02        CMP             A,#2H
 fd62a        df07        BNZ             $0FD633H
@@ -55230,12 +55241,12 @@ fd64a        de0d        BNC             $0FD659H
 fd64c        5508        MOV             D,#8H
 fd64e        da20        MOVW            BC,0FFE20H
 fd650        30c402      MOVW            AX,#2C4H
-fd653        fcb3e500    CALL            !!0E5B3H
+fd653        fcb3e500    CALL            sub_EEPROM_ReadString_e5b3
 fd657        ef0b        BR              $0FD664H
 fd659        5508        MOV             D,#8H
 fd65b        da20        MOVW            BC,0FFE20H
 fd65d        30b402      MOVW            AX,#2B4H
-fd660        fcb3e500    CALL            !!0E5B3H
+fd660        fcb3e500    CALL            sub_EEPROM_ReadString_e5b3
 fd664        f3          CLRB            B
 fd665        ef01        BR              $0FD668H
 fd667        83          INC             B
