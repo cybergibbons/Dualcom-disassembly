@@ -8,12 +8,5 @@ P14.1H -> EEPROM_CS_IC8
 Add subs:
 :sub_EEPROM_Read_e3f0
 	:sub_EEPROM_Init_e3c7
-	:sub_EEPROM_Send_e388
-
-:sub_EEPROM_ReadReturnReg_e55b
-
-:sub_EEPROM_ReadDecAsHex_e563
-
-
-
+	sub_EEPROM_Send_e388
 
