@@ -1,5 +1,6 @@
 030414
 
+Replace:
 P11.1H -> EEPROM_DI
 P2.0H -> EEPROM_DO
 P14.2H -> EEPROM_CLK
@@ -14,6 +15,16 @@ Add subs:
 :sub_EEPROM_ReadDecAsHex_e577
 :sub_EEPROM_ReadString_e5b3
 
+040414
+
+Add subs:
+:sub_EEPROM_ReadHexAsAscci_0e643
+
+E17E is address of ICCID in RAM
 
 
+HS 	122c
+	1a7a
 
+DC 123e
+	1a84
