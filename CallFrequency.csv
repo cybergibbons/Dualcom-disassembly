@@ -1,24 +1,24 @@
-0E1B2,182
-0E541,160
-0E1D1,143
-0D764,120
+0E1B2,182 // sub_Serial_WriteChar_e1b3 
+0E541,160 // sub_EEPROM_ReadByte_e541
+0E1D1,143 // sub_Serial_WriteString_e1d1
+0D764,120 // sub_Serial_ResetBuffers
 0DC44,105
 0DED3,82
-0DACC,79
-0E322,68 
-0E1F5,67
-0E55B,61
+0DACC,79 // Something to do with Serial buffers
+0E322,68 // sub_Serial_WriteStringAT_UART1_e322
+0E1F5,67 // sub_Serial_WriteStringTerminate_e1f5
+0E55B,61 // sub_EEPROM_ReadReturnReg_e55b
 0E6F9,52 // possibly writing EEPROM
-9BBE,50
-0E6E8,50
+9BBE,50 // sub_7Seg_Write_v1_9bbe 
+0E6E8,50 // sub_EEPROM_WriteGuard_e6e8
 50B,48
-9BA9,47
-0B8EA,44
-0E563,44
+9BA9,47 // sub_7Seg_Write_v2_9ba9
+0B8EA,44 // looks like a state machine
+0E563,44 // sub_EEPROM_ReadByteDecAsHex_e563
 4C4,44
-0E204,41
-216,38
-0E71A,31
+0E204,41 // sub_Serial_WriteHexAsDec_e204
+216,38 // sub_Multiply_216
+0E71A,31 // EEPROM write with a read before - not quite sure
 0E5B3,30 // sub_EEPROM_ReadString_e5b3
 12E31,29
 0E698,25

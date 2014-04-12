@@ -741,13 +741,13 @@ H,47,00
 00
 47
 32
-96
+96 // incremented at about 108fc
 6F
 00
 00
+00 // incremented at about 108dc
 00
-00
-7B
+7B // incremented at about 108bc
 04
 FB
 FF
@@ -816,7 +816,7 @@ C9
 5A
 00
 30
-04
+04 -- This is what is sent after DC!
 10
 05
 02
