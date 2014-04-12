@@ -20,33 +20,33 @@
 216,38 // sub_Multiply_216
 0E71A,31 // EEPROM write with a read before - not quite sure
 0E5B3,30 // sub_EEPROM_ReadString_e5b3
-12E31,29
-0E698,25
-0E29D,25
-115BD,24
-0E82D,23
+12E31,29 // sub_Buzzer_12e31
+0E698,25 // sub_EEPROM_CopyToRam_e698
+0E29D,25 // writes to serial, lots of comparisons
+115BD,24 // sub_EEPROM_IncrementBufferPointer_115bd
+0E82D,23 // EEPROM write in here
 0BBD7,22 // Copy memory from address to address stored at e0ea
-0DC9A,21
-9B84,21
+0DC9A,21 // Calls DACC, serial buffer?
+9B84,21 // sub_7Seg_WriteSegment_9b84
 0ABC4,19
-17F,19
+17F,19 // sub_DivideRemainder_17f
 116EC,17 // Seems to be writing to SMD EEPROM
-0CDDF,16
-0D0AF,16
+0CDDF,16 // Very XORy. Encryption?
+0D0AF,16 // Looks like buffer reset
 0F904,15
 2A95,15 // Copy memory from DE -> &df8e
-12E6B,14
-0E365,14
+12E6B,14 // sub_BuzzerStop_12e6b
+0E365,14 // sub_Serial_WriteStringAT_UART3_e365
 242,14
 0D8CC,14
-0FCB1,13
-139C9,13
-10959,13
-1096D,13
-9B7F,13
+0FCB1,13 // seems to just look until an address is changed. odd.
+139C9,13 // Very often called after DACC
+10959,13 // UART3
+1096D,13 // UART3
+9B7F,13 // just clears two memory addresses
 231,12
-11929,12
-8147,12
+11929,12 // SMD EEPROM
+8147,12 // open TCP/IP connection?
 0D123,11
 25A,11
 1399D,11
