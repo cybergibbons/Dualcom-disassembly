@@ -25,7 +25,7 @@
 0E29D,25 // writes to serial, lots of comparisons
 115BD,24 // sub_EEPROM_IncrementBufferPointer_115bd
 0E82D,23 // EEPROM write in here
-0BBD7,22 // Copy memory from address to address stored at e0ea
+0BBD7,22 // Copy memory from address to address stored at e0ea - uses bbcb
 0DC9A,21 // Calls DACC, serial buffer?
 9B84,21 // sub_7Seg_WriteSegment_9b84
 0ABC4,19
@@ -47,16 +47,16 @@
 231,12
 11929,12 // SMD EEPROM
 8147,12 // open TCP/IP connection?
-0D123,11
+0D123,11 // Very similar to D13C
 25A,11
 1399D,11
 0CF14,11
-171,11
+171,11 // sub_Divide_171
 10000,11
-0BBCB,11
-2A89,10
-1FC,10
-0D13C,10
+0BBCB,11 // Copies into address stored at E0EA
+2A89,10 // Copies into address stored at DF8E
+1FC,10 // :sub_Exponent_1fc
+0D13C,10 // Very similar to D123
 2AA5,10
 0CFC9,10
 0D1C5,10
@@ -116,7 +116,7 @@
 0BB07,3
 0E451,3
 2A2F,3
-2C76,3
+2C76,3 // Huge state machine
 0B555,3
 0D102,3
 6A0F,3
@@ -171,7 +171,7 @@
 113C1,2
 0DCD8,2
 5CBE,2
-0BBAD,2
+0BBAD,2 // Think this converts battery reading to voltage
 0CF7A,2
 0E740,2
 1168B,2

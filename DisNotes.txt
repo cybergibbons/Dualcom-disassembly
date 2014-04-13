@@ -39,3 +39,16 @@ P5.5H -> OUT_AUX
 P9.0H -> OUT_FLT
 P2.1H -> GRPS_CTS
 P0.2H -> GPRS_CTM
+
+120114
+
+0xE05C is a pointer into SMD EEPROM for some kind of buffer
+
+0F760H looks to be the type of GPRS module (from 8147 sub)
+
+0F662H looks to be the context
+
+e13e is adddress for IP
+
+Addresses
+E17E is UP from 0x90 in EEPROM 192

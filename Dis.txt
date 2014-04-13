@@ -366,6 +366,8 @@ Project Name :DebugCSL
 	001fa        c6          POP             HL
 	001fb        d7          RET
 
+// AX * 2^C
+:sub_Exponent_1fc
 001fc        c3          PUSH            BC
 001fd        82          INC             C
 001fe        92          DEC             C
@@ -374,7 +376,6 @@ Project Name :DebugCSL
 00202        43          CMPW            AX,BC
 00203        c2          POP             BC
 00204        d7          RET  
-
 00205        01          ADDW            AX,AX
 00206        eef5ff      BR              $!1FEH
 00209        c3          PUSH            BC
@@ -4648,6 +4649,8 @@ Project Name :DebugCSL
 	02a87        e1          ONEB            A
 	02a88        d7          RET             
 
+// Copies into buffer stored in df8e
+:sub_CopyToBuffer_SingleChar_2a89
 	02a89        fb8edf      MOVW            HL,!0DF8EH
 	02a8c        9b          MOV             [HL],A
 	02a8d        af8edf      MOVW            AX,!0DF8EH
@@ -4658,11 +4661,12 @@ Project Name :DebugCSL
 // TOP 37
 // Called 15 times
 // Copy DE null terminated to !df8e
+:sub_CopyToBuffer_2a95
 	02a95        c5          PUSH            DE
 	02a96        14          MOVW            DE,AX
 	02a97        ef06        BR              $2A9FH
 	02a99        89          MOV             A,[DE]
-	02a9a        fc892a00    CALL            !!2A89H
+	02a9a        fc892a00    CALL            sub_CopyToBuffer_SingleChar_2a89
 	02a9e        a5          INCW            DE
 	02a9f        89          MOV             A,[DE]
 	02aa0        d1          CMP0            A
@@ -4670,46 +4674,48 @@ Project Name :DebugCSL
 	02aa3        c4          POP             DE
 	02aa4        d7          RET   
 
-// 
+// Looks like converstion into decimal, store to buffer
+:sub_CopyToBuffer_ConvertHexToDec_2aa5
 	02aa5        c3          PUSH            BC
 	02aa6        c5          PUSH            DE
 	02aa7        14          MOVW            DE,AX
 	02aa8        320a00      MOVW            BC,#0AH
 	02aab        fd3102      CALL            sub_DivideResultZero_231
 	02aae        61e8        SKZ             
-	02ab0        fca52a00    CALL            !!2AA5H
+	02ab0        fca52a00    CALL            sub_CopyToBuffer_ConvertHexToDec_2aa5
 	02ab4        520a        MOV             C,#0AH
 	02ab6        15          MOVW            AX,DE
 	02ab7        fd3902      CALL            sub_DivideRemainderZero_239
 	02aba        16          MOVW            HL,AX
 	02abb        66          MOV             A,L
 	02abc        0c30        ADD             A,#30H
-	02abe        fc892a00    CALL            !!2A89H
+	02abe        fc892a00    CALL            sub_CopyToBuffer_SingleChar_2a89
 	02ac2        c4          POP             DE
 	02ac3        c2          POP             BC
 	02ac4        d7          RET  
 
-02ac5        c3          PUSH            BC
-02ac6        73          MOV             B,A
-02ac7        314a        SHR             A,4H
-02ac9        4c0a        CMP             A,#0AH
-02acb        de08        BNC             $2AD5H
-02acd        0c30        ADD             A,#30H
-02acf        fc892a00    CALL            !!2A89H
-02ad3        ef06        BR              $2ADBH
-02ad5        0c37        ADD             A,#37H
-02ad7        fc892a00    CALL            !!2A89H
-02adb        63          MOV             A,B
-02adc        5c0f        AND             A,#0FH
-02ade        4c0a        CMP             A,#0AH
-02ae0        de08        BNC             $2AEAH
-02ae2        0c30        ADD             A,#30H
-02ae4        fc892a00    CALL            !!2A89H
-02ae8        ef06        BR              $2AF0H
-02aea        0c37        ADD             A,#37H
-02aec        fc892a00    CALL            !!2A89H
-02af0        c2          POP             BC
-02af1        d7          RET
+:sub_CopyToBuffer_Convert_2ac5
+	02ac5        c3          PUSH            BC
+	02ac6        73          MOV             B,A
+	02ac7        314a        SHR             A,4H
+	02ac9        4c0a        CMP             A,#0AH
+	02acb        de08        BNC             $2AD5H
+	02acd        0c30        ADD             A,#30H // convert to ASCII
+	02acf        fc892a00    CALL            sub_CopyToBuffer_SingleChar_2a89
+	02ad3        ef06        BR              $2ADBH
+	02ad5        0c37        ADD             A,#37H
+	02ad7        fc892a00    CALL            sub_CopyToBuffer_SingleChar_2a89
+	02adb        63          MOV             A,B
+	02adc        5c0f        AND             A,#0FH
+	02ade        4c0a        CMP             A,#0AH
+	02ae0        de08        BNC             $2AEAH
+	02ae2        0c30        ADD             A,#30H
+	02ae4        fc892a00    CALL            sub_CopyToBuffer_SingleChar_2a89
+	02ae8        ef06        BR              $2AF0H
+	02aea        0c37        ADD             A,#37H
+	02aec        fc892a00    CALL            sub_CopyToBuffer_SingleChar_2a89
+	02af0        c2          POP             BC
+	02af1        d7          RET
 
 02af2        c3          PUSH            BC
 02af3        c5          PUSH            DE
@@ -4768,8 +4774,8 @@ Project Name :DebugCSL
 02b6f        eefe00      BR              $!2C70H
 02b72        e450        ONEB            0FFE50H
 02b74        5520        MOV             D,#20H
-02b76        327ee1      MOVW            BC,#0E17EH
-02b79        309000      MOVW            AX,#90H
+02b76        327ee1      MOVW            BC,#0E17EH // Address for IP
+02b79        309000      MOVW            AX,#90H // 172.16.10.10:9000 - IP address
 02b7c        fcb3e500    CALL            sub_EEPROM_ReadString_e5b3
 02b80        cf9ee1ff    MOV             !0E19EH,#0FFH
 02b84        30ca08      MOVW            AX,#8CAH
@@ -4781,7 +4787,7 @@ Project Name :DebugCSL
 02b96        440180      CMPW            AX,#8001H
 02b99        61c8        SKC             
 02b9b        eed200      BR              $!2C70H
-02b9e        324a10      MOVW            BC,#104AH
+02b9e        324a10      MOVW            BC,#104AH // ATD
 02ba1        65          MOV             A,D
 02ba2        fcd1e100    CALL            sub_Serial_WriteString_e1d1
 02ba6        327ee1      MOVW            BC,#0E17EH
@@ -4859,6 +4865,7 @@ Project Name :DebugCSL
 02c74        c2          POP             BC
 02c75        d7          RET
 
+// Massive state machine 
 02c76        c3          PUSH            BC
 02c77        c5          PUSH            DE
 02c78        fdc404      CALL            !4C4H
@@ -4928,7 +4935,7 @@ Project Name :DebugCSL
 02d1b        61f8        SKNZ            
 02d1d        ee3104      BR              $!3151H
 02d20        2c0a        SUB             A,#0AH
-02d22        dd55        BZ              $2D79H
+02d22        dd55        BZ              $2D79H // This appears to be big status update
 02d24        91          DEC             A
 02d25        61f8        SKNZ            
 02d27        eef703      BR              $!3121H
@@ -4969,6 +4976,7 @@ Project Name :DebugCSL
 02d71        61f8        SKNZ            
 02d73        ee3904      BR              $!31AFH
 02d76        ee6004      BR              $!31D9H
+
 02d79        8d20        MOV             A,0FFE20H
 02d7b        fcccda00    CALL            !!0DACCH
 02d7f        4c0d        CMP             A,#0DH
@@ -4983,57 +4991,57 @@ Project Name :DebugCSL
 // table of addresses
 // " : GSM "
 // " : Signal " etc.
-02d8c        af501c      MOVW            AX,!1C50H
-02d8f        fc952a00    CALL            !!2A95H
+02d8c        af501c      MOVW            AX,!1C50H // 1da4 // " : GSM "
+02d8f        fc952a00    CALL            sub_CopyToBuffer_2a95
 
 // This is incremented somewhere else
-02d93        30ec02      MOVW            AX,#2ECH
+02d93        30ec02      MOVW            AX,#2ECH // 00
 02d96        fc5be500    CALL            sub_EEPROM_ReadReturnReg_e55b
-02d9a        fca52a00    CALL            !!2AA5H
+02d9a        fca52a00    CALL            sub_CopyToBuffer_ConvertHexToDec_2aa5 // Store in buffer
 
-02d9e        af4a1c      MOVW            AX,!1C4AH
-02da1        fc952a00    CALL            !!2A95H
-02da5        30e802      MOVW            AX,#2E8H
+02d9e        af4a1c      MOVW            AX,!1C4AH // 1d88 // " : GPRS "
+02da1        fc952a00    CALL            sub_CopyToBuffer_2a95
+02da5        30e802      MOVW            AX,#2E8H // 96
 02da8        fc5be500    CALL            sub_EEPROM_ReadReturnReg_e55b
-02dac        fca52a00    CALL            !!2AA5H
+02dac        fca52a00    CALL            sub_CopyToBuffer_ConvertHexToDec_2aa5
 
-02db0        af4e1c      MOVW            AX,!1C4EH
-02db3        fc952a00    CALL            !!2A95H
-02db7        30ee02      MOVW            AX,#2EEH
+02db0        af4e1c      MOVW            AX,!1C4EH // 1d9a // " : PSTN "
+02db3        fc952a00    CALL            sub_CopyToBuffer_2a95
+02db7        30ee02      MOVW            AX,#2EEH // 78
 02dba        fc5be500    CALL            sub_EEPROM_ReadReturnReg_e55b
-02dbe        fca52a00    CALL            !!2AA5H
+02dbe        fca52a00    CALL            sub_CopyToBuffer_ConvertHexToDec_2aa5
 
-02dc2        af4c1c      MOVW            AX,!1C4CH
-02dc5        fc952a00    CALL            !!2A95H
-02dc9        30ea02      MOVW            AX,#2EAH
+02dc2        af4c1c      MOVW            AX,!1C4CH // 1d92 // " : LAN "
+02dc5        fc952a00    CALL            sub_CopyToBuffer_2a95
+02dc9        30ea02      MOVW            AX,#2EAH // 00
 02dcc        fc5be500    CALL            sub_EEPROM_ReadReturnReg_e55b
-02dd0        fca52a00    CALL            !!2AA5H
+02dd0        fca52a00    CALL            sub_CopyToBuffer_ConvertHexToDec_2aa5
 
-02dd4        af601c      MOVW            AX,!1C60H
-02dd7        fc952a00    CALL            !!2A95H
+02dd4        af601c      MOVW            AX,!1C60H // 1dee " : Chns "
+02dd7        fc952a00    CALL            sub_CopyToBuffer_2a95
 
 02ddb        e3          ONEB            B
 02ddc        af8edf      MOVW            AX,!0DF8EH
 02ddf        fc5bd200    CALL            !!0D25BH
 02de3        bf8edf      MOVW            !0DF8EH,AX
-02de6        af521c      MOVW            AX,!1C52H
-02de9        fc952a00    CALL            !!2A95H
+02de6        af521c      MOVW            AX,!1C52H // 1dac // " : Signal "
+02de9        fc952a00    CALL            sub_CopyToBuffer_2a95
 02ded        8f9bf6      MOV             A,!0F69BH
 02df0        70          MOV             X,A
 02df1        f1          CLRB            A
-02df2        fca52a00    CALL            !!2AA5H
-02df6        af561c      MOVW            AX,!1C56H
-02df9        fc952a00    CALL            !!2A95H
+02df2        fca52a00    CALL            sub_CopyToBuffer_ConvertHexToDec_2aa5
+02df6        af561c      MOVW            AX,!1C56H // 1dc0 // " : Line "
+02df9        fc952a00    CALL            sub_CopyToBuffer_2a95
 02dfd        8d2c        MOV             A,0FFE2CH
-02dff        fcc52a00    CALL            !!2AC5H
+02dff        fcc52a00    CALL            sub_CopyToBuffer_Convert_2ac5
 02e03        3164312f    BF              0FFE31H.6H,$2E36H
-02e07        af581c      MOVW            AX,!1C58H
-02e0a        fc952a00    CALL            !!2A95H
+02e07        af581c      MOVW            AX,!1C58H // 1dca // " : Radio "
+02e0a        fc952a00    CALL            sub_CopyToBuffer_2a95
 02e0e        3144370b    BF              0FFE37H.4H,$2E1DH
 02e12        8f98f6      MOV             A,!0F698H
 02e15        70          MOV             X,A
 02e16        f1          CLRB            A
-02e17        fca52a00    CALL            !!2AA5H
+02e17        fca52a00    CALL            sub_CopyToBuffer_ConvertHexToDec_2aa5
 02e1b        ef19        BR              $2E36H
 02e1d        d598f6      CMP0            !0F698H
 02e20        dd0d        BZ              $2E2FH
@@ -5047,57 +5055,59 @@ Project Name :DebugCSL
 02e2f        f6          CLRW            AX
 02e30        16          MOVW            HL,AX
 02e31        17          MOVW            AX,HL
-02e32        fca52a00    CALL            !!2AA5H
+02e32        fca52a00    CALL            sub_CopyToBuffer_ConvertHexToDec_2aa5
 02e36        31342f10    BF              0FFE2FH.3H,$2E4AH
-02e3a        af5a1c      MOVW            AX,!1C5AH
-02e3d        fc952a00    CALL            !!2A95H
+02e3a        af5a1c      MOVW            AX,!1C5AH // 1dd4
+02e3d        fc952a00    CALL            sub_CopyToBuffer_2a95
 02e41        8fd8f6      MOV             A,!0F6D8H
 02e44        70          MOV             X,A
 02e45        f1          CLRB            A
-02e46        fca52a00    CALL            !!2AA5H
-02e4a        af5c1c      MOVW            AX,!1C5CH
-02e4d        fc952a00    CALL            !!2A95H
+02e46        fca52a00    CALL            sub_CopyToBuffer_ConvertHexToDec_2aa5
+02e4a        af5c1c      MOVW            AX,!1C5CH // 1dde // " : Flt "
+02e4d        fc952a00    CALL            sub_CopyToBuffer_2a95
 02e51        8d3a        MOV             A,0FFE3AH
-02e53        fcc52a00    CALL            !!2AC5H
-02e57        af5e1c      MOVW            AX,!1C5EH
-02e5a        fc952a00    CALL            !!2A95H
+02e53        fcc52a00    CALL            sub_CopyToBuffer_Convert_2ac5
+02e57        af5e1c      MOVW            AX,!1C5EH // 1de6 // " : Err "
+02e5a        fc952a00    CALL            sub_CopyToBuffer_2a95
 02e5e        8d3c        MOV             A,0FFE3CH
-02e60        fcc52a00    CALL            !!2AC5H
-02e64        af661c      MOVW            AX,!1C66H
-02e67        fc952a00    CALL            !!2A95H
+02e60        fcc52a00    CALL            sub_CopyToBuffer_Convert_2ac5 
+02e64        af661c      MOVW            AX,!1C66H // 1e0a // " : Poll "
+02e67        fc952a00    CALL            sub_CopyToBuffer_2a95
 02e6b        8d32        MOV             A,0FFE32H
-02e6d        fcc52a00    CALL            !!2AC5H
-02e71        af681c      MOVW            AX,!1C68H
-02e74        fc952a00    CALL            !!2A95H
+02e6d        fcc52a00    CALL            sub_CopyToBuffer_Convert_2ac5
+02e71        af681c      MOVW            AX,!1C68H // 1e14 // " : Pty "
+02e74        fc952a00    CALL            sub_CopyToBuffer_2a95
 02e78        8f31f6      MOV             A,!0F631H
-02e7b        fcc52a00    CALL            !!2AC5H
-02e7f        af621c      MOVW            AX,!1C62H
-02e82        fc952a00    CALL            !!2A95H
-02e86        fcadbb00    CALL            !!0BBADH
-02e8a        fca52a00    CALL            !!2AA5H
-02e8e        510d        MOV             A,#0DH
-02e90        fc892a00    CALL            !!2A89H
-02e94        f1          CLRB            A
-02e95        fc892a00    CALL            !!2A89H
+02e7b        fcc52a00    CALL            sub_CopyToBuffer_Convert_2ac5
+02e7f        af621c      MOVW            AX,!1C62H // 1df8 " : Bat "
+02e82        fc952a00    CALL            sub_CopyToBuffer_2a95
+02e86        fcadbb00    CALL            !!0BBADH // Think this is battery reading
+02e8a        fca52a00    CALL            sub_CopyToBuffer_ConvertHexToDec_2aa5
+02e8e        510d        MOV             A,#0DH // \r
+02e90        fc892a00    CALL            sub_CopyToBuffer_SingleChar_2a89
+02e94        f1          CLRB            A // Null terminate
+02e95        fc892a00    CALL            sub_CopyToBuffer_SingleChar_2a89
 02e99        307ee1      MOVW            AX,#0H
 02e9c        bf8edf      MOVW            !0DF8EH,AX
 02e9f        ef12        BR              $2EB3H
-02ea1        fb8edf      MOVW            HL,!0DF8EH
-02ea4        c7          PUSH            HL
-02ea5        c4          POP             DE
-02ea6        15          MOVW            AX,DE
-02ea7        a1          INCW            AX
-02ea8        bf8edf      MOVW            !0DF8EH,AX
-02eab        8b          MOV             A,[HL]
-02eac        73          MOV             B,A
-02ead        8d20        MOV             A,0FFE20H
-02eaf        fcb2e100    CALL            sub_Serial_WriteChar_e1b3
+	02ea1        fb8edf      MOVW            HL,!0DF8EH 
+	02ea4        c7          PUSH            HL
+	02ea5        c4          POP             DE
+	02ea6        15          MOVW            AX,DE
+	02ea7        a1          INCW            AX
+	02ea8        bf8edf      MOVW            !0DF8EH,AX
+	02eab        8b          MOV             A,[HL]
+	02eac        73          MOV             B,A
+	02ead        8d20        MOV             A,0FFE20H
+	02eaf        fcb2e100    CALL            sub_Serial_WriteChar_e1b3
 02eb3        fb8edf      MOVW            HL,!0DF8EH
 02eb6        8b          MOV             A,[HL]
-02eb7        d1          CMP0            A
+02eb7        d1          CMP0            A // Check that it is null terminated
 02eb8        dfe7        BNZ             $2EA1H
 02eba        e51df6      ONEB            !0F61DH
 02ebd        ee1903      BR              $!31D9H
+
+// State
 02ec0        8d20        MOV             A,0FFE20H
 02ec2        fcccda00    CALL            !!0DACCH
 02ec6        fcc93901    CALL            !!139C9H
@@ -5109,6 +5119,8 @@ Project Name :DebugCSL
 02ed5        4c0d        CMP             A,#0DH
 02ed7        61e8        SKZ             
 02ed9        eefd02      BR              $!31D9H
+
+
 02edc        63          MOV             A,B
 02edd        4c52        CMP             A,#52H
 02edf        8d20        MOV             A,0FFE20H
@@ -5131,42 +5143,48 @@ Project Name :DebugCSL
 02f07        fcb2e100    CALL            sub_Serial_WriteChar_e1b3
 02f0b        e51df6      ONEB            !0F61DH
 02f0e        eec802      BR              $!31D9H
-02f11        8d20        MOV             A,0FFE20H
-02f13        fcccda00    CALL            !!0DACCH
-02f17        73          MOV             B,A
-02f18        4c0d        CMP             A,#0DH
-02f1a        dd0d        BZ              $2F29H
-02f1c        8d20        MOV             A,0FFE20H
-02f1e        fcccda00    CALL            !!0DACCH
-02f22        4c0d        CMP             A,#0DH
-02f24        61e8        SKZ             
-02f26        eeb002      BR              $!31D9H
-02f29        63          MOV             A,B
-02f2a        4c31        CMP             A,#31H
-02f2c        e1          ONEB            A
-02f2d        61e8        SKZ             
-02f2f        f1          CLRB            A
-02f30        9f0ef6      MOV             !0F60EH,A
-02f33        324610      MOVW            BC,#1046H
-02f36        8d20        MOV             A,0FFE20H
-02f38        fcf5e100    CALL            sub_Serial_WriteStringTerminate_e1f5
-02f3c        e51df6      ONEB            !0F61DH
-02f3f        ee9702      BR              $!31D9H
-02f42        8d20        MOV             A,0FFE20H
-02f44        fcccda00    CALL            !!0DACCH
-02f48        4c4f        CMP             A,#4FH
-02f4a        61e8        SKZ             
-02f4c        ee8a02      BR              $!31D9H
-02f4f        324e10      MOVW            BC,#104EH
-02f52        8d20        MOV             A,0FFE20H
-02f54        fcd3de00    CALL            !!0DED3H
-02f58        d1          CMP0            A
-02f59        61f8        SKNZ            
-02f5b        ee7b02      BR              $!31D9H
+
+// State 
+	02f11        8d20        MOV             A,0FFE20H
+	02f13        fcccda00    CALL            !!0DACCH
+	02f17        73          MOV             B,A
+	02f18        4c0d        CMP             A,#0DH
+	02f1a        dd0d        BZ              $2F29H
+	02f1c        8d20        MOV             A,0FFE20H
+	02f1e        fcccda00    CALL            !!0DACCH
+	02f22        4c0d        CMP             A,#0DH
+	02f24        61e8        SKZ             
+	02f26        eeb002      BR              $!31D9H
+	02f29        63          MOV             A,B
+	02f2a        4c31        CMP             A,#31H
+	02f2c        e1          ONEB            A
+	02f2d        61e8        SKZ             
+	02f2f        f1          CLRB            A
+	02f30        9f0ef6      MOV             !0F60EH,A
+	02f33        324610      MOVW            BC,#1046H
+	02f36        8d20        MOV             A,0FFE20H
+	02f38        fcf5e100    CALL            sub_Serial_WriteStringTerminate_e1f5
+	02f3c        e51df6      ONEB            !0F61DH
+	02f3f        ee9702      BR              $!31D9H
+
+// State
+	02f42        8d20        MOV             A,0FFE20H
+	02f44        fcccda00    CALL            !!0DACCH
+	02f48        4c4f        CMP             A,#4FH
+	02f4a        61e8        SKZ             
+	02f4c        ee8a02      BR              $!31D9H
+	02f4f        324e10      MOVW            BC,#104EH
+	02f52        8d20        MOV             A,0FFE20H
+	02f54        fcd3de00    CALL            !!0DED3H
+	02f58        d1          CMP0            A
+	02f59        61f8        SKNZ            
+	02f5b        ee7b02      BR              $!31D9H
 02f5e        f6          CLRW            AX
 02f5f        b1          DECW            AX
 02f60        bfc8f5      MOVW            !0F5C8H,AX
 02f63        ee7302      BR              $!31D9H
+
+// State
 02f66        30fc02      MOVW            AX,#2FCH
 02f69        fc41e500    CALL            sub_EEPROM_ReadByte_e541
 02f6d        72          MOV             C,A
@@ -5215,6 +5233,8 @@ Project Name :DebugCSL
 02fcf        8d20        MOV             A,0FFE20H
 02fd1        fc2f2a00    CALL            !!2A2FH
 02fd5        ee0102      BR              $!31D9H
+
+// State
 02fd8        f2          CLRB            C
 02fd9        ef09        BR              $2FE4H
 02fdb        fcb43901    CALL            !!139B4H
@@ -5243,12 +5263,16 @@ Project Name :DebugCSL
 03011        fc2f2a00    CALL            !!2A2FH
 03015        e51df6      ONEB            !0F61DH
 03018        eebe01      BR              $!31D9H
+
+// State
 0301b        8d20        MOV             A,0FFE20H
 0301d        fcccda00    CALL            !!0DACCH
 03021        4c0d        CMP             A,#0DH
 03023        61e8        SKZ             
 03025        eeb101      BR              $!31D9H
 03028        ee33ff      BR              $!2F5EH
+
+// State
 0302b        8d20        MOV             A,0FFE20H
 0302d        fcccda00    CALL            !!0DACCH
 03031        fcc93901    CALL            !!139C9H
@@ -5270,19 +5294,23 @@ Project Name :DebugCSL
 03059        e507f7      ONEB            !0F707H
 0305c        309411      MOVW            AX,#1194H
 0305f        bfc8f5      MOVW            !0F5C8H,AX
-03062        324610      MOVW            BC,#1046H
+03062        324610      MOVW            BC,#1046H // A
 03065        8d20        MOV             A,0FFE20H
 03067        fcf5e100    CALL            sub_Serial_WriteStringTerminate_e1f5
 0306b        ee6b01      BR              $!31D9H
-0306e        324810      MOVW            BC,#1048H
+0306e        324810      MOVW            BC,#1048H // N
 03071        8d20        MOV             A,0FFE20H
 03073        fcf5e100    CALL            sub_Serial_WriteStringTerminate_e1f5
 03077        e51df6      ONEB            !0F61DH
 0307a        ee5c01      BR              $!31D9H
+
+// State
 0307d        8d20        MOV             A,0FFE20H
 0307f        fc782900    CALL            !!2978H
 03083        e51df6      ONEB            !0F61DH
 03086        ee5001      BR              $!31D9H
+
+// State
 03089        8d20        MOV             A,0FFE20H
 0308b        fcccda00    CALL            !!0DACCH
 0308f        4c54        CMP             A,#54H
@@ -5316,6 +5344,8 @@ Project Name :DebugCSL
 030da        fcf5e100    CALL            sub_Serial_WriteStringTerminate_e1f5
 030de        e51df6      ONEB            !0F61DH
 030e1        eef500      BR              $!31D9H
+
+// State
 030e4        8d20        MOV             A,0FFE20H
 030e6        fc752a00    CALL            !!2A75H
 030ea        d1          CMP0            A
@@ -5376,14 +5406,16 @@ Project Name :DebugCSL
 03166        fcd72700    CALL            !!27D7H
 0316a        d1          CMP0            A
 0316b        df36        BNZ             $31A3H
-0316d        324610      MOVW            BC,#1046H
+0316d        324610      MOVW            BC,#1046H // 41 = A
 03170        8d20        MOV             A,0FFE20H
 03172        fcf5e100    CALL            sub_Serial_WriteStringTerminate_e1f5
 03176        ee41fd      BR              $!2EBAH
-03179        db2c1c      MOVW            BC,!1C2CH
+03179        db2c1c      MOVW            BC,!1C2CH // 1ce4 "NO ACCESS"
 0317c        8d20        MOV             A,0FFE20H
 0317e        fcf5e100    CALL            sub_Serial_WriteStringTerminate_e1f5
 03182        ef55        BR              $31D9H
+
+// State
 03184        8d20        MOV             A,0FFE20H
 03186        fc752a00    CALL            !!2A75H
 0318a        d1          CMP0            A
@@ -5401,6 +5433,8 @@ Project Name :DebugCSL
 031a6        8d20        MOV             A,0FFE20H
 031a8        fcf5e100    CALL            sub_Serial_WriteStringTerminate_e1f5
 031ac        ee0bfd      BR              $!2EBAH
+
+// State
 031af        8d20        MOV             A,0FFE20H
 031b1        fcccda00    CALL            !!0DACCH
 031b5        73          MOV             B,A
@@ -5418,6 +5452,7 @@ Project Name :DebugCSL
 031d0        ee60fd      BR              $!2F33H
 031d3        e50cf6      ONEB            !0F60CH
 031d6        ee5afd      BR              $!2F33H
+
 031d9        d51df6      CMP0            !0F61DH
 031dc        61f8        SKNZ            
 031de        eeb300      BR              $!3294H
@@ -5454,11 +5489,11 @@ Project Name :DebugCSL
 0322f        307ee1      MOVW            AX,#0E17EH
 03232        bf8edf      MOVW            !0DF8EH,AX
 03235        af921c      MOVW            AX,!1C92H
-03238        fc952a00    CALL            !!2A95H
+03238        fc952a00    CALL            sub_CopyToBuffer_2a95
 0323c        510d        MOV             A,#0DH
-0323e        fc892a00    CALL            !!2A89H
+0323e        fc892a00    CALL            sub_CopyToBuffer_SingleChar_2a89
 03242        f1          CLRB            A
-03243        fc892a00    CALL            !!2A89H
+03243        fc892a00    CALL            sub_CopyToBuffer_SingleChar_2a89
 03247        307ee1      MOVW            AX,#0E17EH
 0324a        bf8edf      MOVW            !0DF8EH,AX
 0324d        ef12        BR              $3261H
@@ -5492,6 +5527,7 @@ Project Name :DebugCSL
 0328b        cf1cf699    MOV             !0F61CH,#99H
 0328f        ef03        BR              $3294H
 03291        f51cf6      CLRB            !0F61CH
+// End of massive sub
 03294        8f1cf6      MOV             A,!0F61CH
 03297        1004        ADDW            SP,#4H
 03299        fd0b05      CALL            !50BH
@@ -5798,7 +5834,7 @@ Project Name :DebugCSL
 03585        cf60f622    MOV             !0F660H,#22H
 03589        ef73        BR              $35FEH
 0358b        e1          ONEB            A
-0358c        fc762c00    CALL            !!2C76H
+0358c        fc762c00    CALL            !!2C76H // Huge state machine
 03590        4c99        CMP             A,#99H
 03592        df6a        BNZ             $35FEH
 03594        ee66fe      BR              $!33FDH
@@ -6008,7 +6044,7 @@ Project Name :DebugCSL
 0379b        df7f        BNZ             $381CH
 0379d        ee76ff      BR              $!3716H
 037a0        f1          CLRB            A
-037a1        fc762c00    CALL            !!2C76H
+037a1        fc762c00    CALL            !!2C76H // Huge state machine
 037a5        4c99        CMP             A,#99H
 037a7        df73        BNZ             $381CH
 037a9        ee6aff      BR              $!3716H
@@ -7382,19 +7418,19 @@ Project Name :DebugCSL
 045c4        dd07        BZ              $45CDH
 045c6        31343e03    BF              0FFE3EH.3H,$45CDH
 045ca        713232      SET1            0FFE32H.3H
-045cd        30c001      MOVW            AX,#1C0H
+045cd        30c001      MOVW            AX,#1C0H // Beginning of 87.84.219.35
 045d0        fc41e500    CALL            sub_EEPROM_ReadByte_e541
 045d4        d1          CMP0            A
 045d5        dd0a        BZ              $45E1H
-045d7        302802      MOVW            AX,#228H
+045d7        302802      MOVW            AX,#228H // 552 -> 8999
 045da        fc41e500    CALL            sub_EEPROM_ReadByte_e541
 045de        d1          CMP0            A
 045df        df14        BNZ             $45F5H
-045e1        30d401      MOVW            AX,#1D4H
+045e1        30d401      MOVW            AX,#1D4H // 468 -> 87.86.241.83
 045e4        fc41e500    CALL            sub_EEPROM_ReadByte_e541
 045e8        d1          CMP0            A
 045e9        dd0d        BZ              $45F8H
-045eb        302e02      MOVW            AX,#22EH
+045eb        302e02      MOVW            AX,#22EH // 558 -> 8999
 045ee        fc41e500    CALL            sub_EEPROM_ReadByte_e541
 045f2        d1          CMP0            A
 045f3        61e8        SKZ             
@@ -7895,7 +7931,7 @@ Project Name :DebugCSL
 04b06        d1          CMP0            A
 04b07        61f8        SKNZ            
 04b09        eec100      BR              $!4BCDH
-04b0c        5303        MOV             B,#3H
+04b0c        5303        MOV             
 04b0e        303ee1      MOVW            AX,#0E13EH
 04b11        fc81dd00    CALL            !!0DD81H
 04b15        75          MOV             D,A
@@ -8270,7 +8306,7 @@ Project Name :DebugCSL
 04ea3        ef4d        BR              $4EF2H
 04ea5        d5e0f6      CMP0            !0F6E0H
 04ea8        dd24        BZ              $4ECEH
-04eaa        30c001      MOVW            AX,#1C0H
+04eaa        30c001      MOVW            AX,#1C0H // first byte of 87.84.219.35
 04ead        b800        MOVW            [SP+0H],AX
 04eaf        e5dbf6      ONEB            !0F6DBH
 04eb2        fc41e500    CALL            sub_EEPROM_ReadByte_e541
@@ -12649,7 +12685,7 @@ Project Name :DebugCSL
 07a24        fcd1e100    CALL            sub_Serial_WriteString_e1d1
 07a28        5508        MOV             D,#8H
 07a2a        323ee1      MOVW            BC,#0E13EH
-07a2d        30dc02      MOVW            AX,#2DCH
+07a2d        30dc02      MOVW            AX,#2DCH // 732 -> 30 30 30 30
 07a30        fc98e600    CALL            sub_EEPROM_CopyToRam_e698
 07a34        30dc02      MOVW            AX,#2DCH
 07a37        fced3601    CALL            !!136EDH
@@ -12681,7 +12717,7 @@ Project Name :DebugCSL
 07a81        fcd1e100    CALL            sub_Serial_WriteString_e1d1
 07a85        5508        MOV             D,#8H
 07a87        323ee1      MOVW            BC,#0E13EH
-07a8a        30dc02      MOVW            AX,#2DCH
+07a8a        30dc02      MOVW            AX,#2DCH // 732 -> 30 30 30 30
 07a8d        fc98e600    CALL            sub_EEPROM_CopyToRam_e698
 07a91        4095f602    CMP             !0F695H,#2H
 07a95        df0b        BNZ             $7AA2H
@@ -12696,9 +12732,10 @@ Project Name :DebugCSL
 07aae        fcd1e100    CALL            sub_Serial_WriteString_e1d1
 07ab2        5508        MOV             D,#8H
 07ab4        323ee1      MOVW            BC,#0E13EH
-07ab7        306201      MOVW            AX,#162H
+07ab7        306201      MOVW            AX,#162H // g9MQlQ - short string
 07aba        fc98e600    CALL            sub_EEPROM_CopyToRam_e698
-07abe        fccc3601    CALL            !!136CCH
+// AX is end of string
+07abe        fccc3601    CALL            !!136CCH // Suspect we get 2 returned in A
 07ac2        323ee1      MOVW            BC,#0E13EH
 07ac5        fce23501    CALL            !!135E2H
 07ac9        323ee1      MOVW            BC,#0E13EH
@@ -12723,7 +12760,7 @@ Project Name :DebugCSL
 07afc        dd20        BZ              $7B1EH
 07afe        5508        MOV             D,#8H
 07b00        323ee1      MOVW            BC,#0E13EH
-07b03        306201      MOVW            AX,#162H
+07b03        306201      MOVW            AX,#162H // g9MQlQ
 07b06        fcb3e500    CALL            sub_EEPROM_ReadString_e5b3
 07b0a        5508        MOV             D,#8H
 07b0c        323ee1      MOVW            BC,#0E13EH
@@ -12763,12 +12800,12 @@ Project Name :DebugCSL
 07b6c        ee78f9      BR              $!74E7H
 07b6f        d560f7      CMP0            !0F760H
 07b72        df0f        BNZ             $7B83H
-07b74        305e16      MOVW            AX,#165EH
+07b74        305e16      MOVW            AX,#165EH // +CNMI=1,1,0,0
 07b77        fc22e300    CALL            sub_Serial_WriteStringAT_UART1_e322
 07b7b        30a005      MOVW            AX,#5A0H
 07b7e        bfc8f5      MOVW            !0F5C8H,AX
 07b81        ef0d        BR              $7B90H
-07b83        306c16      MOVW            AX,#166CH
+07b83        306c16      MOVW            AX,#166CH // +CNMI=2,1,0,0
 07b86        fc22e300    CALL            sub_Serial_WriteStringAT_UART1_e322
 07b8a        30a005      MOVW            AX,#5A0H
 07b8d        bfc8f5      MOVW            !0F5C8H,AX
@@ -12787,10 +12824,10 @@ Project Name :DebugCSL
 07bb2        dd06        BZ              $7BBAH
 07bb4        4060f705    CMP             !0F760H,#5H
 07bb8        df09        BNZ             $7BC3H
-07bba        307a16      MOVW            AX,#167AH
+07bba        307a16      MOVW            AX,#167AH // "+CPMS=""SM"",""SM"",""SM"""
 07bbd        fc22e300    CALL            sub_Serial_WriteStringAT_UART1_e322
 07bc1        ef07        BR              $7BCAH
-07bc3        309016      MOVW            AX,#1690H
+07bc3        309016      MOVW            AX,#1690H // "+CPMS=""ME"",""ME"",""ME"""
 07bc6        fc22e300    CALL            sub_Serial_WriteStringAT_UART1_e322
 07bca        308c0a      MOVW            AX,#0A8CH
 07bcd        bfc8f5      MOVW            !0F5C8H,AX
@@ -12802,7 +12839,7 @@ Project Name :DebugCSL
 07bdf        dd06        BZ              $7BE7H
 07be1        4060f702    CMP             !0F760H,#2H
 07be5        df07        BNZ             $7BEEH
-07be7        30a616      MOVW            AX,#16A6H
+07be7        30a616      MOVW            AX,#16A6H // ^SSYNC=1
 07bea        fc22e300    CALL            sub_Serial_WriteStringAT_UART1_e322
 07bee        cf91f661    MOV             !0F691H,#61H
 07bf2        d46b        CMP0            0FFE6BH
@@ -15092,6 +15129,7 @@ Project Name :DebugCSL
 09221        309411      MOVW            AX,#1194H
 09224        bfcef5      MOVW            !0F5CEH,AX
 09227        ef35        BR              $925EH
+// This looks like response of 3\r after long string
 09229        5303        MOV             B,#3H
 0922b        e1          ONEB            A
 0922c        fcb2e100    CALL            sub_Serial_WriteChar_e1b3
@@ -19380,20 +19418,21 @@ Project Name :DebugCSL
 	0bbab        c2          POP             BC
 	0bbac        d7          RET             
 
+// Think this converts battery reading to voltage
 0bbad        c3          PUSH            BC
 0bbae        c5          PUSH            DE
-0bbaf        8f0af6      MOV             A,!0F60AH
+0bbaf        8f0af6      MOV             A,!0F60AH // Think this might be battery reading
 0bbb2        314a        SHR             A,4H
 0bbb4        74          MOV             E,A
-0bbb5        5500        MOV             D,#0H
+0bbb5        5500        MOV             D,#0H // DE = A shr 4
 0bbb7        8f0af6      MOV             A,!0F60AH
-0bbba        70          MOV             X,A
+0bbba        70          MOV             X,A // AX = 000A
 0bbbb        f1          CLRB            A
-0bbbc        25          SUBW            AX,DE
-0bbbd        320a00      MOVW            BC,#0AH
-0bbc0        fd1602      CALL            sub_Multiply_216
+0bbbc        25          SUBW            AX,DE // value - 1/8 value?
+0bbbd        320a00      MOVW            BC,#0AH // 
+0bbc0        fd1602      CALL            sub_Multiply_216 // times 10
 0bbc3        5208        MOV             C,#8H
-0bbc5        fd4202      CALL            !242H
+0bbc5        fd4202      CALL            !242H // possibly divide
 0bbc8        c4          POP             DE
 0bbc9        c2          POP             BC
 0bbca        d7          RET        
@@ -19657,7 +19696,7 @@ Project Name :DebugCSL
 0bd9b        72          MOV             C,A
 0bd9c        92          DEC             C
 0bd9d        e6          ONEW            AX
-0bd9e        fdfc01      CALL            !1FCH
+0bd9e        fdfc01      CALL            sub_Exponent_1fc
 0bda1        64          MOV             A,E
 0bda2        6168        OR              A,X
 0bda4        74          MOV             E,A
@@ -19677,7 +19716,7 @@ Project Name :DebugCSL
 0bdbb        72          MOV             C,A
 0bdbc        92          DEC             C
 0bdbd        e6          ONEW            AX
-0bdbe        fdfc01      CALL            !1FCH
+0bdbe        fdfc01      CALL            sub_Exponent_1fc
 0bdc1        60          MOV             A,X
 0bdc2        7cff        XOR             A,#0FFH
 0bdc4        70          MOV             X,A
@@ -19705,7 +19744,7 @@ Project Name :DebugCSL
 0bdea        72          MOV             C,A
 0bdeb        92          DEC             C
 0bdec        e6          ONEW            AX
-0bded        fdfc01      CALL            !1FCH
+0bded        fdfc01      CALL            sub_Exponent_1fc
 0bdf0        60          MOV             A,X
 0bdf1        9f0bf7      MOV             !0F70BH,A
 0bdf4        ef04        BR              $0BDFAH
@@ -19765,7 +19804,7 @@ Project Name :DebugCSL
 0be55        72          MOV             C,A
 0be56        92          DEC             C
 0be57        e6          ONEW            AX
-0be58        fdfc01      CALL            !1FCH
+0be58        fdfc01      CALL            sub_Exponent_1fc
 0be5b        60          MOV             A,X
 0be5c        7cff        XOR             A,#0FFH
 0be5e        70          MOV             X,A
@@ -19801,7 +19840,7 @@ Project Name :DebugCSL
 0be8d        72          MOV             C,A
 0be8e        92          DEC             C
 0be8f        e6          ONEW            AX
-0be90        fdfc01      CALL            !1FCH
+0be90        fdfc01      CALL            sub_Exponent_1fc
 0be93        64          MOV             A,E
 0be94        6168        OR              A,X
 0be96        74          MOV             E,A
@@ -20559,7 +20598,7 @@ Project Name :DebugCSL
 0c518        ef18        BR              $0C532H
 0c51a        72          MOV             C,A
 0c51b        e6          ONEW            AX
-0c51c        fdfc01      CALL            !1FCH
+0c51c        fdfc01      CALL            sub_Exponent_1fc
 0c51f        63          MOV             A,B
 0c520        6158        AND             A,X
 0c522        dd0d        BZ              $0C531H
@@ -21130,6 +21169,7 @@ Project Name :DebugCSL
 0ca88        fd0b05      CALL            !50BH
 0ca8b        02c4c2      ADDW            AX,!0C2C4H
 0ca8e        d7          RET             
+
 0ca8f        36f2df      MOVW            HL,#0DFF2H
 0ca92        31b30a      BT              [HL].3H,$0CA9FH
 0ca95        f534f6      CLRB            !0F634H
@@ -21897,16 +21937,16 @@ Project Name :DebugCSL
 	0d124        72          MOV             C,A
 	0d125        d2          CMP0            C
 	0d126        dd12        BZ              $0D13AH
-	0d128        92          DEC             C
-	0d129        e6          ONEW            AX
-	0d12a        fdfc01      CALL            !1FCH
-	0d12d        16          MOVW            HL,AX
-	0d12e        af98df      MOVW            AX,!0DF98H
-	0d131        616f        OR              A,H
-	0d133        08          XCH             A,X
-	0d134        616e        OR              A,L
-	0d136        08          XCH             A,X
-	0d137        bf98df      MOVW            !0DF98H,AX
+		0d128        92          DEC             C
+		0d129        e6          ONEW            AX
+		0d12a        fdfc01      CALL            sub_Exponent_1fc
+		0d12d        16          MOVW            HL,AX
+		0d12e        af98df      MOVW            AX,!0DF98H
+		0d131        616f        OR              A,H
+		0d133        08          XCH             A,X
+		0d134        616e        OR              A,L
+		0d136        08          XCH             A,X
+		0d137        bf98df      MOVW            !0DF98H,AX
 	0d13a        c2          POP             BC
 	0d13b        d7          RET          
 
@@ -21914,20 +21954,20 @@ Project Name :DebugCSL
 	0d13d        72          MOV             C,A
 	0d13e        d2          CMP0            C
 	0d13f        dd18        BZ              $0D159H
-	0d141        92          DEC             C
-	0d142        e6          ONEW            AX
-	0d143        fdfc01      CALL            !1FCH
-	0d146        7cff        XOR             A,#0FFH
-	0d148        08          XCH             A,X
-	0d149        7cff        XOR             A,#0FFH
-	0d14b        08          XCH             A,X
-	0d14c        16          MOVW            HL,AX
-	0d14d        af98df      MOVW            AX,!0DF98H
-	0d150        615f        AND             A,H
-	0d152        08          XCH             A,X
-	0d153        615e        AND             A,L
-	0d155        08          XCH             A,X
-	0d156        bf98df      MOVW            !0DF98H,AX
+		0d141        92          DEC             C
+		0d142        e6          ONEW            AX
+		0d143        fdfc01      CALL            sub_Exponent_1fc
+		0d146        7cff        XOR             A,#0FFH // invert
+		0d148        08          XCH             A,X // flip
+		0d149        7cff        XOR             A,#0FFH // invert
+		0d14b        08          XCH             A,X // flip
+		0d14c        16          MOVW            HL,AX
+		0d14d        af98df      MOVW            AX,!0DF98H
+		0d150        615f        AND             A,H
+		0d152        08          XCH             A,X
+		0d153        615e        AND             A,L
+		0d155        08          XCH             A,X
+		0d156        bf98df      MOVW            !0DF98H,AX
 	0d159        c2          POP             BC
 	0d15a        d7          RET             
 
@@ -21989,48 +22029,50 @@ Project Name :DebugCSL
 0d1c1        c4          POP             DE
 0d1c2        c2          POP             BC
 0d1c3        61ec        RETB            
-0d1c5        c3          PUSH            BC
-0d1c6        c5          PUSH            DE
-0d1c7        72          MOV             C,A
-0d1c8        31043c03    BF              0FFE3CH.0H,$0D1CFH
-0d1cc        f1          CLRB            A
-0d1cd        ef39        BR              $0D208H
-0d1cf        3104370b    BF              0FFE37H.0H,$0D1DEH
-0d1d3        31023a07    BT              0FFE3AH.0H,$0D1DEH
-0d1d7        e3          ONEB            B
-0d1d8        fc14cf00    CALL            !!0CF14H
-0d1dc        efee        BR              $0D1CCH
-0d1de        fc8fca00    CALL            !!0CA8FH
-0d1e2        62          MOV             A,C
-0d1e3        70          MOV             X,A
-0d1e4        f1          CLRB            A
-0d1e5        01          ADDW            AX,AX
-0d1e6        04d4df      ADDW            AX,#0DFD4H
-0d1e9        16          MOVW            HL,AX
-0d1ea        ab          MOVW            AX,[HL]
-0d1eb        440000      CMPW            AX,#0H
-0d1ee        dddc        BZ              $0D1CCH
-0d1f0        62          MOV             A,C
-0d1f1        70          MOV             X,A
-0d1f2        f1          CLRB            A
-0d1f3        01          ADDW            AX,AX
-0d1f4        04aadf      ADDW            AX,#0DFAAH
-0d1f7        16          MOVW            HL,AX
-0d1f8        ab          MOVW            AX,[HL]
-0d1f9        16          MOVW            HL,AX
-0d1fa        62          MOV             A,C
-0d1fb        70          MOV             X,A
-0d1fc        f1          CLRB            A
-0d1fd        01          ADDW            AX,AX
-0d1fe        049cdf      ADDW            AX,#0DF9CH
-0d201        14          MOVW            DE,AX
-0d202        a9          MOVW            AX,[DE]
-0d203        47          CMPW            AX,HL
-0d204        ddc6        BZ              $0D1CCH
-0d206        5102        MOV             A,#2H
-0d208        c4          POP             DE
-0d209        c2          POP             BC
-0d20a        d7          RET             
+
+	0d1c5        c3          PUSH            BC
+	0d1c6        c5          PUSH            DE
+	0d1c7        72          MOV             C,A
+	0d1c8        31043c03    BF              0FFE3CH.0H,$0D1CFH
+	0d1cc        f1          CLRB            A
+	0d1cd        ef39        BR              $0D208H
+	0d1cf        3104370b    BF              0FFE37H.0H,$0D1DEH
+	0d1d3        31023a07    BT              0FFE3AH.0H,$0D1DEH
+	0d1d7        e3          ONEB            B
+	0d1d8        fc14cf00    CALL            !!0CF14H
+	0d1dc        efee        BR              $0D1CCH
+	0d1de        fc8fca00    CALL            !!0CA8FH
+	0d1e2        62          MOV             A,C
+	0d1e3        70          MOV             X,A
+	0d1e4        f1          CLRB            A
+	0d1e5        01          ADDW            AX,AX
+	0d1e6        04d4df      ADDW            AX,#0DFD4H
+	0d1e9        16          MOVW            HL,AX
+	0d1ea        ab          MOVW            AX,[HL]
+	0d1eb        440000      CMPW            AX,#0H
+	0d1ee        dddc        BZ              $0D1CCH
+	0d1f0        62          MOV             A,C
+	0d1f1        70          MOV             X,A
+	0d1f2        f1          CLRB            A
+	0d1f3        01          ADDW            AX,AX
+	0d1f4        04aadf      ADDW            AX,#0DFAAH
+	0d1f7        16          MOVW            HL,AX
+	0d1f8        ab          MOVW            AX,[HL]
+	0d1f9        16          MOVW            HL,AX
+	0d1fa        62          MOV             A,C
+	0d1fb        70          MOV             X,A
+	0d1fc        f1          CLRB            A
+	0d1fd        01          ADDW            AX,AX
+	0d1fe        049cdf      ADDW            AX,#0DF9CH
+	0d201        14          MOVW            DE,AX
+	0d202        a9          MOVW            AX,[DE]
+	0d203        47          CMPW            AX,HL
+	0d204        ddc6        BZ              $0D1CCH
+	0d206        5102        MOV             A,#2H
+	0d208        c4          POP             DE
+	0d209        c2          POP             BC
+	0d20a        d7          RET  
+
 0d20b        c3          PUSH            BC
 0d20c        c5          PUSH            DE
 0d20d        72          MOV             C,A
@@ -22077,6 +22119,7 @@ Project Name :DebugCSL
 0d255        f1          CLRB            A
 0d256        482ce0      MOV             0E02CH[BC],A
 0d259        efb7        BR              $0D212H
+
 0d25b        c3          PUSH            BC
 0d25c        c5          PUSH            DE
 0d25d        fdc404      CALL            !4C4H
@@ -22204,7 +22247,9 @@ Project Name :DebugCSL
 0d34c        ad20        MOVW            AX,0FFE20H
 0d34e        fd0b05      CALL            !50BH
 0d351        0ac4c2      ADD             0FFEC4H,#0C2H
-0d354        d7          RET             
+0d354        d7          RET     
+
+// Another huge state machine
 0d355        c3          PUSH            BC
 0d356        c5          PUSH            DE
 0d357        c1          PUSH            AX
@@ -22403,14 +22448,14 @@ Project Name :DebugCSL
 0d4f1        5141        MOV             A,#41H
 0d4f3        99          MOV             [DE],A
 0d4f4        a5          INCW            DE
-0d4f5        30a403      MOVW            AX,#3A4H
+0d4f5        30a403      MOVW            AX,#3A4H // DF00
 0d4f8        fc5be500    CALL            sub_EEPROM_ReadReturnReg_e55b
 0d4fc        b800        MOVW            [SP+0H],AX
 0d4fe        ef7e        BR              $0D57EH
 0d500        5142        MOV             A,#42H
 0d502        99          MOV             [DE],A
 0d503        a5          INCW            DE
-0d504        301803      MOVW            AX,#318H
+0d504        301803      MOVW            AX,#318H // 3101
 0d507        fc5be500    CALL            sub_EEPROM_ReadReturnReg_e55b
 0d50b        b800        MOVW            [SP+0H],AX
 0d50d        ef6f        BR              $0D57EH
@@ -22439,14 +22484,14 @@ Project Name :DebugCSL
 0d53f        5141        MOV             A,#41H
 0d541        99          MOV             [DE],A
 0d542        a5          INCW            DE
-0d543        309e03      MOVW            AX,#39EH
+0d543        309e03      MOVW            AX,#39EH // 926 c900
 0d546        fc5be500    CALL            sub_EEPROM_ReadReturnReg_e55b
 0d54a        b800        MOVW            [SP+0H],AX
 0d54c        ef30        BR              $0D57EH
 0d54e        5142        MOV             A,#42H
 0d550        99          MOV             [DE],A
 0d551        a5          INCW            DE
-0d552        301003      MOVW            AX,#310H
+0d552        301003      MOVW            AX,#310H // 784 c900
 0d555        fc5be500    CALL            sub_EEPROM_ReadReturnReg_e55b
 0d559        b800        MOVW            [SP+0H],AX
 0d55b        ef21        BR              $0D57EH
@@ -22455,18 +22500,20 @@ Project Name :DebugCSL
 0d562        5141        MOV             A,#41H
 0d564        99          MOV             [DE],A
 0d565        a5          INCW            DE
-0d566        30a003      MOVW            AX,#3A0H
+0d566        30a003      MOVW            AX,#3A0H // 928 6500
 0d569        fc5be500    CALL            sub_EEPROM_ReadReturnReg_e55b
 0d56d        b800        MOVW            [SP+0H],AX
 0d56f        ef0d        BR              $0D57EH
 0d571        5142        MOV             A,#42H
 0d573        99          MOV             [DE],A
 0d574        a5          INCW            DE
-0d575        301403      MOVW            AX,#314H
+0d575        301403      MOVW            AX,#314H// 788 6500
 0d578        fc5be500    CALL            sub_EEPROM_ReadReturnReg_e55b
 0d57c        b800        MOVW            [SP+0H],AX
+// Return for lots of points above
+// This looks like conversion of base
 0d57e        326400      MOVW            BC,#64H
-0d581        a800        MOVW            AX,[SP+0H]
+0d581        a800        MOVW            AX,[SP+0H] // Result divided by 100
 0d583        fd3102      CALL            sub_DivideResultZero_231
 0d586        60          MOV             A,X
 0d587        6c30        OR              A,#30H
@@ -22521,7 +22568,9 @@ Project Name :DebugCSL
 0d5e1        1002        ADDW            SP,#2H
 0d5e3        c4          POP             DE
 0d5e4        c2          POP             BC
-0d5e5        d7          RET             
+0d5e5        d7          RET     
+// End of huge state machine
+
 0d5e6        c5          PUSH            DE
 0d5e7        fdc404      CALL            !4C4H
 0d5ea        0433bd      ADDW            AX,#0BD33H
@@ -24844,7 +24893,7 @@ Project Name :DebugCSL
 	0e6cb        fa22        MOVW            HL,0FFE22H // this was BC
 	0e6cd        9b          MOV             [HL],A // store data
 	0e6ce        fa22        MOVW            HL,0FFE22H
-	0e6d0        a7          INCW            HL 		// increment addres
+	0e6d0        a7          INCW            HL 		// increment address
 	0e6d1        37          XCHW            AX,HL
 	0e6d2        bd22        MOVW            0FFE22H,AX // store back
 	0e6d4        17          MOVW            AX,HL
@@ -24857,7 +24906,7 @@ Project Name :DebugCSL
 	0e6dd        fa22        MOVW            HL,0FFE22H
 	0e6df        f1          CLRB            A
 	0e6e0        9b          MOV             [HL],A // null terminate string
-	0e6e1        ad22        MOVW            AX,0FFE22H
+	0e6e1        ad22        MOVW            AX,0FFE22H // AX becomes end of string
 	0e6e3        fd0b05      CALL            !50BH
 // Bad dis
 //0e6e6        04d736      ADDW            AX,#36D7H
@@ -25590,16 +25639,16 @@ Project Name :DebugCSL
 	0ed32        4c03        CMP             A,#3H
 	0ed34        61d8        SKNC            
 	0ed36        cfc0f603    MOV             !0F6C0H,#3H
-	0ed3a        30d405      MOVW            AX,#5D4H
+	0ed3a        30d405      MOVW            AX,#5D4H // 1492 00
 	0ed3d        fc41e500    CALL            sub_EEPROM_ReadByte_e541
 	0ed41        9fd6f6      MOV             !0F6D6H,A
-	0ed44        30d505      MOVW            AX,#5D5H
+	0ed44        30d505      MOVW            AX,#5D5H // 1493 00
 	0ed47        fc41e500    CALL            sub_EEPROM_ReadByte_e541
 	0ed4b        9f5ef6      MOV             !0F65EH,A
-	0ed4e        30d605      MOVW            AX,#5D6H
+	0ed4e        30d605      MOVW            AX,#5D6H // 1494 00
 	0ed51        fc41e500    CALL            sub_EEPROM_ReadByte_e541
 	0ed55        9f5ff6      MOV             !0F65FH,A
-	0ed58        30d705      MOVW            AX,#5D7H
+	0ed58        30d705      MOVW            AX,#5D7H // 1495 00
 	0ed5b        fc41e500    CALL            sub_EEPROM_ReadByte_e541
 	0ed5f        9fd7f6      MOV             !0F6D7H,A
 	0ed62        d5d6f6      CMP0            !0F6D6H
@@ -25970,7 +26019,7 @@ Project Name :DebugCSL
 0f112        31243a20    BF              0FFE3AH.2H,$0F136H
 0f116        31623a3a    BT              0FFE3AH.6H,$0F154H
 0f11a        71623a      SET1            0FFE3AH.6H
-0f11d        300804      MOVW            AX,#408H
+0f11d        300804      MOVW            AX,#408H // 1032 00
 0f120        fc63e500    CALL            sub_EEPROM_ReadByteDecAsHex_e563
 0f124        fc23d100    CALL            !!0D123H
 0f128        3605e1      MOVW            HL,#0E105H
@@ -26000,7 +26049,7 @@ Project Name :DebugCSL
 0f169        bfecf5      MOVW            !0F5ECH,AX
 0f16c        5104        MOV             A,#4H
 0f16e        fc63e500    CALL            sub_EEPROM_ReadByteDecAsHex_e563
-0f172        fc23d100    CALL            !!0D123H
+0f172        fc23d100    CALL            !!0gH
 0f176        3605e1      MOVW            HL,#0E105H
 0f179        31f506      BF              [HL].7H,$0F182H
 0f17c        36fae0      MOVW            HL,#0E0FAH
@@ -26031,7 +26080,7 @@ Project Name :DebugCSL
 0f1c3        71523c      SET1            0FFE3CH.5H
 0f1c6        f6          CLRW            AX
 0f1c7        bfecf5      MOVW            !0F5ECH,AX
-0f1ca        5104        MOV             A,#4H
+0f1ca        5104        MOV             A,#4H // 4 -> 02
 0f1cc        fc63e500    CALL            sub_EEPROM_ReadByteDecAsHex_e563
 0f1d0        fc3cd100    CALL            !!0D13CH
 0f1d4        3605e1      MOVW            HL,#0E105H
@@ -29110,7 +29159,7 @@ Project Name :DebugCSL
 10f4a        eee9fd      BR              $!10D36H
 10f4d        5520        MOV             D,#20H
 10f4f        323ee1      MOVW            BC,#0E13EH
-10f52        305000      MOVW            AX,#50H
+10f52        305000      MOVW            AX,#50H // This is 012747293327 - phone number
 10f55        fcb3e500    CALL            sub_EEPROM_ReadString_e5b3
 10f59        5121        MOV             A,#21H
 10f5b        fceab800    CALL            !!0B8EAH
@@ -29574,7 +29623,7 @@ Project Name :DebugCSL
 11380        5c0f        AND             A,#0FH
 11382        72          MOV             C,A
 11383        e6          ONEW            AX
-11384        fdfc01      CALL            !1FCH
+11384        fdfc01      CALL            sub_Exponent_1fc
 11387        14          MOVW            DE,AX
 11388        8f4ff7      MOV             A,!0F74FH
 1138b        5c50        AND             A,#50H
@@ -33342,56 +33391,62 @@ Project Name :DebugCSL
 135e0        c4          POP             DE
 135e1        d7          RET         
 
-135e2        c5          PUSH            DE
-135e3        75          MOV             D,A
-135e4        c3          PUSH            BC
-135e5        c6          POP             HL
-135e6        4c34        CMP             A,#34H
-135e8        dc05        BC              $135EFH
-135ea        0ccd        ADD             A,#0CDH
-135ec        75          MOV             D,A
-135ed        ef11        BR              $13600H
-135ef        95          DEC             D
-135f0        ef0e        BR              $13600H
-135f2        0c30        ADD             A,#30H
-135f4        70          MOV             X,A
-135f5        60          MOV             A,X
-135f6        9b          MOV             [HL],A
-135f7        a7          INCW            HL
-135f8        85          INC             D
-135f9        65          MOV             A,D
-135fa        4c30        CMP             A,#30H
-135fc        61c8        SKC             
-135fe        5500        MOV             D,#0H
-13600        8b          MOV             A,[HL]
-13601        70          MOV             X,A
-13602        d0          CMP0            X
-13603        dd27        BZ              $1362CH
-13605        4c61        CMP             A,#61H
-13607        dc05        BC              $1360EH
-13609        0cc4        ADD             A,#0C4H
-1360b        70          MOV             X,A
-1360c        ef0c        BR              $1361AH
-1360e        4c41        CMP             A,#41H
-13610        dc05        BC              $13617H
-13612        0cc0        ADD             A,#0C0H
-13614        70          MOV             X,A
-13615        ef03        BR              $1361AH
-13617        0ceb        ADD             A,#0EBH
-13619        70          MOV             X,A
-1361a        65          MOV             A,D
-1361b        73          MOV             B,A
-1361c        09da19      MOV             A,19DAH[B]
-1361f        72          MOV             C,A
-13620        60          MOV             A,X
-13621        612a        SUB             A,C
-13623        4c0a        CMP             A,#0AH
-13625        dccb        BC              $135F2H
-13627        0c37        ADD             A,#37H
-13629        70          MOV             X,A
-1362a        efc9        BR              $135F5H
-1362c        c4          POP             DE
-1362d        d7          RET     
+// Called after short "password" like string
+
+	135e2        c5          PUSH            DE
+	135e3        75          MOV             D,A // 2?
+	135e4        c3          PUSH            BC // E13E
+	135e5        c6          POP             HL
+	135e6        4c34        CMP             A,#34H
+	135e8        dc05        BC              $135EFH
+		135ea        0ccd        ADD             A,#0CDH
+		135ec        75          MOV             D,A
+		135ed        ef11        BR              $13600H
+	135ef        95          DEC             D
+	135f0        ef0e        BR              $13600H
+
+	135f2        0c30        ADD             A,#30H
+	135f4        70          MOV             X,A
+	135f5        60          MOV             A,X
+	135f6        9b          MOV             [HL],A
+	135f7        a7          INCW            HL
+	135f8        85          INC             D
+	135f9        65          MOV             A,D
+	135fa        4c30        CMP             A,#30H
+	135fc        61c8        SKC             
+	135fe        5500        MOV             D,#0H
+
+	13600        8b          MOV             A,[HL] // BC from call
+	13601        70          MOV             X,A
+	13602        d0          CMP0            X
+	13603        dd27        BZ              $1362CH
+	13605        4c61        CMP             A,#61H // lower case a
+	13607        dc05        BC              $1360EH
+		13609        0cc4        ADD             A,#0C4H
+		1360b        70          MOV             X,A
+		1360c        ef0c        BR              $1361AH
+	1360e        4c41        CMP             A,#41H // upper case A
+	13610        dc05        BC              $13617H
+		13612        0cc0        ADD             A,#0C0H
+		13614        70          MOV             X,A
+		13615        ef03        BR              $1361AH
+	13617        0ceb        ADD             A,#0EBH
+	13619        70          MOV             X,A
+
+	1361a        65          MOV             A,D
+	1361b        73          MOV             B,A
+	1361c        09da19      MOV             A,19DAH[B]
+	1361f        72          MOV             C,A
+	13620        60          MOV             A,X
+	13621        612a        SUB             A,C
+	13623        4c0a        CMP             A,#0AH
+	13625        dccb        BC              $135F2H
+	13627        0c37        ADD             A,#37H
+	13629        70          MOV             X,A
+	1362a        efc9        BR              $135F5H
+
+	1362c        c4          POP             DE
+	1362d        d7          RET     
 
 1362e        c3          PUSH            BC
 1362f        c5          PUSH            DE
@@ -33496,23 +33551,24 @@ Project Name :DebugCSL
 136ca        c2          POP             BC
 136cb        d7          RET         
 
-136cc        c3          PUSH            BC
-136cd        c5          PUSH            DE
-// ICCID
-136ce        5514        MOV             D,#14H
-136d0        327ee1      MOVW            BC,#0E17EH
-136d3        303001      MOVW            AX,#130H
-136d6        fcfce500    CALL            :sub_EEPROM_ReadHexAsAscci_0e5fc
-136da        8f90e1      MOV             A,!0E190H
-136dd        0f91e1      ADD             A,!0E191H
-136e0        5c3f        AND             A,#3FH
-136e2        4c2f        CMP             A,#2FH
-136e4        61c8        SKC             
-136e6        0cee        ADD             A,#0EEH
-136e8        0c02        ADD             A,#2H
-136ea        c4          POP             DE
-136eb        c2          POP             BC
-136ec        d7          RET          
+// Returns something in A
+	136cc        c3          PUSH            BC
+	136cd        c5          PUSH            DE
+	// ICCID
+	136ce        5514        MOV             D,#14H
+	136d0        327ee1      MOVW            BC,#0E17EH
+	136d3        303001      MOVW            AX,#130H
+	136d6        fcfce500    CALL            :sub_EEPROM_ReadHexAsAscci_0e5fc
+	136da        8f90e1      MOV             A,!0E190H // seem to be 0 as nothing written
+	136dd        0f91e1      ADD             A,!0E191H
+	136e0        5c3f        AND             A,#3FH // 0 
+	136e2        4c2f        CMP             A,#2FH 
+	136e4        61c8        SKC             
+	136e6        0cee        ADD             A,#0EEH // skipped as less than 2f
+	136e8        0c02        ADD             A,#2H // A becomes 2
+	136ea        c4          POP             DE
+	136eb        c2          POP             BC
+	136ec        d7          RET          
 
 136ed        c3          PUSH            BC
 136ee        c5          PUSH            DE
@@ -33664,6 +33720,7 @@ Project Name :DebugCSL
 137e9        c92084e1    MOVW            0FFE20H,#0E184H
 137ed        f422        CLRB            0FFE22H
 137ef        ef2e        BR              $1381FH
+
 137f1        fce43901    CALL            !!139E4H
 137f5        70          MOV             X,A
 137f6        80          INC             X
@@ -33692,6 +33749,7 @@ Project Name :DebugCSL
 1381a        8d22        MOV             A,0FFE22H
 1381c        81          INC             A
 1381d        9d22        MOV             0FFE22H,A
+
 1381f        8d22        MOV             A,0FFE22H
 13821        4c0c        CMP             A,#0CH
 13823        de0d        BNC             $13832H
@@ -33916,25 +33974,27 @@ Project Name :DebugCSL
 13997        a800        MOVW            AX,[SP+0H]
 13999        1004        ADDW            SP,#4H
 1399b        c4          POP             DE
-1399c        d7          RET             
-1399d        c5          PUSH            DE
-1399e        16          MOVW            HL,AX
-1399f        318d        SHLW            AX,8H
-139a1        37          XCHW            AX,HL
-139a2        f0          CLRB            X
-139a3        08          XCH             A,X
-139a4        14          MOVW            DE,AX
-139a5        63          MOV             A,B
-139a6        f0          CLRB            X
-139a7        617c        XOR             A,E
-139a9        08          XCH             A,X
-139aa        01          ADDW            AX,AX
-139ab        04a417      ADDW            AX,#17A4H
-139ae        14          MOVW            DE,AX
-139af        a9          MOVW            AX,[DE]
-139b0        617f        XOR             A,H
-139b2        c4          POP             DE
-139b3        d7          RET             
+1399c        d7          RET  
+
+	1399d        c5          PUSH            DE
+	1399e        16          MOVW            HL,AX
+	1399f        318d        SHLW            AX,8H
+	139a1        37          XCHW            AX,HL
+	139a2        f0          CLRB            X
+	139a3        08          XCH             A,X
+	139a4        14          MOVW            DE,AX
+	139a5        63          MOV             A,B
+	139a6        f0          CLRB            X
+	139a7        617c        XOR             A,E
+	139a9        08          XCH             A,X
+	139aa        01          ADDW            AX,AX
+	139ab        04a417      ADDW            AX,#17A4H
+	139ae        14          MOVW            DE,AX
+	139af        a9          MOVW            AX,[DE]
+	139b0        617f        XOR             A,H
+	139b2        c4          POP             DE
+	139b3        d7          RET   
+
 139b4        c3          PUSH            BC
 139b5        72          MOV             C,A
 139b6        92          DEC             C
@@ -33946,7 +34006,7 @@ Project Name :DebugCSL
 139bf        f1          CLRB            A
 139c0        ef05        BR              $139C7H
 139c2        e6          ONEW            AX
-139c3        fdfc01      CALL            !1FCH
+139c3        fdfc01      CALL            sub_Exponent_1fc
 139c6        60          MOV             A,X
 139c7        c2          POP             BC
 139c8        d7          RET      
