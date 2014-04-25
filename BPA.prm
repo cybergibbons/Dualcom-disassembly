@@ -351,7 +351,7 @@ H,47,00
 00
 00
 00
-67
+67 // g9MQlQ
 39
 4D
 51
@@ -750,7 +750,7 @@ H,47,00
 7B // incremented at about 108bc
 04
 FB
-FF
+FF -- this is read as FFFB then XORed with FFFF
 F7
 FF
 08
@@ -763,7 +763,7 @@ FF
 00
 00
 00
-12
+12 -- read during startyp
 34
 56
 78
@@ -771,17 +771,17 @@ FF
 00
 00
 00
+00  -- read during encrypted string
 00
 00
 00
 00
 00
-00
-05
-00
+05 -- this is read at startup appears to be type of board 5 = Wavecom
 00
 00
-C9
+00
+C9 -- this is read after ICCID and during encrypted string 6E in example
 00
 64
 00
@@ -795,21 +795,21 @@ C9
 00
 30
 00
-40
+40 // PSTN fault duration
 02
-36
-40
-15
-30
-04
-04
-04
-04
-05
-10
-10
-03
-04
+36 // gsm timeout
+40 // pstn timeout
+15 // lan timeout
+30 // GRPS timeout
+04 // pause
+04 // pause
+04 // pause - not read
+04 // pause - not read
+05 // gsm number
+10 // pstn number
+10 // lan number
+03 // GPRS number
+04 // LAN fault duration
 00
 15
 00

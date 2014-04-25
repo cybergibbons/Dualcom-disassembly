@@ -47,8 +47,28 @@ P0.2H -> GPRS_CTM
 0F760H looks to be the type of GPRS module (from 8147 sub)
 
 0F662H looks to be the context
-
+0F661H might also be context
 e13e is adddress for IP
 
 Addresses
 E17E is UP from 0x90 in EEPROM 192
+
+210414
+
+Serial buffers
+UART1
+
+0E2AEH is base address for RX buffer, 0E0BAH is head, 0E0B8H is tail pointer, length is 20A (522)
+e2ea-e4b8
+
+0E4B8H is base address for TX buffer, 0E0B6H is tail pointer, 0E0B4H is head pointer, length is 40A
+e4b8-e8c2
+
+	0e1d1        fdc404      CALL            !4C4H
+	0e1d4        02
+	0e1d7		 33      	 MOVW            0FFE20H,AX
+	0e602        13       	 MOVW            AX,BC
+	0e1d9        72          MOV             C,A
+	0e1da        ef0e        BR              $0E1EAH
+
+

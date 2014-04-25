@@ -1,0 +1,1975 @@
+--
+02f5e        f6          CLRW            AX
+02f5f        b1          DECW            AX
+02f60        bfc8f5      MOVW            !0F5C8H,AX
+02f63        ee7302      BR              $!31D9H
+
+--
+--
+03059        e507f7      ONEB            !0F707H
+0305c        309411      MOVW            AX,#1194H
+0305f        bfc8f5      MOVW            !0F5C8H,AX
+03062        324610      MOVW            BC,#1046H // A
+03065        8d20        MOV             A,0FFE20H
+--
+--
+031e9        df09        BNZ             $31F4H
+031eb        30bc34      MOVW            AX,#34BCH
+031ee        bfc8f5      MOVW            !0F5C8H,AX
+031f1        eea000      BR              $!3294H
+031f4        30f915      MOVW            AX,#15F9H
+--
+--
+031f1        eea000      BR              $!3294H
+031f4        30f915      MOVW            AX,#15F9H
+031f7        bfc8f5      MOVW            !0F5C8H,AX
+031fa        ee9700      BR              $!3294H
+031fd        8d20        MOV             A,0FFE20H
+--
+--
+03266        dfe7        BNZ             $324FH
+03268        30c201      MOVW            AX,#1C2H
+0326b        bfc8f5      MOVW            !0F5C8H,AX
+0326e        cf1cf696    MOV             !0F61CH,#96H
+03272        ef20        BR              $3294H
+--
+--
+0326e        cf1cf696    MOV             !0F61CH,#96H
+03272        ef20        BR              $3294H
+03274        afc8f5      MOVW            AX,!0F5C8H
+03277        7c80        XOR             A,#80H
+03279        440180      CMPW            AX,#8001H
+--
+--
+0337a        fca99b00    CALL            sub_7Seg_Write_v2_9ba9
+0337e        30bc34      MOVW            AX,#34BCH
+03381        bfc8f5      MOVW            !0F5C8H,AX
+03384        cf60f61e    MOV             !0F660H,#1EH
+03388        ef21        BR              $33ABH
+--
+--
+033c8        fca99b00    CALL            sub_7Seg_Write_v2_9ba9
+033cc        30bc34      MOVW            AX,#34BCH
+033cf        bfc8f5      MOVW            !0F5C8H,AX
+033d2        cf60f624    MOV             !0F660H,#24H
+033d6        713339      CLR1            0FFE39H.3H
+--
+--
+0348e        dd16        BZ              $34A6H
+03490        308403      MOVW            AX,#384H
+03493        bfc8f5      MOVW            !0F5C8H,AX
+03496        e450        ONEB            0FFE50H
+03498        f51ff6      CLRB            !0F61FH
+--
+--
+034af        dd0a        BZ              $34BBH
+034b1        30c201      MOVW            AX,#1C2H
+034b4        bfc8f5      MOVW            !0F5C8H,AX
+034b7        cf60f622    MOV             !0F660H,#22H
+
+--
+--
+034b7        cf60f622    MOV             !0F660H,#22H
+
+034bb        afc8f5      MOVW            AX,!0F5C8H
+034be        7c80        XOR             A,#80H
+034c0        440180      CMPW            AX,#8001H
+--
+--
+034d9        dd1f        BZ              $34FAH
+034db        308403      MOVW            AX,#384H
+034de        bfc8f5      MOVW            !0F5C8H,AX
+034e1        e450        ONEB            0FFE50H
+034e3        f51ff6      CLRB            !0F61FH
+--
+--
+03503        dd0a        BZ              $350FH
+03505        30c201      MOVW            AX,#1C2H
+03508        bfc8f5      MOVW            !0F5C8H,AX
+0350b        cf60f622    MOV             !0F660H,#22H
+--
+0350b        cf60f622    MOV             !0F660H,#22H
+0350f        afc8f5      MOVW            AX,!0F5C8H
+03512        7c80        XOR             A,#80H
+03514        440180      CMPW            AX,#8001H
+--
+--
+03519        eee200      BR              $!35FEH
+0351c        eedefe      BR              $!33FDH
+0351f        afc8f5      MOVW            AX,!0F5C8H
+03522        7c80        XOR             A,#80H
+03524        440180      CMPW            AX,#8001H
+--
+--
+0353c        dd41        BZ              $357FH
+0353e        304605      MOVW            AX,#546H
+03541        bfc8f5      MOVW            !0F5C8H,AX
+03544        eeb700      BR              $!35FEH
+03547        d519f7      CMP0            !0F719H
+--
+--
+0356e        dd0a        BZ              $357AH
+03570        309411      MOVW            AX,#1194H
+03573        bfc8f5      MOVW            !0F5C8H,AX
+03576        cf60f621    MOV             !0F660H,#21H
+0357a        63          MOV             A,B
+--
+--
+0357d        df7f        BNZ             $35FEH
+0357f        302d00      MOVW            AX,#2DH
+03582        bfc8f5      MOVW            !0F5C8H,AX
+03585        cf60f622    MOV             !0F660H,#22H
+03589        ef73        BR              $35FEH
+--
+--
+03780        dd0c        BZ              $378EH
+03782        30f915      MOVW            AX,#15F9H
+03785        bfc8f5      MOVW            !0F5C8H,AX
+03788        cfdef60b    MOV             !0F6DEH,#0BH
+0378c        ef0a        BR              $3798H
+--
+--
+03934        f45b        CLRB            0FFE5BH
+03936        302d00      MOVW            AX,#2DH
+03939        bfc8f5      MOVW            !0F5C8H,AX
+0393c        cf5ef705    MOV             !0F75EH,#5H
+03940        e521f6      ONEB            !0F621H
+--
+--
+03966        f459        CLRB            0FFE59H
+03968        302d00      MOVW            AX,#2DH
+0396b        bfc8f5      MOVW            !0F5C8H,AX
+0396e        cf5ef705    MOV             !0F75EH,#5H
+03972        e521f6      ONEB            !0F621H
+--
+--
+0397f        f45a        CLRB            0FFE5AH
+03981        302d00      MOVW            AX,#2DH
+03984        bfc8f5      MOVW            !0F5C8H,AX
+03987        cf5ef705    MOV             !0F75EH,#5H
+0398b        e521f6      ONEB            !0F621H
+--
+--
+03991        e567f7      ONEB            !0F767H
+03994        ee90fe      BR              $!3827H
+03997        afc8f5      MOVW            AX,!0F5C8H
+0399a        7c80        XOR             A,#80H
+0399c        440180      CMPW            AX,#8001H
+--
+--
+039b1        bfc6f5      MOVW            !0F5C6H,AX
+039b4        30c201      MOVW            AX,#1C2H
+039b7        bfc8f5      MOVW            !0F5C8H,AX
+039ba        ef2d        BR              $39E9H
+039bc        d523f6      CMP0            !0F623H
+--
+--
+039c8        bfc6f5      MOVW            !0F5C6H,AX
+039cb        306504      MOVW            AX,#465H
+039ce        bfc8f5      MOVW            !0F5C8H,AX
+039d1        ef16        BR              $39E9H
+039d3        4023f603    CMP             !0F623H,#3H
+--
+--
+039e0        bfc6f5      MOVW            !0F5C6H,AX
+039e3        30c201      MOVW            AX,#1C2H
+039e6        bfc8f5      MOVW            !0F5C8H,AX
+039e9        8f23f6      MOV             A,!0F623H
+039ec        fc64d700    CALL            sub_Serial_ResetBuffers
+--
+--
+03a16        cf21f633    MOV             !0F621H,#33H
+03a1a        ee0afe      BR              $!3827H
+03a1d        afc8f5      MOVW            AX,!0F5C8H
+03a20        7c80        XOR             A,#80H
+03a22        440180      CMPW            AX,#8001H
+--
+--
+03a5d        cf21f685    MOV             !0F621H,#85H
+03a61        eec3fd      BR              $!3827H
+03a64        afc8f5      MOVW            AX,!0F5C8H
+03a67        7c80        XOR             A,#80H
+03a69        440180      CMPW            AX,#8001H
+--
+--
+03ab5        f6          CLRW            AX
+03ab6        b1          DECW            AX
+03ab7        bfc8f5      MOVW            !0F5C8H,AX
+03aba        afc8f5      MOVW            AX,!0F5C8H
+03abd        7c80        XOR             A,#80H
+03abf        440180      CMPW            AX,#8001H
+--
+--
+03b34        cf21f61b    MOV             !0F621H,#1BH
+03b38        30ca08      MOVW            AX,#8CAH
+03b3b        bfc8f5      MOVW            !0F5C8H,AX
+03b3e        eee6fc      BR              $!3827H
+03b41        d46a        CMP0            0FFE6AH
+--
+--
+03b6e        cf21f635    MOV             !0F621H,#35H
+03b72        30ca08      MOVW            AX,#8CAH
+03b75        bfc8f5      MOVW            !0F5C8H,AX
+03b78        d46b        CMP0            0FFE6BH
+03b7a        df0d        BNZ             $3B89H
+--
+--
+03b78        d46b        CMP0            0FFE6BH
+03b7a        df0d        BNZ             $3B89H
+03b7c        afc8f5      MOVW            AX,!0F5C8H
+03b7f        7c80        XOR             A,#80H
+03b81        440180      CMPW            AX,#8001H
+--
+--
+03bb5        cf21f61b    MOV             !0F621H,#1BH
+03bb9        30ca08      MOVW            AX,#8CAH
+03bbc        bfc8f5      MOVW            !0F5C8H,AX
+03bbf        ee65fc      BR              $!3827H
+03bc2        fc038000    CALL            !!8003H
+--
+--
+03bda        9f62f6      MOV             !0F662H,A
+03bdd        30100e      MOVW            AX,#0E10H
+03be0        bfc8f5      MOVW            !0F5C8H,AX
+03be3        cf21f602    MOV             !0F621H,#2H
+03be7        ee3dfc      BR              $!3827H
+--
+--
+03d0d        bf92df      MOVW            !0DF92H,AX
+03d10        308403      MOVW            AX,#384H
+03d13        bfc8f5      MOVW            !0F5C8H,AX
+03d16        e1          ONEB            A
+03d17        fc64d700    CALL            sub_Serial_ResetBuffers
+--
+--
+03dfe        ee26fa      BR              $!3827H
+03e01        30c201      MOVW            AX,#1C2H
+03e04        bfc8f5      MOVW            !0F5C8H,AX
+03e07        bfc6f5      MOVW            !0F5C6H,AX
+03e0a        cf21f696    MOV             !0F621H,#96H
+--
+--
+03e25        cf21f63d    MOV             !0F621H,#3DH
+03e29        300807      MOVW            AX,#708H
+03e2c        bfc8f5      MOVW            !0F5C8H,AX
+03e2f        eef5f9      BR              $!3827H
+03e32        f526f6      CLRB            !0F626H
+--
+--
+03f44        fc64d700    CALL            sub_Serial_ResetBuffers
+03f48        308403      MOVW            AX,#384H
+03f4b        bfc8f5      MOVW            !0F5C8H,AX
+03f4e        32ca10      MOVW            BC,#10CAH
+03f51        e1          ONEB            A
+--
+--
+03f7d        eea7f8      BR              $!3827H
+03f80        30c201      MOVW            AX,#1C2H
+03f83        bfc8f5      MOVW            !0F5C8H,AX
+03f86        bfc6f5      MOVW            !0F5C6H,AX
+03f89        cf21f696    MOV             !0F621H,#96H
+--
+--
+03f89        cf21f696    MOV             !0F621H,#96H
+03f8d        ee97f8      BR              $!3827H
+03f90        afc8f5      MOVW            AX,!0F5C8H
+03f93        7c80        XOR             A,#80H
+03f95        440180      CMPW            AX,#8001H
+--
+--
+03fe6        4060f705    CMP             !0F760H,#5H
+03fea        df2f        BNZ             $401BH
+03fec        afc8f5      MOVW            AX,!0F5C8H
+03fef        7c80        XOR             A,#80H
+03ff1        440180      CMPW            AX,#8001H
+--
+--
+0401b        4060f703    CMP             !0F760H,#3H
+0401f        df23        BNZ             $4044H
+04021        afc8f5      MOVW            AX,!0F5C8H
+04024        7c80        XOR             A,#80H
+04026        440180      CMPW            AX,#8001H
+--
+--
+042a1        cf21f61e    MOV             !0F621H,#1EH
+042a5        ee7ff5      BR              $!3827H
+042a8        afc8f5      MOVW            AX,!0F5C8H
+042ab        7c80        XOR             A,#80H
+042ad        440180      CMPW            AX,#8001H
+--
+--
+06992        fcf5e100    CALL            sub_Serial_WriteStringTerminate_e1f5
+06996        304605      MOVW            AX,#546H
+06999        bfc8f5      MOVW            !0F5C8H,AX
+0699c        cf8cf699    MOV             !0F68CH,#99H
+069a0        8f8cf6      MOV             A,!0F68CH
+--
+--
+06a00        fcf5e100    CALL            sub_Serial_WriteStringTerminate_e1f5
+06a04        304605      MOVW            AX,#546H
+06a07        bfc8f5      MOVW            !0F5C8H,AX
+
+06a0a        1002        ADDW            SP,#2H
+--
+--
+06a5a        fcf5e100    CALL            sub_Serial_WriteStringTerminate_e1f5
+06a5e        308403      MOVW            AX,#384H
+06a61        bfc8f5      MOVW            !0F5C8H,AX
+06a64        64          MOV             A,E
+06a65        4c01        CMP             A,#1H
+--
+--
+06aa0        fcf5e100    CALL            sub_Serial_WriteStringTerminate_e1f5
+06aa4        308403      MOVW            AX,#384H
+06aa7        bfc8f5      MOVW            !0F5C8H,AX
+06aaa        64          MOV             A,E
+06aab        4c02        CMP             A,#2H
+--
+--
+06ad6        fcf5e100    CALL            sub_Serial_WriteStringTerminate_e1f5
+06ada        308403      MOVW            AX,#384H
+06add        bfc8f5      MOVW            !0F5C8H,AX
+06ae0        302823      MOVW            AX,#2328H
+06ae3        bfcef5      MOVW            !0F5CEH,AX
+--
+--
+06b21        fcf5e100    CALL            sub_Serial_WriteStringTerminate_e1f5
+06b25        308403      MOVW            AX,#384H
+06b28        bfc8f5      MOVW            !0F5C8H,AX
+06b2b        64          MOV             A,E
+06b2c        4c01        CMP             A,#1H
+--
+--
+06b67        fcf5e100    CALL            sub_Serial_WriteStringTerminate_e1f5
+06b6b        308403      MOVW            AX,#384H
+06b6e        bfc8f5      MOVW            !0F5C8H,AX
+06b71        64          MOV             A,E
+06b72        4c02        CMP             A,#2H
+--
+--
+06b9a        fcf5e100    CALL            sub_Serial_WriteStringTerminate_e1f5
+06b9e        308403      MOVW            AX,#384H
+06ba1        bfc8f5      MOVW            !0F5C8H,AX
+06ba4        302823      MOVW            AX,#2328H
+06ba7        bfcef5      MOVW            !0F5CEH,AX
+--
+--
+06cc5        fc22e300    CALL            sub_Serial_WriteStringAT_UART1_e322
+06cc9        30c201      MOVW            AX,#1C2H
+06ccc        bfc8f5      MOVW            !0F5C8H,AX
+06ccf        cf8df68a    MOV             !0F68DH,#8AH
+06cd3        eecf02      BR              $!6FA5H
+--
+--
+06ccf        cf8df68a    MOV             !0F68DH,#8AH
+06cd3        eecf02      BR              $!6FA5H
+06cd6        afc8f5      MOVW            AX,!0F5C8H
+06cd9        7c80        XOR             A,#80H
+06cdb        440180      CMPW            AX,#8001H
+--
+--
+06ce8        cf8df693    MOV             !0F68DH,#93H
+06cec        30c201      MOVW            AX,#1C2H
+06cef        bfc8f5      MOVW            !0F5C8H,AX
+06cf2        fc478100    CALL            !!8147H
+06cf6        eeac02      BR              $!6FA5H
+--
+--
+06cf2        fc478100    CALL            !!8147H
+06cf6        eeac02      BR              $!6FA5H
+06cf9        afc8f5      MOVW            AX,!0F5C8H
+06cfc        7c80        XOR             A,#80H
+06cfe        440180      CMPW            AX,#8001H
+--
+--
+06d25        cf8df68c    MOV             !0F68DH,#8CH
+06d29        30c201      MOVW            AX,#1C2H
+06d2c        bfc8f5      MOVW            !0F5C8H,AX
+06d2f        ee7302      BR              $!6FA5H
+--
+06d2f        ee7302      BR              $!6FA5H
+06d32        afc8f5      MOVW            AX,!0F5C8H
+06d35        7c80        XOR             A,#80H
+06d37        440180      CMPW            AX,#8001H
+--
+--
+06dc4        fcf5e100    CALL            sub_Serial_WriteStringTerminate_e1f5
+06dc8        304605      MOVW            AX,#546H
+06dcb        bfc8f5      MOVW            !0F5C8H,AX
+06dce        cf8df68d    MOV             !0F68DH,#8DH
+06dd2        eed001      BR              $!6FA5H
+--
+--
+06dce        cf8df68d    MOV             !0F68DH,#8DH
+06dd2        eed001      BR              $!6FA5H
+06dd5        afc8f5      MOVW            AX,!0F5C8H
+06dd8        7c80        XOR             A,#80H
+06dda        440180      CMPW            AX,#8001H
+--
+--
+06e82        cf8df68f    MOV             !0F68DH,#8FH
+06e86        304605      MOVW            AX,#546H
+06e89        bfc8f5      MOVW            !0F5C8H,AX
+06e8c        ee1601      BR              $!6FA5H
+--
+06e8c        ee1601      BR              $!6FA5H
+06e8f        afc8f5      MOVW            AX,!0F5C8H
+06e92        7c80        XOR             A,#80H
+06e94        440180      CMPW            AX,#8001H
+--
+--
+06eac        fc22e300    CALL            sub_Serial_WriteStringAT_UART1_e322
+06eb0        304605      MOVW            AX,#546H
+06eb3        bfc8f5      MOVW            !0F5C8H,AX
+06eb6        cf8df690    MOV             !0F68DH,#90H
+06eba        eee800      BR              $!6FA5H
+--
+--
+06eb6        cf8df690    MOV             !0F68DH,#90H
+06eba        eee800      BR              $!6FA5H
+06ebd        afc8f5      MOVW            AX,!0F5C8H
+06ec0        7c80        XOR             A,#80H
+06ec2        440180      CMPW            AX,#8001H
+--
+--
+06eee        fc64d700    CALL            sub_Serial_ResetBuffers
+06ef2        305e1a      MOVW            AX,#1A5EH
+06ef5        bfc8f5      MOVW            !0F5C8H,AX
+06ef8        fc888000    CALL            !!8088H
+06efc        cf8df691    MOV             !0F68DH,#91H
+--
+--
+06f0a        fc22e300    CALL            sub_Serial_WriteStringAT_UART1_e322
+06f0e        304605      MOVW            AX,#546H
+06f11        bfc8f5      MOVW            !0F5C8H,AX
+06f14        cf8df694    MOV             !0F68DH,#94H
+06f18        ee8a00      BR              $!6FA5H
+--
+--
+06f14        cf8df694    MOV             !0F68DH,#94H
+06f18        ee8a00      BR              $!6FA5H
+06f1b        afc8f5      MOVW            AX,!0F5C8H
+06f1e        7c80        XOR             A,#80H
+06f20        440180      CMPW            AX,#8001H
+--
+--
+06f38        fcaf6b00    CALL            !!6BAFH
+06f3c        304605      MOVW            AX,#546H
+06f3f        bfc8f5      MOVW            !0F5C8H,AX
+06f42        cf8df695    MOV             !0F68DH,#95H
+06f46        ef5d        BR              $6FA5H
+--
+--
+06f42        cf8df695    MOV             !0F68DH,#95H
+06f46        ef5d        BR              $6FA5H
+06f48        afc8f5      MOVW            AX,!0F5C8H
+06f4b        7c80        XOR             A,#80H
+06f4d        440180      CMPW            AX,#8001H
+--
+--
+06f86        dfb0        BNZ             $6F38H
+06f88        ef1b        BR              $6FA5H
+06f8a        afc8f5      MOVW            AX,!0F5C8H
+06f8d        7c80        XOR             A,#80H
+06f8f        440180      CMPW            AX,#8001H
+--
+--
+06ffb        fcf5e100    CALL            sub_Serial_WriteStringTerminate_e1f5
+06fff        304605      MOVW            AX,#546H
+07002        bfc8f5      MOVW            !0F5C8H,AX
+07005        ef07        BR              $700EH
+07007        305015      MOVW            AX,#1550H // " " (space)
+--
+--
+		0701b        dd55        BZ              $7072H
+		0701d        309411      MOVW            AX,#1194H
+		07020        bfc8f5      MOVW            !0F5C8H,AX
+		07023        304605      MOVW            AX,#546H
+		07026        bfccf5      MOVW            !0F5CCH,AX
+--
+--
+		07029        e58ff6      ONEB            !0F68FH
+		0702c        ef47        BR              $7075H
+	0702e        afc8f5      MOVW            AX,!0F5C8H
+	07031        7c80        XOR             A,#80H
+	07033        440180      CMPW            AX,#8001H
+--
+--
+	07049        440180      CMPW            AX,#8001H
+	0704c        de27        BNC             $7075H
+	0704e        afc8f5      MOVW            AX,!0F5C8H
+	07051        7c80        XOR             A,#80H
+	07053        440180      CMPW            AX,#8001H
+--
+--
+	07083        61f8        SKNZ            
+	07085        9f90f6      MOV             !0F690H,A
+	07088        afc8f5      MOVW            AX,!0F5C8H
+	0708b        7c80        XOR             A,#80H
+	0708d        440180      CMPW            AX,#8001H
+--
+--
+		070a8        715200      SET1            GPRS_ONOFF // default
+		070ab        308403      MOVW            AX,#384H // 900
+		070ae        bfc8f5      MOVW            !0F5C8H,AX
+		070b1        cf90f602    MOV             !0F690H,#2H // next state
+		070b5        ef75        BR              $712CH
+--
+--
+		070b7        715300      CLR1            GPRS_ONOFF // GRPS module on/off
+		070ba        308403      MOVW            AX,#384H
+		070bd        bfc8f5      MOVW            !0F5C8H,AX
+		070c0        cf90f603    MOV             !0F690H,#3H // next state
+		070c4        ef66        BR              $712CH
+--
+--
+		070cf        717b24      CLR1            PM4.7H
+		070d2        308403      MOVW            AX,#384H
+		070d5        bfc8f5      MOVW            !0F5C8H,AX
+		070d8        cf90f607    MOV             !0F690H,#7H
+		070dc        ef4e        BR              $712CH
+--
+--
+		070de        714200      SET1            P0.4H
+		070e1        308403      MOVW            AX,#384H
+		070e4        bfc8f5      MOVW            !0F5C8H,AX
+		070e7        3104000d    BF              P0.0H,$70F8H
+		070eb        8f0bf6      MOV             A,!0F60BH
+--
+--
+		07107        715200      SET1            GPRS_ONOFF // GPRS module on/off
+		0710a        308403      MOVW            AX,#384H
+		0710d        bfc8f5      MOVW            !0F5C8H,AX
+		07110        cf90f606    MOV             !0F690H,#6H
+		07114        ef16        BR              $712CH
+--
+--
+		0711f        717a24      SET1            PM4.7H
+		07122        308403      MOVW            AX,#384H
+		07125        bfc8f5      MOVW            !0F5C8H,AX
+		07128        cf90f607    MOV             !0F690H,#7H
+	0712c        8f90f6      MOV             A,!0F690H
+--
+--
+07147        f6          CLRW            AX
+07148        b1          DECW            AX
+07149        bfc8f5      MOVW            !0F5C8H,AX
+// branch from here for radio reset
+0714c        31642f0d    BF              0FFE2FH.6H,$715DH
+--
+--
+07184        cf91f703    MOV             !0F791H,#3H
+07188        302d00      MOVW            AX,#2DH
+0718b        bfc8f5      MOVW            !0F5C8H,AX
+0718e        31040007    BF              P0.0H,$7199H
+07192        cf91f632    MOV             !0F691H,#32H
+--
+--
+
+// State 32
+071a0        afc8f5      MOVW            AX,!0F5C8H
+071a3        7c80        XOR             A,#80H
+071a5        440180      CMPW            AX,#8001H
+--
+--
+
+// State 02
+071c8        afc8f5      MOVW            AX,!0F5C8H
+071cb        7c80        XOR             A,#80H
+071cd        440180      CMPW            AX,#8001H
+--
+--
+071e9        fc64d700    CALL            sub_Serial_ResetBuffers
+071ed        30c201      MOVW            AX,#1C2H
+071f0        bfc8f5      MOVW            !0F5C8H,AX
+071f3        cf91f610    MOV             !0F691H,#10H
+071f7        ee510d      BR              $!7F4BH
+--
+--
+
+// State 10
+07200        afc8f5      MOVW            AX,!0F5C8H
+07203        7c80        XOR             A,#80H
+07205        440180      CMPW            AX,#8001H
+--
+--
+07231        ee170d      BR              $!7F4BH
+07234        302d00      MOVW            AX,#2DH
+07237        bfc8f5      MOVW            !0F5C8H,AX
+0723a        cf92f604    MOV             !0F692H,#4H
+0723e        cf91f634    MOV             !0F691H,#34H // State 34
+--
+--
+0726a        cf91f63b    MOV             !0F691H,#3BH
+0726e        eeda0c      BR              $!7F4BH
+07271        afc8f5      MOVW            AX,!0F5C8H
+07274        7c80        XOR             A,#80H
+07276        440180      CMPW            AX,#8001H
+--
+--
+07297        d46a        CMP0            0FFE6AH
+07299        df0d        BNZ             $72A8H
+0729b        afc8f5      MOVW            AX,!0F5C8H
+0729e        7c80        XOR             A,#80H
+072a0        440180      CMPW            AX,#8001H
+--
+--
+072b6        d46a        CMP0            0FFE6AH
+072b8        df0d        BNZ             $72C7H
+072ba        afc8f5      MOVW            AX,!0F5C8H
+072bd        7c80        XOR             A,#80H
+072bf        440180      CMPW            AX,#8001H
+--
+--
+072d5        d46a        CMP0            0FFE6AH
+072d7        df0d        BNZ             $72E6H
+072d9        afc8f5      MOVW            AX,!0F5C8H
+072dc        7c80        XOR             A,#80H
+072de        440180      CMPW            AX,#8001H
+--
+--
+072f4        d46a        CMP0            0FFE6AH
+072f6        df0d        BNZ             $7305H
+072f8        afc8f5      MOVW            AX,!0F5C8H
+072fb        7c80        XOR             A,#80H
+072fd        440180      CMPW            AX,#8001H
+--
+--
+07313        d46a        CMP0            0FFE6AH
+07315        df0d        BNZ             $7324H
+07317        afc8f5      MOVW            AX,!0F5C8H
+0731a        7c80        XOR             A,#80H
+0731c        440180      CMPW            AX,#8001H
+--
+--
+07332        d46a        CMP0            0FFE6AH
+07334        df0d        BNZ             $7343H
+07336        afc8f5      MOVW            AX,!0F5C8H
+07339        7c80        XOR             A,#80H
+0733b        440180      CMPW            AX,#8001H
+--
+--
+07355        d46b        CMP0            0FFE6BH
+07357        df0d        BNZ             $7366H
+07359        afc8f5      MOVW            AX,!0F5C8H
+0735c        7c80        XOR             A,#80H
+0735e        440180      CMPW            AX,#8001H
+--
+--
+07371        d46b        CMP0            0FFE6BH
+07373        df0d        BNZ             $7382H
+07375        afc8f5      MOVW            AX,!0F5C8H
+07378        7c80        XOR             A,#80H
+0737a        440180      CMPW            AX,#8001H
+--
+--
+07394        d46b        CMP0            0FFE6BH
+07396        df0a        BNZ             $73A2H
+07398        afc8f5      MOVW            AX,!0F5C8H
+0739b        7c80        XOR             A,#80H
+0739d        440180      CMPW            AX,#8001H
+--
+--
+073a5        fc22e300    CALL            sub_Serial_WriteStringAT_UART1_e322
+073a9        cf91f64a    MOV             !0F691H,#4AH
+073ad        afc8f5      MOVW            AX,!0F5C8H
+073b0        7c80        XOR             A,#80H
+073b2        440180      CMPW            AX,#8001H
+--
+--
+07422        cf91f64b    MOV             !0F691H,#4BH
+07426        ee220b      BR              $!7F4BH
+07429        afc8f5      MOVW            AX,!0F5C8H
+0742c        7c80        XOR             A,#80H
+0742e        440180      CMPW            AX,#8001H
+--
+--
+07441        fc22e300    CALL            sub_Serial_WriteStringAT_UART1_e322
+07445        cf91f64c    MOV             !0F691H,#4CH
+07449        afc8f5      MOVW            AX,!0F5C8H
+0744c        7c80        XOR             A,#80H
+0744e        440180      CMPW            AX,#8001H
+--
+--
+074af        fc22e300    CALL            sub_Serial_WriteStringAT_UART1_e322
+074b3        cf91f650    MOV             !0F691H,#50H
+074b7        afc8f5      MOVW            AX,!0F5C8H
+074ba        7c80        XOR             A,#80H
+074bc        440180      CMPW            AX,#8001H
+--
+--
+074ce        fc22e300    CALL            sub_Serial_WriteStringAT_UART1_e322
+074d2        cf91f64e    MOV             !0F691H,#4EH
+074d6        afc8f5      MOVW            AX,!0F5C8H
+074d9        7c80        XOR             A,#80H
+074db        440180      CMPW            AX,#8001H
+--
+--
+074f2        d46a        CMP0            0FFE6AH
+074f4        df0d        BNZ             $7503H
+074f6        afc8f5      MOVW            AX,!0F5C8H
+074f9        7c80        XOR             A,#80H
+074fb        440180      CMPW            AX,#8001H
+--
+--
+07511        fc22e300    CALL            sub_Serial_WriteStringAT_UART1_e322
+07515        cf91f650    MOV             !0F691H,#50H
+07519        afc8f5      MOVW            AX,!0F5C8H
+0751c        7c80        XOR             A,#80H
+0751e        440180      CMPW            AX,#8001H
+--
+--
+07529        d46b        CMP0            0FFE6BH
+0752b        df0d        BNZ             $753AH
+0752d        afc8f5      MOVW            AX,!0F5C8H
+07530        7c80        XOR             A,#80H
+07532        440180      CMPW            AX,#8001H
+--
+--
+07575        fc2de800    CALL            !!0E82DH
+07579        cf91f652    MOV             !0F691H,#52H
+0757d        afc8f5      MOVW            AX,!0F5C8H
+07580        7c80        XOR             A,#80H
+07582        440180      CMPW            AX,#8001H
+--
+--
+07594        fc22e300    CALL            sub_Serial_WriteStringAT_UART1_e322
+07598        cf91f653    MOV             !0F691H,#53H
+0759c        afc8f5      MOVW            AX,!0F5C8H
+0759f        7c80        XOR             A,#80H
+075a1        440180      CMPW            AX,#8001H
+--
+--
+07603        fcf9e600    CALL            sub_EEPROM_WriteGuard_e6f9
+07607        302d00      MOVW            AX,#2DH
+0760a        bfc8f5      MOVW            !0F5C8H,AX
+0760d        cf91f654    MOV             !0F691H,#54H
+--
+0760d        cf91f654    MOV             !0F691H,#54H
+07611        afc8f5      MOVW            AX,!0F5C8H
+07614        7c80        XOR             A,#80H
+07616        440180      CMPW            AX,#8001H
+--
+--
+07626        cf91f686    MOV             !0F691H,#86H
+0762a        ee1e09      BR              $!7F4BH
+0762d        afc8f5      MOVW            AX,!0F5C8H
+07630        7c80        XOR             A,#80H
+07632        440180      CMPW            AX,#8001H
+--
+--
+07641        fc376500    CALL            !!6537H // Active context
+07645        308c0a      MOVW            AX,#0A8CH
+07648        bfc8f5      MOVW            !0F5C8H,AX
+0764b        cf91f655    MOV             !0F691H,#55H
+0764f        eef908      BR              $!7F4BH
+--
+--
+07714        cf91f656    MOV             !0F691H,#56H
+07718        f58bf6      CLRB            !0F68BH
+0771b        afc8f5      MOVW            AX,!0F5C8H
+0771e        7c80        XOR             A,#80H
+07720        440180      CMPW            AX,#8001H
+--
+--
+0773e        cf91f656    MOV             !0F691H,#56H
+07742        ee0608      BR              $!7F4BH
+07745        afc8f5      MOVW            AX,!0F5C8H
+07748        7c80        XOR             A,#80H
+0774a        440180      CMPW            AX,#8001H
+--
+--
+0776d        4c02        CMP             A,#2H
+0776f        de0d        BNC             $777EH
+07771        afc8f5      MOVW            AX,!0F5C8H
+07774        7c80        XOR             A,#80H
+07776        440180      CMPW            AX,#8001H
+--
+--
+0778a        bf4ce0      MOVW            !0E04CH,AX
+0778d        30c201      MOVW            AX,#1C2H
+07790        bfc8f5      MOVW            !0F5C8H,AX
+07793        cf91f659    MOV             !0F691H,#59H
+07797        eeb107      BR              $!7F4BH
+--
+--
+077b3        bf4ce0      MOVW            !0E04CH,AX
+077b6        50e1        MOV             X,#0E1H
+077b8        bfc8f5      MOVW            !0F5C8H,AX
+077bb        cf91f676    MOV             !0F691H,#76H
+077bf        ee8907      BR              $!7F4BH
+--
+--
+077d0        bf4ce0      MOVW            !0E04CH,AX
+077d3        50e1        MOV             X,#0E1H
+077d5        bfc8f5      MOVW            !0F5C8H,AX
+077d8        cf91f676    MOV             !0F691H,#76H
+077dc        ee6c07      BR              $!7F4BH
+--
+--
+0780e        ee3a07      BR              $!7F4BH
+07811        ee7cfa      BR              $!7290H
+07814        afc8f5      MOVW            AX,!0F5C8H
+07817        7c80        XOR             A,#80H
+07819        440180      CMPW            AX,#8001H
+--
+--
+07822        fc64d700    CALL            sub_Serial_ResetBuffers
+07826        305e1a      MOVW            AX,#1A5EH
+07829        bfc8f5      MOVW            !0F5C8H,AX
+0782c        cf91f65a    MOV             !0F691H,#5AH
+07830        ee1807      BR              $!7F4BH
+--
+--
+078bc        cf91f676    MOV             !0F691H,#76H
+
+078c0        afc8f5      MOVW            AX,!0F5C8H
+078c3        7c80        XOR             A,#80H
+078c5        440180      CMPW            AX,#8001H
+--
+--
+0790c        ee3c06      BR              $!7F4BH
+0790f        30c201      MOVW            AX,#1C2H
+07912        bfc8f5      MOVW            !0F5C8H,AX
+07915        e46a        ONEB            0FFE6AH
+07917        f46b        CLRB            0FFE6BH
+--
+--
+07928        f46b        CLRB            0FFE6BH
+0792a        30c201      MOVW            AX,#1C2H
+0792d        bfc8f5      MOVW            !0F5C8H,AX
+07930        cf91f65c    MOV             !0F691H,#5CH
+07934        ee1406      BR              $!7F4BH
+--
+--
+0795a        b092f6      DEC             !0F692H
+0795d        304605      MOVW            AX,#546H
+07960        bfc8f5      MOVW            !0F5C8H,AX
+07963        f519f7      CLRB            !0F719H
+07966        e46a        ONEB            0FFE6AH
+--
+--
+0796f        cf94f607    MOV             !0F694H,#7H
+07973        eed505      BR              $!7F4BH
+07976        afc8f5      MOVW            AX,!0F5C8H
+07979        7c80        XOR             A,#80H
+0797b        440180      CMPW            AX,#8001H
+--
+--
+07980        eec805      BR              $!7F4BH
+07983        30c201      MOVW            AX,#1C2H
+07986        bfc8f5      MOVW            !0F5C8H,AX
+07989        cf91f670    MOV             !0F691H,#70H
+0798d        eebb05      BR              $!7F4BH
+--
+--
+079a4        ef04        BR              $79AAH
+079a6        cf91f65d    MOV             !0F691H,#5DH
+079aa        afc8f5      MOVW            AX,!0F5C8H
+079ad        7c80        XOR             A,#80H
+079af        440180      CMPW            AX,#8001H
+--
+--
+
+// State 71
+079c6        afc8f5      MOVW            AX,!0F5C8H
+079c9        7c80        XOR             A,#80H
+079cb        440180      CMPW            AX,#8001H
+--
+--
+079f2        ef0a        BR              $79FEH
+079f4        30e100      MOVW            AX,#0E1H
+079f7        bfc8f5      MOVW            !0F5C8H,AX
+079fa        cf91f673    MOV             !0F691H,#73H
+--
+079fa        cf91f673    MOV             !0F691H,#73H
+079fe        afc8f5      MOVW            AX,!0F5C8H
+07a01        7c80        XOR             A,#80H
+07a03        440180      CMPW            AX,#8001H
+--
+--
+
+// State 73
+07a0e        afc8f5      MOVW            AX,!0F5C8H
+07a11        7c80        XOR             A,#80H
+07a13        440180      CMPW            AX,#8001H
+--
+--
+07a63        fcf5e100    CALL            sub_Serial_WriteStringTerminate_e1f5
+07a67        308403      MOVW            AX,#384H
+07a6a        bfc8f5      MOVW            !0F5C8H,AX
+07a6d        cf91f674    MOV             !0F691H,#74H
+07a71        eed704      BR              $!7F4BH
+--
+--
+07ad5        fcf5e100    CALL            sub_Serial_WriteStringTerminate_e1f5
+07ad9        308403      MOVW            AX,#384H
+07adc        bfc8f5      MOVW            !0F5C8H,AX
+07adf        cf91f675    MOV             !0F691H,#75H
+--
+07adf        cf91f675    MOV             !0F691H,#75H
+07ae3        afc8f5      MOVW            AX,!0F5C8H
+07ae6        7c80        XOR             A,#80H
+07ae8        440180      CMPW            AX,#8001H
+--
+--
+07b16        cf94f608    MOV             !0F694H,#8H
+07b1a        cf91f686    MOV             !0F691H,#86H
+07b1e        afc8f5      MOVW            AX,!0F5C8H
+07b21        7c80        XOR             A,#80H
+07b23        440180      CMPW            AX,#8001H
+--
+--
+07b31        dd0d        BZ              $7B40H
+07b33        304605      MOVW            AX,#546H
+07b36        bfc8f5      MOVW            !0F5C8H,AX
+07b39        cf91f654    MOV             !0F691H,#54H
+07b3d        ee0b04      BR              $!7F4BH
+--
+--
+07b44        df08        BNZ             $7B4EH
+07b46        30ca08      MOVW            AX,#8CAH
+07b49        bfc8f5      MOVW            !0F5C8H,AX
+07b4c        ef06        BR              $7B54H
+07b4e        30c201      MOVW            AX,#1C2H
+--
+--
+07b4c        ef06        BR              $7B54H
+07b4e        30c201      MOVW            AX,#1C2H
+07b51        bfc8f5      MOVW            !0F5C8H,AX
+07b54        cf91f65e    MOV             !0F691H,#5EH
+07b58        eef003      BR              $!7F4BH
+--
+--
+07b54        cf91f65e    MOV             !0F691H,#5EH
+07b58        eef003      BR              $!7F4BH
+07b5b        afc8f5      MOVW            AX,!0F5C8H
+07b5e        7c80        XOR             A,#80H
+07b60        440180      CMPW            AX,#8001H
+--
+--
+07b77        fc22e300    CALL            sub_Serial_WriteStringAT_UART1_e322
+07b7b        30a005      MOVW            AX,#5A0H
+07b7e        bfc8f5      MOVW            !0F5C8H,AX
+07b81        ef0d        BR              $7B90H
+07b83        306c16      MOVW            AX,#166CH // +CNMI=2,1,0,0
+--
+--
+07b86        fc22e300    CALL            sub_Serial_WriteStringAT_UART1_e322
+07b8a        30a005      MOVW            AX,#5A0H
+07b8d        bfc8f5      MOVW            !0F5C8H,AX
+07b90        f58af6      CLRB            !0F68AH
+07b93        cf91f65f    MOV             !0F691H,#5FH
+--
+--
+07b93        cf91f65f    MOV             !0F691H,#5FH
+07b97        eeb103      BR              $!7F4BH
+07b9a        afc8f5      MOVW            AX,!0F5C8H
+07b9d        7c80        XOR             A,#80H
+07b9f        440180      CMPW            AX,#8001H
+--
+--
+07bc6        fc22e300    CALL            sub_Serial_WriteStringAT_UART1_e322
+07bca        308c0a      MOVW            AX,#0A8CH
+07bcd        bfc8f5      MOVW            !0F5C8H,AX
+07bd0        cf91f660    MOV             !0F691H,#60H
+07bd4        ee7403      BR              $!7F4BH
+--
+--
+07bfd        e58af6      ONEB            !0F68AH
+07c00        cf91f65f    MOV             !0F691H,#5FH
+07c04        afc8f5      MOVW            AX,!0F5C8H
+07c07        7c80        XOR             A,#80H
+07c09        440180      CMPW            AX,#8001H
+--
+--
+07c26        ef04        BR              $7C2CH
+07c28        cf91f663    MOV             !0F691H,#63H
+07c2c        afc8f5      MOVW            AX,!0F5C8H
+07c2f        7c80        XOR             A,#80H
+07c31        440180      CMPW            AX,#8001H
+--
+--
+07c59        f561f6      CLRB            !0F661H
+07c5c        30ca08      MOVW            AX,#8CAH
+07c5f        bfc8f5      MOVW            !0F5C8H,AX
+07c62        cf91f664    MOV             !0F691H,#64H
+--
+07c62        cf91f664    MOV             !0F691H,#64H
+07c66        afc8f5      MOVW            AX,!0F5C8H
+07c69        7c80        XOR             A,#80H
+07c6b        440180      CMPW            AX,#8001H
+--
+--
+07ca7        fca86900    CALL            !!69A8H // AT+CGDCONT=balh
+07cab        cf91f666    MOV             !0F691H,#66H
+07caf        afc8f5      MOVW            AX,!0F5C8H
+07cb2        7c80        XOR             A,#80H
+07cb4        440180      CMPW            AX,#8001H
+--
+--
+07cc3        d46b        CMP0            0FFE6BH
+07cc5        df0d        BNZ             $7CD4H
+07cc7        afc8f5      MOVW            AX,!0F5C8H
+07cca        7c80        XOR             A,#80H
+07ccc        440180      CMPW            AX,#8001H
+--
+--
+07ce9        d46a        CMP0            0FFE6AH
+07ceb        df0a        BNZ             $7CF7H
+07ced        afc8f5      MOVW            AX,!0F5C8H
+07cf0        7c80        XOR             A,#80H
+07cf2        440180      CMPW            AX,#8001H
+--
+--
+07d28        d46b        CMP0            0FFE6BH
+07d2a        df0d        BNZ             $7D39H
+07d2c        afc8f5      MOVW            AX,!0F5C8H
+07d2f        7c80        XOR             A,#80H
+07d31        440180      CMPW            AX,#8001H
+--
+--
+07d59        d46b        CMP0            0FFE6BH
+07d5b        df0d        BNZ             $7D6AH
+07d5d        afc8f5      MOVW            AX,!0F5C8H
+07d60        7c80        XOR             A,#80H
+07d62        440180      CMPW            AX,#8001H
+--
+--
+07d6d        fc22e300    CALL            sub_Serial_WriteStringAT_UART1_e322
+07d71        306a0e      MOVW            AX,#0E6AH
+07d74        bfc8f5      MOVW            !0F5C8H,AX
+07d77        cf91f669    MOV             !0F691H,#69H
+07d7b        eecd01      BR              $!7F4BH
+--
+--
+07d7e        d46a        CMP0            0FFE6AH
+07d80        df0d        BNZ             $7D8FH
+07d82        afc8f5      MOVW            AX,!0F5C8H
+07d85        7c80        XOR             A,#80H
+07d87        440180      CMPW            AX,#8001H
+--
+--
+07d93        fca99b00    CALL            sub_7Seg_Write_v2_9ba9
+07d97        30f87f      MOVW            AX,#7FF8H
+07d9a        bfc8f5      MOVW            !0F5C8H,AX
+07d9d        cf91f66a    MOV             !0F691H,#6AH
+07da1        eea701      BR              $!7F4BH
+--
+--
+07da4        d46a        CMP0            0FFE6AH
+07da6        df11        BNZ             $7DB9H
+07da8        afc8f5      MOVW            AX,!0F5C8H
+07dab        7c80        XOR             A,#80H
+07dad        440180      CMPW            AX,#8001H
+--
+--
+07de4        71132e      CLR1            0FFE2EH.1H
+07de7        30c201      MOVW            AX,#1C2H
+07dea        bfc8f5      MOVW            !0F5C8H,AX
+07ded        cf91f66c    MOV             !0F691H,#6CH
+07df1        ee5701      BR              $!7F4BH
+--
+--
+07e1c        dd0d        BZ              $7E2BH
+07e1e        302d00      MOVW            AX,#2DH
+07e21        bfc8f5      MOVW            !0F5C8H,AX
+07e24        cf91f677    MOV             !0F691H,#77H
+07e28        ee2001      BR              $!7F4BH
+--
+--
+07e2e        cf91f686    MOV             !0F691H,#86H
+07e32        ee1601      BR              $!7F4BH
+07e35        afc8f5      MOVW            AX,!0F5C8H
+07e38        7c80        XOR             A,#80H
+07e3a        440180      CMPW            AX,#8001H
+--
+--
+
+// State 77
+07e45        afc8f5      MOVW            AX,!0F5C8H
+07e48        7c80        XOR             A,#80H
+07e4a        440180      CMPW            AX,#8001H
+--
+--
+07e78        fcb2e100    CALL            sub_Serial_WriteChar_e1b3
+07e7c        304605      MOVW            AX,#546H
+07e7f        bfc8f5      MOVW            !0F5C8H,AX
+07e82        cf91f678    MOV             !0F691H,#78H
+07e86        eec200      BR              $!7F4BH
+--
+--
+07e8d        e588f6      ONEB            !0F688H
+07e90        cf91f686    MOV             !0F691H,#86H
+07e94        afc8f5      MOVW            AX,!0F5C8H
+07e97        7c80        XOR             A,#80H
+07e99        440180      CMPW            AX,#8001H
+--
+--
+07ede        9f98f6      MOV             !0F698H,A
+07ee1        308403      MOVW            AX,#384H
+07ee4        bfc8f5      MOVW            !0F5C8H,AX
+07ee7        cf91f696    MOV             !0F691H,#96H
+07eeb        ef5e        BR              $7F4BH
+--
+--
+
+// State 98
+07f01        afc8f5      MOVW            AX,!0F5C8H
+07f04        7c80        XOR             A,#80H
+07f06        440180      CMPW            AX,#8001H
+--
+--
+
+// State 96
+07f1c        afc8f5      MOVW            AX,!0F5C8H
+07f1f        7c80        XOR             A,#80H
+07f21        440180      CMPW            AX,#8001H
+--
+--
+08007        d46b        CMP0            0FFE6BH
+08009        dd10        BZ              $801BH
+0800b        afc8f5      MOVW            AX,!0F5C8H
+0800e        7c80        XOR             A,#80H
+08010        44c381      CMPW            AX,#81C3H
+--
+--
+08013        dc06        BC              $801BH
+08015        30c201      MOVW            AX,#1C2H
+08018        bfc8f5      MOVW            !0F5C8H,AX
+0801b        afc8f5      MOVW            AX,!0F5C8H
+0801e        7c80        XOR             A,#80H
+08020        440180      CMPW            AX,#8001H
+--
+--
+080b9        fcb2e100    CALL            sub_Serial_WriteChar_e1b3
+080bd        30ca08      MOVW            AX,#8CAH
+080c0        bfc8f5      MOVW            !0F5C8H,AX
+080c3        ef3a        BR              $80FFH
+080c5        4060f703    CMP             !0F760H,#3H
+--
+--
+080ce        fc22e300    CALL            sub_Serial_WriteStringAT_UART1_e322
+080d2        30ca08      MOVW            AX,#8CAH
+080d5        bfc8f5      MOVW            !0F5C8H,AX
+080d8        ef25        BR              $80FFH
+080da        e1          ONEB            A
+--
+--
+080f5        fcb2e100    CALL            sub_Serial_WriteChar_e1b3
+080f9        30ca08      MOVW            AX,#8CAH
+080fc        bfc8f5      MOVW            !0F5C8H,AX
+080ff        c2          POP             BC
+08100        d7          RET             
+--
+--
+0813a        fcb2e100    CALL            sub_Serial_WriteChar_e1b3
+0813e        30ca08      MOVW            AX,#8CAH
+08141        bfc8f5      MOVW            !0F5C8H,AX
+08144        c4          POP             DE
+08145        c2          POP             BC
+--
+--
+	08178        fcb2e100    CALL            sub_Serial_WriteChar_e1b3
+	0817c        30ca08      MOVW            AX,#8CAH
+	0817f        bfc8f5      MOVW            !0F5C8H,AX
+	08182        ef3a        BR              $81BEH
+	08184        4060f703    CMP             !0F760H,#3H
+--
+--
+	0818d        fc22e300    CALL            sub_Serial_WriteStringAT_UART1_e322
+	08191        30ca08      MOVW            AX,#8CAH
+	08194        bfc8f5      MOVW            !0F5C8H,AX
+	08197        ef25        BR              $81BEH
+	// This is the fallthrough case for 0, Wavecom
+--
+--
+	081b4        fcb2e100    CALL            sub_Serial_WriteChar_e1b3
+	081b8        302823      MOVW            AX,#2328H
+	081bb        bfc8f5      MOVW            !0F5C8H,AX
+	081be        c2          POP             BC
+	081bf        d7          RET       
+--
+--
+08417        8f67f6      MOV             A,!0F667H
+0841a        fca99b00    CALL            sub_7Seg_Write_v2_9ba9
+0841e        afc8f5      MOVW            AX,!0F5C8H
+08421        7c80        XOR             A,#80H
+08423        440180      CMPW            AX,#8001H
+--
+--
+0858b        f57af6      CLRB            !0F67AH
+0858e        30c201      MOVW            AX,#1C2H
+08591        bfc8f5      MOVW            !0F5C8H,AX
+08594        d5d1f6      CMP0            !0F6D1H
+08597        dd06        BZ              $859FH
+--
+--
+0861b        ee8303      BR              $!89A1H
+0861e        eea9fe      BR              $!84CAH
+08621        afc8f5      MOVW            AX,!0F5C8H
+08624        7c80        XOR             A,#80H
+08626        440180      CMPW            AX,#8001H
+--
+--
+086a3        bf96df      MOVW            !0DF96H,AX
+086a6        30e100      MOVW            AX,#0E1H
+086a9        bfc8f5      MOVW            !0F5C8H,AX
+086ac        530d        MOV             B,#0DH
+086ae        e1          ONEB            A
+--
+--
+08724        ee7a02      BR              $!89A1H
+08727        eea0fd      BR              $!84CAH
+0872a        afc8f5      MOVW            AX,!0F5C8H
+0872d        7c80        XOR             A,#80H
+0872f        440180      CMPW            AX,#8001H
+--
+--
+08735        fc64d700    CALL            sub_Serial_ResetBuffers
+08739        304605      MOVW            AX,#546H
+0873c        bfc8f5      MOVW            !0F5C8H,AX
+0873f        8f7af6      MOV             A,!0F67AH
+08742        4c02        CMP             A,#2H
+--
+--
+08768        dfef        BNZ             $8759H
+0876a        306711      MOVW            AX,#1167H
+0876d        bfc8f5      MOVW            !0F5C8H,AX
+08770        e1          ONEB            A
+08771        fcbed600    CALL            !!0D6BEH
+--
+--
+088f4        fca99b00    CALL            sub_7Seg_Write_v2_9ba9
+088f8        30e100      MOVW            AX,#0E1H
+088fb        bfc8f5      MOVW            !0F5C8H,AX
+088fe        309411      MOVW            AX,#1194H
+08901        bfcef5      MOVW            !0F5CEH,AX
+--
+--
+0891e        df0e        BNZ             $892EH
+08920        302d00      MOVW            AX,#2DH
+08923        bfc8f5      MOVW            !0F5C8H,AX
+08926        a07af6      INC             !0F67AH
+08929        e57bf6      ONEB            !0F67BH
+--
+--
+08930        df09        BNZ             $893BH
+08932        30ca08      MOVW            AX,#8CAH
+08935        bfc8f5      MOVW            !0F5C8H,AX
+08938        a07af6      INC             !0F67AH
+0893b        8f7af6      MOV             A,!0F67AH
+--
+--
+089fd        dd71        BZ              $8A70H
+089ff        ee1109      BR              $!9313H
+08a02        afc8f5      MOVW            AX,!0F5C8H
+08a05        7c80        XOR             A,#80H
+08a07        440180      CMPW            AX,#8001H
+--
+--
+08a33        8f61f6      MOV             A,!0F661H
+08a36        9f62f6      MOV             !0F662H,A
+08a39        afc8f5      MOVW            AX,!0F5C8H
+08a3c        7c80        XOR             A,#80H
+08a3e        440180      CMPW            AX,#8001H
+--
+--
+08a5c        fc8a8300    CALL            !!838AH
+08a60        30e100      MOVW            AX,#0E1H
+08a63        bfc8f5      MOVW            !0F5C8H,AX
+08a66        f57df6      CLRB            !0F67DH
+08a69        cf7cf686    MOV             !0F67CH,#86H
+--
+--
+08a74        d46b        CMP0            0FFE6BH
+08a76        df0d        BNZ             $8A85H
+08a78        afc8f5      MOVW            AX,!0F5C8H
+08a7b        7c80        XOR             A,#80H
+08a7d        440180      CMPW            AX,#8001H
+--
+--
+08a82        ee9108      BR              $!9316H
+08a85        30ca08      MOVW            AX,#8CAH
+08a88        bfc8f5      MOVW            !0F5C8H,AX
+08a8b        cf7cf685    MOV             !0F67CH,#85H
+08a8f        ee8408      BR              $!9316H
+--
+--
+08b32        d46b        CMP0            0FFE6BH
+08b34        df0d        BNZ             $8B43H
+08b36        afc8f5      MOVW            AX,!0F5C8H
+08b39        7c80        XOR             A,#80H
+08b3b        440180      CMPW            AX,#8001H
+--
+--
+08bbf        bf4ae0      MOVW            !0E04AH,AX
+08bc2        30907e      MOVW            AX,#7E90H
+08bc5        bfc8f5      MOVW            !0F5C8H,AX
+08bc8        af4ae0      MOVW            AX,!0E04AH
+08bcb        32c201      MOVW            BC,#1C2H
+--
+--
+08bff        cf7cf61a    MOV             !0F67CH,#1AH
+08c03        308403      MOVW            AX,#384H
+08c06        bfc8f5      MOVW            !0F5C8H,AX
+08c09        e1          ONEB            A
+08c0a        fc64d700    CALL            sub_Serial_ResetBuffers
+--
+--
+08d25        eeee05      BR              $!9316H
+08d28        308403      MOVW            AX,#384H
+08d2b        bfc8f5      MOVW            !0F5C8H,AX
+08d2e        32a012      MOVW            BC,#12A0H
+08d31        e1          ONEB            A
+--
+--
+08d5d        eeb605      BR              $!9316H
+08d60        30c201      MOVW            AX,#1C2H
+08d63        bfc8f5      MOVW            !0F5C8H,AX
+08d66        cf7cf688    MOV             !0F67CH,#88H
+08d6a        eea905      BR              $!9316H
+--
+--
+08f3d        bf96df      MOVW            !0DF96H,AX
+08f40        30e100      MOVW            AX,#0E1H
+08f43        bfc8f5      MOVW            !0F5C8H,AX
+08f46        cf7cf607    MOV             !0F67CH,#7H
+08f4a        afbaf5      MOVW            AX,!0F5BAH
+--
+--
+08fc5        bf96df      MOVW            !0DF96H,AX
+08fc8        30e100      MOVW            AX,#0E1H
+08fcb        bfc8f5      MOVW            !0F5C8H,AX
+08fce        530d        MOV             B,#0DH
+08fd0        e1          ONEB            A
+--
+--
+09041        eed202      BR              $!9316H
+09044        ee9efb      BR              $!8BE5H
+09047        afc8f5      MOVW            AX,!0F5C8H
+0904a        7c80        XOR             A,#80H
+0904c        440180      CMPW            AX,#8001H
+--
+--
+09057        fc64d700    CALL            sub_Serial_ResetBuffers
+0905b        30e100      MOVW            AX,#0E1H
+0905e        bfc8f5      MOVW            !0F5C8H,AX
+09061        30ca08      MOVW            AX,#8CAH
+09064        bfcef5      MOVW            !0F5CEH,AX
+--
+--
+0907a        fc64d700    CALL            sub_Serial_ResetBuffers
+0907e        30ca08      MOVW            AX,#8CAH
+09081        bfc8f5      MOVW            !0F5C8H,AX
+09084        d57df6      CMP0            !0F67DH
+09087        dd05        BZ              $908EH
+--
+--
+09217        fca99b00    CALL            sub_7Seg_Write_v2_9ba9
+0921b        30e100      MOVW            AX,#0E1H
+0921e        bfc8f5      MOVW            !0F5C8H,AX
+09221        309411      MOVW            AX,#1194H
+09224        bfcef5      MOVW            !0F5CEH,AX
+--
+--
+09241        df0e        BNZ             $9251H
+09243        302d00      MOVW            AX,#2DH
+09246        bfc8f5      MOVW            !0F5C8H,AX
+09249        a07df6      INC             !0F67DH
+0924c        e57ff6      ONEB            !0F67FH
+--
+--
+09253        df09        BNZ             $925EH
+09255        30ca08      MOVW            AX,#8CAH
+09258        bfc8f5      MOVW            !0F5C8H,AX
+0925b        a07df6      INC             !0F67DH
+0925e        8f7df6      MOV             A,!0F67DH
+--
+--
+09288        ee8b00      BR              $!9316H
+0928b        ee57f9      BR              $!8BE5H
+0928e        afc8f5      MOVW            AX,!0F5C8H
+09291        7c80        XOR             A,#80H
+09293        440180      CMPW            AX,#8001H
+--
+--
+092eb        fca99b00    CALL            sub_7Seg_Write_v2_9ba9
+092ef        30e100      MOVW            AX,#0E1H
+092f2        bfc8f5      MOVW            !0F5C8H,AX
+092f5        cf7cf607    MOV             !0F67CH,#7H
+092f9        ef06        BR              $9301H
+--
+--
+0951c        f6          CLRW            AX
+0951d        b1          DECW            AX
+0951e        bfc8f5      MOVW            !0F5C8H,AX
+09521        f5a5f6      CLRB            !0F6A5H
+09524        f570f6      CLRB            !0F670H
+--
+--
+0958c        d46a        CMP0            0FFE6AH
+0958e        df0d        BNZ             $959DH
+09590        afc8f5      MOVW            AX,!0F5C8H
+09593        7c80        XOR             A,#80H
+09595        440180      CMPW            AX,#8001H
+--
+--
+0989f        f56ef6      CLRB            !0F66EH
+098a2        30e100      MOVW            AX,#0E1H
+098a5        bfc8f5      MOVW            !0F5C8H,AX
+098a8        cf60f60d    MOV             !0F660H,#0DH
+098ac        eea300      BR              $!9952H
+--
+--
+098a8        cf60f60d    MOV             !0F660H,#0DH
+098ac        eea300      BR              $!9952H
+098af        afc8f5      MOVW            AX,!0F5C8H
+098b2        7c80        XOR             A,#80H
+098b4        440180      CMPW            AX,#8001H
+--
+--
+099af        f452        CLRB            0FFE52H
+099b1        30ef01      MOVW            AX,#1EFH
+099b4        bfc8f5      MOVW            !0F5C8H,AX
+099b7        63          MOV             A,B
+099b8        4c01        CMP             A,#1H
+--
+--
+099f0        cf85f610    MOV             !0F685H,#10H
+099f4        ee7801      BR              $!9B6FH
+099f7        afc8f5      MOVW            AX,!0F5C8H
+099fa        7c80        XOR             A,#80H
+099fc        440180      CMPW            AX,#8001H
+--
+--
+09a08        fcd1e100    CALL            sub_Serial_WriteString_e1d1
+09a0c        30b103      MOVW            AX,#3B1H
+09a0f        bfc8f5      MOVW            !0F5C8H,AX
+09a12        cf85f610    MOV             !0F685H,#10H
+09a16        ee5601      BR              $!9B6FH
+--
+--
+09a19        d46a        CMP0            0FFE6AH
+09a1b        df0d        BNZ             $9A2AH
+09a1d        afc8f5      MOVW            AX,!0F5C8H
+09a20        7c80        XOR             A,#80H
+09a22        440180      CMPW            AX,#8001H
+--
+--
+09a38        fc22e300    CALL            sub_Serial_WriteStringAT_UART1_e322
+09a3c        307305      MOVW            AX,#573H
+09a3f        bfc8f5      MOVW            !0F5C8H,AX
+09a42        cf85f611    MOV             !0F685H,#11H
+09a46        ee2601      BR              $!9B6FH
+--
+--
+09a4c        fc22e300    CALL            sub_Serial_WriteStringAT_UART1_e322
+09a50        30ef01      MOVW            AX,#1EFH
+09a53        bfc8f5      MOVW            !0F5C8H,AX
+09a56        cf85f611    MOV             !0F685H,#11H
+09a5a        ee1201      BR              $!9B6FH
+--
+--
+09a66        cf85f614    MOV             !0F685H,#14H
+09a6a        ee0201      BR              $!9B6FH
+09a6d        afc8f5      MOVW            AX,!0F5C8H
+09a70        7c80        XOR             A,#80H
+09a72        440180      CMPW            AX,#8001H
+--
+--
+09a82        714300      CLR1            P0.4H
+09a85        306801      MOVW            AX,#168H
+09a88        bfc8f5      MOVW            !0F5C8H,AX
+09a8b        cf85f612    MOV             !0F685H,#12H
+09a8f        eedd00      BR              $!9B6FH
+--
+--
+09a8b        cf85f612    MOV             !0F685H,#12H
+09a8f        eedd00      BR              $!9B6FH
+09a92        afc8f5      MOVW            AX,!0F5C8H
+09a95        7c80        XOR             A,#80H
+09a97        440180      CMPW            AX,#8001H
+--
+--
+09aa2        e586f6      ONEB            !0F686H
+09aa5        305a00      MOVW            AX,#5AH
+09aa8        bfc8f5      MOVW            !0F5C8H,AX
+09aab        cf85f610    MOV             !0F685H,#10H
+09aaf        eebd00      BR              $!9B6FH
+--
+--
+09ab2        d46a        CMP0            0FFE6AH
+09ab4        df0d        BNZ             $9AC3H
+09ab6        afc8f5      MOVW            AX,!0F5C8H
+09ab9        7c80        XOR             A,#80H
+09abb        440180      CMPW            AX,#8001H
+--
+--
+09b09        d46b        CMP0            0FFE6BH
+09b0b        df0a        BNZ             $9B17H
+09b0d        afc8f5      MOVW            AX,!0F5C8H
+09b10        7c80        XOR             A,#80H
+09b12        440180      CMPW            AX,#8001H
+--
+--
+09b24        f46a        CLRB            0FFE6AH
+09b26        30c201      MOVW            AX,#1C2H
+09b29        bfc8f5      MOVW            !0F5C8H,AX
+09b2c        cf85f696    MOV             !0F685H,#96H
+09b30        ef3d        BR              $9B6FH
+--
+--
+09b36        d46b        CMP0            0FFE6BH
+09b38        df0a        BNZ             $9B44H
+09b3a        afc8f5      MOVW            AX,!0F5C8H
+09b3d        7c80        XOR             A,#80H
+09b3f        440180      CMPW            AX,#8001H
+--
+--
+09b54        d46b        CMP0            0FFE6BH
+09b56        df0a        BNZ             $9B62H
+09b58        afc8f5      MOVW            AX,!0F5C8H
+09b5b        7c80        XOR             A,#80H
+09b5d        440180      CMPW            AX,#8001H
+--
+--
+
+// State 1
+0c638        afc8f5      MOVW            AX,!0F5C8H
+0c63b        7c80        XOR             A,#80H
+0c63d        440180      CMPW            AX,#8001H
+--
+--
+
+// State 86
+0c657        afc8f5      MOVW            AX,!0F5C8H
+0c65a        7c80        XOR             A,#80H
+0c65c        440180      CMPW            AX,#8001H
+--
+--
+0c68a        fcb2e100    CALL            sub_Serial_WriteChar_e1b3
+0c68e        30a302      MOVW            AX,#2A3H
+0c691        bfc8f5      MOVW            !0F5C8H,AX
+0c694        cf4af704    MOV             !0F74AH,#4H // State 4 next
+0c698        ee0602      BR              $!0C8A1H
+--
+--
+
+// State 4
+0c69b        afc8f5      MOVW            AX,!0F5C8H
+0c69e        7c80        XOR             A,#80H
+0c6a0        440180      CMPW            AX,#8001H
+--
+--
+0c6b8        dd0d        BZ              $0C6C7H
+0c6ba        30a302      MOVW            AX,#2A3H
+0c6bd        bfc8f5      MOVW            !0F5C8H,AX
+0c6c0        cf4af718    MOV             !0F74AH,#18H // State 18 next
+0c6c4        eeda01      BR              $!0C8A1H
+--
+--
+0c703        9f49f7      MOV             !0F749H,A
+0c706        30a302      MOVW            AX,#2A3H
+0c709        bfc8f5      MOVW            !0F5C8H,AX
+0c70c        cf4af718    MOV             !0F74AH,#18H
+0c710        ee8e01      BR              $!0C8A1H
+--
+--
+0c722        ee7c01      BR              $!0C8A1H
+0c725        307000      MOVW            AX,#70H
+0c728        bfc8f5      MOVW            !0F5C8H,AX
+0c72b        cf4af796    MOV             !0F74AH,#96H
+0c72f        ee6f01      BR              $!0C8A1H
+--
+--
+
+// State 17
+0c732        afc8f5      MOVW            AX,!0F5C8H
+0c735        7c80        XOR             A,#80H
+0c737        440180      CMPW            AX,#8001H
+--
+--
+0c754        fcb2e100    CALL            sub_Serial_WriteChar_e1b3
+0c758        30c201      MOVW            AX,#1C2H
+0c75b        bfc8f5      MOVW            !0F5C8H,AX
+0c75e        cf4af796    MOV             !0F74AH,#96H // State 96 next
+0c762        ee3c01      BR              $!0C8A1H
+--
+--
+
+// State 18
+0c765        afc8f5      MOVW            AX,!0F5C8H
+0c768        7c80        XOR             A,#80H
+0c76a        440180      CMPW            AX,#8001H
+--
+--
+
+// State  96
+0c835        afc8f5      MOVW            AX,!0F5C8H
+0c838        7c80        XOR             A,#80H
+0c83a        440180      CMPW            AX,#8001H
+--
+--
+0c867        a049f7      INC             !0F749H
+0c86a        302d00      MOVW            AX,#2DH
+0c86d        bfc8f5      MOVW            !0F5C8H,AX
+0c870        f46a        CLRB            0FFE6AH
+0c872        cf4af786    MOV             !0F74AH,#86H
+--
+--
+
+// State 17
+0c88d        afc8f5      MOVW            AX,!0F5C8H
+0c890        7c80        XOR             A,#80H
+0c892        440180      CMPW            AX,#8001H
+--
+--
+0c8e3        31722f04    BT              0FFE2FH.7H,$0C8EBH
+0c8e7        ec7cca00    BR              !!0CA7CH
+0c8eb        afc8f5      MOVW            AX,!0F5C8H
+0c8ee        7c80        XOR             A,#80H
+0c8f0        440180      CMPW            AX,#8001H
+--
+--
+0c901        e54cf7      ONEB            !0F74CH
+0c904        ee7e01      BR              $!0CA85H
+0c907        afc8f5      MOVW            AX,!0F5C8H
+0c90a        7c80        XOR             A,#80H
+0c90c        440180      CMPW            AX,#8001H
+--
+--
+0c92c        fcb2e100    CALL            sub_Serial_WriteChar_e1b3
+0c930        306504      MOVW            AX,#465H
+0c933        bfc8f5      MOVW            !0F5C8H,AX
+0c936        cf4cf716    MOV             !0F74CH,#16H
+0c93a        ee4801      BR              $!0CA85H
+--
+--
+0c93f        61e8        SKZ             
+0c941        cf4cf718    MOV             !0F74CH,#18H
+0c945        afc8f5      MOVW            AX,!0F5C8H
+0c948        7c80        XOR             A,#80H
+0c94a        440180      CMPW            AX,#8001H
+--
+--
+0c95d        d46a        CMP0            0FFE6AH
+0c95f        df0d        BNZ             $0C96EH
+0c961        afc8f5      MOVW            AX,!0F5C8H
+0c964        7c80        XOR             A,#80H
+0c966        440180      CMPW            AX,#8001H
+--
+--
+0c983        fcb2e100    CALL            sub_Serial_WriteChar_e1b3
+0c987        304605      MOVW            AX,#546H
+0c98a        bfc8f5      MOVW            !0F5C8H,AX
+0c98d        cf4cf796    MOV             !0F74CH,#96H
+0c991        eef100      BR              $!0CA85H
+--
+--
+0c98d        cf4cf796    MOV             !0F74CH,#96H
+0c991        eef100      BR              $!0CA85H
+0c994        afc8f5      MOVW            AX,!0F5C8H
+0c997        7c80        XOR             A,#80H
+0c999        440180      CMPW            AX,#8001H
+--
+--
+	0e335        fc64d700    CALL            sub_Serial_ResetBuffers
+	0e339        304605      MOVW            AX,#546H
+	0e33c        bfc8f5      MOVW            !0F5C8H,AX
+	0e33f        c4          POP             DE
+	0e340        c2          POP             BC
+--
+--
+0f211        f56cf6      CLRB            !0F66CH
+0f214        30c201      MOVW            AX,#1C2H
+0f217        bfc8f5      MOVW            !0F5C8H,AX
+0f21a        ef4c        BR              $0F268H
+0f21c        60          MOV             A,X
+--
+--
+0f25c        e56cf6      ONEB            !0F66CH
+0f25f        30c201      MOVW            AX,#1C2H
+0f262        bfc8f5      MOVW            !0F5C8H,AX
+0f265        f5aaf6      CLRB            !0F6AAH
+0f268        8faaf6      MOV             A,!0F6AAH
+--
+--
+0f385        fc22e300    CALL            sub_Serial_WriteStringAT_UART1_e322
+0f389        308c0a      MOVW            AX,#0A8CH
+0f38c        bfc8f5      MOVW            !0F5C8H,AX
+0f38f        cf60f619    MOV             !0F660H,#19H
+0f393        cf9cf603    MOV             !0F69CH,#3H
+--
+--
+0f3a1        fc22e300    CALL            sub_Serial_WriteStringAT_UART1_e322
+0f3a5        308c0a      MOVW            AX,#0A8CH
+0f3a8        bfc8f5      MOVW            !0F5C8H,AX
+0f3ab        cf60f619    MOV             !0F660H,#19H
+0f3af        cf9cf604    MOV             !0F69CH,#4H
+--
+--
+0f49e        cfabf699    MOV             !0F6ABH,#99H
+0f4a2        ee9b03      BR              $!0F840H
+0f4a5        afc8f5      MOVW            AX,!0F5C8H
+0f4a8        7c80        XOR             A,#80H
+0f4aa        440180      CMPW            AX,#8001H
+--
+--
+0f509        cfabf699    MOV             !0F6ABH,#99H
+0f50d        ee3003      BR              $!0F840H
+0f510        afc8f5      MOVW            AX,!0F5C8H
+0f513        7c80        XOR             A,#80H
+0f515        440180      CMPW            AX,#8001H
+--
+--
+0f54e        fcf5e100    CALL            sub_Serial_WriteStringTerminate_e1f5
+0f552        304605      MOVW            AX,#546H
+0f555        bfc8f5      MOVW            !0F5C8H,AX
+0f558        cfadf603    MOV             !0F6ADH,#3H
+0f55c        cfabf682    MOV             !0F6ABH,#82H
+--
+--
+0f569        fc22e300    CALL            sub_Serial_WriteStringAT_UART1_e322
+0f56d        304605      MOVW            AX,#546H
+0f570        bfc8f5      MOVW            !0F5C8H,AX
+0f573        cfabf682    MOV             !0F6ABH,#82H
+0f577        e5adf6      ONEB            !0F6ADH
+--
+--
+0f577        e5adf6      ONEB            !0F6ADH
+0f57a        eec302      BR              $!0F840H
+0f57d        afc8f5      MOVW            AX,!0F5C8H
+0f580        7c80        XOR             A,#80H
+0f582        440180      CMPW            AX,#8001H
+--
+--
+0f5ca        fc64d700    CALL            sub_Serial_ResetBuffers
+0f5ce        304605      MOVW            AX,#546H
+0f5d1        bfc8f5      MOVW            !0F5C8H,AX
+0f5d4        f6          CLRW            AX
+0f5d5        4214e1      CMPW            AX,!0E114H
+--
+--
+0f689        fcf5e100    CALL            sub_Serial_WriteStringTerminate_e1f5
+0f68d        304605      MOVW            AX,#546H
+0f690        bfc8f5      MOVW            !0F5C8H,AX
+0f693        eeaa01      BR              $!0F840H
+0f696        e1          ONEB            A
+--
+--
+0f6b8        fcf5e100    CALL            sub_Serial_WriteStringTerminate_e1f5
+0f6bc        304605      MOVW            AX,#546H
+0f6bf        bfc8f5      MOVW            !0F5C8H,AX
+0f6c2        b0adf6      DEC             !0F6ADH
+0f6c5        ee7801      BR              $!0F840H
+--
+--
+0f6eb        ec40f800    BR              !!0F840H
+0f6ef        efe1        BR              $0F6D2H
+0f6f1        afc8f5      MOVW            AX,!0F5C8H
+0f6f4        7c80        XOR             A,#80H
+0f6f6        440180      CMPW            AX,#8001H
+--
+--
+0f755        eee800      BR              $!0F840H
+0f758        eeaefd      BR              $!0F509H
+0f75b        afc8f5      MOVW            AX,!0F5C8H
+0f75e        7c80        XOR             A,#80H
+0f760        440180      CMPW            AX,#8001H
+--
+--
+0f7f1        dfb4        BNZ             $0F7A7H
+0f7f3        ee13fd      BR              $!0F509H
+0f7f6        afc8f5      MOVW            AX,!0F5C8H
+0f7f9        7c80        XOR             A,#80H
+0f7fb        440180      CMPW            AX,#8001H
+--
+--
+10a2e        c5          PUSH            DE
+10a2f        5400        MOV             E,#0H
+10a31        afc8f5      MOVW            AX,!0F5C8H
+10a34        7c80        XOR             A,#80H
+10a36        440180      CMPW            AX,#8001H
+--
+--
+10c97        30ce1f      MOVW            AX,#1FCEH // +CSQ
+10c9a        fc22e300    CALL            sub_Serial_WriteStringAT_UART1_e322
+10c9e        afc8f5      MOVW            AX,!0F5C8H
+10ca1        7c80        XOR             A,#80H
+10ca3        440180      CMPW            AX,#8001H
+--
+--
+10cde        f6          CLRW            AX
+10cdf        b1          DECW            AX
+10ce0        bfc8f5      MOVW            !0F5C8H,AX
+10ce3        efb9        BR              $10C9EH
+10ce5        4c03        CMP             A,#3H
+--
+--
+10d19        f6          CLRW            AX
+10d1a        b1          DECW            AX
+10d1b        bfc8f5      MOVW            !0F5C8H,AX
+10d1e        ef16        BR              $10D36H
+	10d20        e1          ONEB            A
+--
+--
+10fd4        f6          CLRW            AX
+10fd5        b1          DECW            AX
+10fd6        bfc8f5      MOVW            !0F5C8H,AX
+10fd9        db921c      MOVW            BC,!1C92H
+10fdc        5103        MOV             A,#3H
+--
+--
+11149        d46a        CMP0            0FFE6AH
+1114b        df0d        BNZ             $1115AH
+1114d        afc8f5      MOVW            AX,!0F5C8H
+11150        7c80        XOR             A,#80H
+11152        440180      CMPW            AX,#8001H
+--
+--
+1117c        fcf5e100    CALL            sub_Serial_WriteStringTerminate_e1f5
+11180        304605      MOVW            AX,#546H
+11183        bfc8f5      MOVW            !0F5C8H,AX
+11186        d550f7      CMP0            !0F750H
+11189        dd09        BZ              $11194H
+--
+--
+111bd        d46a        CMP0            0FFE6AH
+111bf        df0d        BNZ             $111CEH
+111c1        afc8f5      MOVW            AX,!0F5C8H
+111c4        7c80        XOR             A,#80H
+111c6        440180      CMPW            AX,#8001H
+--
+--
+111e2        fcf5e100    CALL            sub_Serial_WriteStringTerminate_e1f5
+111e6        30ca08      MOVW            AX,#8CAH
+111e9        bfc8f5      MOVW            !0F5C8H,AX
+111ec        cf51f72b    MOV             !0F751H,#2BH
+111f0        ef64        BR              $11256H
+--
+--
+111f2        d466        CMP0            0FFE66H
+111f4        df0a        BNZ             $11200H
+111f6        afc8f5      MOVW            AX,!0F5C8H
+111f9        7c80        XOR             A,#80H
+111fb        440180      CMPW            AX,#8001H
+--
+--
+11219        fcb2e100    CALL            sub_Serial_WriteChar_e1b3
+1121d        30d20f      MOVW            AX,#0FD2H
+11220        bfc8f5      MOVW            !0F5C8H,AX
+11223        f535f6      CLRB            !0F635H
+11226        cf51f796    MOV             !0F751H,#96H
+--
+--
+1122c        d46a        CMP0            0FFE6AH
+1122e        df0a        BNZ             $1123AH
+11230        afc8f5      MOVW            AX,!0F5C8H
+11233        7c80        XOR             A,#80H
+11235        440180      CMPW            AX,#8001H
+--
+--
+11484        f6          CLRW            AX
+11485        b1          DECW            AX
+11486        bfc8f5      MOVW            !0F5C8H,AX
+11489        e552f7      ONEB            !0F752H
+1148c        ee1501      BR              $!115A4H
+--
+--
+114af        f6          CLRW            AX
+114b0        b1          DECW            AX
+114b1        bfc8f5      MOVW            !0F5C8H,AX
+114b4        e552f7      ONEB            !0F752H
+114b7        eeea00      BR              $!115A4H
+--
+--
+114b4        e552f7      ONEB            !0F752H
+114b7        eeea00      BR              $!115A4H
+114ba        afc8f5      MOVW            AX,!0F5C8H
+114bd        7c80        XOR             A,#80H
+114bf        440180      CMPW            AX,#8001H
+--
+--
+1155e        df44        BNZ             $115A4H
+11560        308c0a      MOVW            AX,#0A8CH
+11563        bfc8f5      MOVW            !0F5C8H,AX
+11566        8f53f7      MOV             A,!0F753H
+11569        4c03        CMP             A,#3H
+--
+--
+11581        e552f7      ONEB            !0F752H
+11584        ef1e        BR              $115A4H
+11586        afc8f5      MOVW            AX,!0F5C8H
+11589        7c80        XOR             A,#80H
+1158b        440180      CMPW            AX,#8001H
+--
+--
+11c19        eea700      BR              $!11CC3H
+11c1c        eed801      BR              $!11DF7H
+11c1f        afc8f5      MOVW            AX,!0F5C8H
+11c22        7c80        XOR             A,#80H
+11c24        440180      CMPW            AX,#8001H
+--
+--
+1235d        f46b        CLRB            0FFE6BH
+1235f        30e457      MOVW            AX,#57E4H
+12362        bfc8f5      MOVW            !0F5C8H,AX
+12365        c2          POP             BC
+12366        d7          RET             
+--
+--
+1251e        d46b        CMP0            0FFE6BH
+12520        df0d        BNZ             $1252FH
+12522        afc8f5      MOVW            AX,!0F5C8H
+12525        7c80        XOR             A,#80H
+12527        440180      CMPW            AX,#8001H
+--
+--
+12534        f46b        CLRB            0FFE6BH
+12536        304605      MOVW            AX,#546H
+12539        bfc8f5      MOVW            !0F5C8H,AX
+1253c        cfc2f686    MOV             !0F6C2H,#86H
+12540        8fc6f6      MOV             A,!0F6C6H
+--
+--
+1254c        cf60f618    MOV             !0F660H,#18H
+12550        ee3b01      BR              $!1268EH
+12553        afc8f5      MOVW            AX,!0F5C8H
+12556        7c80        XOR             A,#80H
+12558        440180      CMPW            AX,#8001H
+--
+--
+125e3        36ffff      MOVW            HL,#0FFFFH
+125e6        37          XCHW            AX,HL
+125e7        bfc8f5      MOVW            !0F5C8H,AX
+125ea        17          MOVW            AX,HL
+125eb        4c03        CMP             A,#3H
+--
+--
+12600        f6          CLRW            AX
+12601        b1          DECW            AX
+12602        bfc8f5      MOVW            !0F5C8H,AX
+12605        d46b        CMP0            0FFE6BH
+12607        df0a        BNZ             $12613H
+--
+--
+12605        d46b        CMP0            0FFE6BH
+12607        df0a        BNZ             $12613H
+12609        afc8f5      MOVW            AX,!0F5C8H
+1260c        7c80        XOR             A,#80H
+1260e        440180      CMPW            AX,#8001H
+--
+--
+12639        d46b        CMP0            0FFE6BH
+1263b        df0a        BNZ             $12647H
+1263d        afc8f5      MOVW            AX,!0F5C8H
+12640        7c80        XOR             A,#80H
+12642        440180      CMPW            AX,#8001H
+--
+--
+12674        f5c8f6      CLRB            !0F6C8H
+12677        30c201      MOVW            AX,#1C2H
+1267a        bfc8f5      MOVW            !0F5C8H,AX
+1267d        cfc2f699    MOV             !0F6C2H,#99H
+12681        31044309    BF              0FFE43H.0H,$1268EH
